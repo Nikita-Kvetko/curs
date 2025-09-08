@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../styles/global.css">
     <link rel="stylesheet" href="../styles/footer.css">
     <link rel="stylesheet" href="../styles/accessibility.css">
+    <link rel="stylesheet" href="../styles/theme.css">
 </head>
 <body>
     <header>
@@ -43,6 +44,23 @@
                 </div>
                 
                 <div class="user-actions">
+                    <div class="header-controls">
+                        <button id="theme-toggle" class="theme-toggle" title="Сменить тему">
+                            <img src="../img/sun.png" alt="Светлая тема" class="theme-icon light-icon">
+                            <img src="../img/moon.png" alt="Темная тема" class="theme-icon dark-icon">
+                        </button>
+                        <div class="language-selector">
+                            <button id="language-toggle" class="language-toggle" title="Сменить язык">
+                                <span class="language-flag">🇷🇺</span>
+                                <span class="language-code">RU</span>
+                            </button>
+                            <div class="language-dropdown">
+                                <button class="language-option" data-lang="ru">🇷🇺 Русский</button>
+                                <button class="language-option" data-lang="en">🇺🇸 English</button>
+                                <button class="language-option" data-lang="de">🇩🇪 Deutsch</button>
+                            </div>
+                        </div>
+                    </div>
                     <a href="#" class="login-btn"><img src="../img/login.png" alt="login"> Войти</a>
                     <a href="#" class="favorites"><img src="../img/favorites.png" alt="favorites">Избранное</a>
                     <a href="#" class="cart"><img src="../img/cart.png" alt="cart">Корзина</a>
@@ -53,14 +71,14 @@
             <div class="container">
                 <ul class="nav-menu">
                     <div class="highlight"></div> 
-                    <li><a href="#">КУХНИ</a></li>
-                    <li><a href="#">ГОСТИННЫЕ</a></li>
-                    <li><a href="#">СПАЛЬНИ</a></li>
-                    <li><a href="#">ПРИХОЖИЕ</a></li>
-                    <li><a href="#">ШКАФЫ-КУПЕ</a></li>
-                    <li><a href="#">ДЕТские</a></li>
-                    <li><a href="#">ДИВАНЫ</a></li>
-                    <li><a href="#">ГДЕ ПОСМОТРЕТЬ</a></li>
+                    <li><a href="#" data-i18n="nav.kitchens">КУХНИ</a></li>
+                    <li><a href="#" data-i18n="nav.living_rooms">ГОСТИННЫЕ</a></li>
+                    <li><a href="#" data-i18n="nav.bedrooms">СПАЛЬНИ</a></li>
+                    <li><a href="#" data-i18n="nav.hallways">ПРИХОЖИЕ</a></li>
+                    <li><a href="#" data-i18n="nav.wardrobes">ШКАФЫ-КУПЕ</a></li>
+                    <li><a href="#" data-i18n="nav.children">ДЕТСКИЕ</a></li>
+                    <li><a href="#" data-i18n="nav.sofas">ДИВАНЫ</a></li>
+                    <li><a href="#" data-i18n="nav.where_to_see">ГДЕ ПОСМОТРЕТЬ</a></li>
                 </ul>
             </div>
         </nav>
@@ -124,6 +142,29 @@
         </div>
     </div>
 
+    <main>
+        <section class="advantages">
+            <h2>НАШИ ПРЕИМУЩЕСТВА</h2>
+            <div class="advantages-blocks">
+                <div class="advantages-block">
+                    <img src="../img/advantages-img1.png" alt="advantages-img1">
+                    <b>Удобное расположение магазина</b>
+                </div>
+                <div class="advantages-block">
+                    <img src="../img/advantages-img2.png" alt="advantages-img2">
+                    <b>Быстрая доставка</b>
+                </div>
+                <div class="advantages-block">
+                    <img src="../img/advantages-img3.png" alt="advantages-img3">
+                    <b>Низкие цены</b>
+                </div>
+                <div class="advantages-block">
+                    <img src="../img/advantages-img4.png" alt="advantages-img4">
+                    <b>Гарантия качества</b>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <footer>
         <div class="footer-top">
@@ -224,6 +265,8 @@
     </footer>
     <script src="../js/user-menu.js"></script>
     <script src="../js/accessibility.js"></script>
+    <script src="../js/i18n.js"></script>
+    <script src="../js/theme.js"></script>
     <script>
         const menu = document.querySelector(".nav-menu");
         const highlight = document.querySelector(".highlight");

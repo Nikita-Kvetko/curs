@@ -1,0 +1,240 @@
+body {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8f9fa;
+    --text-primary: #212529;
+    --text-secondary: #6c757d;
+    --border-color: #dee2e6;
+    --accent-color: #007bff;
+    --header-bg: #ffffff;
+    --footer-bg: #343a40;
+    --footer-text: #ffffff;
+    
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body.dark {
+    --bg-primary: #121212;
+    --bg-secondary: #1e1e1e;
+    --text-primary: #e0e0e0;
+    --text-secondary: #a0a0a0;
+    --border-color: #424242;
+    --accent-color: #4dabf7;
+    --header-bg: #1a1a1a;
+    --footer-bg: #212121;
+    --footer-text: #e0e0e0;
+}
+
+body.dark header {
+    background-color: var(--header-bg);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+body.dark footer {
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
+}
+
+.auth-container {
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--accent-color);
+}
+
+.submit-btn {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+    margin-right: 10px;
+}
+
+.theme-toggle:hover {
+    background-color: var(--bg-secondary);
+}
+
+.theme-icon {
+    width: 20px;
+    height: 20px;
+    transition: opacity 0.3s;
+}
+
+.light-icon {
+    display: inline-block;
+}
+
+.dark-icon {
+    display: none;
+}
+
+body.dark .light-icon {
+    display: none;
+}
+
+body.dark .dark-icon {
+    display: inline-block;
+}
+
+.language-selector {
+    position: relative;
+    display: inline-block;
+    margin-right: 15px;
+}
+
+.language-toggle {
+    background: none;
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+    padding: 6px 12px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+}
+
+.language-flag {
+    font-size: 16px;
+}
+
+.language-code {
+    font-weight: 500;
+}
+
+.language-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    z-index: 1000;
+    min-width: 120px;
+}
+
+.language-selector:hover .language-dropdown {
+    display: block;
+}
+
+.language-option {
+    display: block;
+    width: 100%;
+    padding: 8px 12px;
+    background: none;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    color: var(--text-primary);
+    transition: background-color 0.2s;
+}
+
+.language-option:hover {
+    background-color: var(--bg-secondary);
+}
+
+.header-controls {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+body.dark .nav-menu a {
+    color: var(--text-primary);
+}
+
+body.dark .nav-menu a:hover {
+    color: var(--accent-color);
+}
+
+body.dark .top-nav {
+    background-color: var(--bg-secondary);
+    border-bottom: 1px solid var(--border-color);
+}
+
+body.dark .top-nav a {
+    color: var(--text-primary);
+}
+
+body.dark .top-nav a:hover {
+    color: var(--accent-color);
+}
+
+body.dark .store-info p,
+body.dark .scheme-link,
+body.dark .phone,
+body.dark .callback-btn {
+    color: var(--text-primary);
+}
+
+body.dark .login-btn,
+body.dark .favorites,
+body.dark .cart {
+    color: var(--text-primary);
+}
+
+body.dark .login-btn:hover,
+body.dark .favorites:hover,
+body.dark .cart:hover {
+    color: var(--accent-color);
+}
+
+body.dark .tab-btn {
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+}
+
+body.dark .tab-btn.active {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+body.dark .tab-btn:hover {
+    background-color: var(--border-color);
+}
+
+body.dark .generate-btn {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+body.dark .generate-btn:hover {
+    background-color: #0056b3;
+}
+
+body.dark .checkbox-label a {
+    color: var(--accent-color);
+}
+
+@media (max-width: 768px) {
+    .header-controls {
+        margin-bottom: 10px;
+    }
+    
+    .language-dropdown {
+        right: -50%;
+    }
+}

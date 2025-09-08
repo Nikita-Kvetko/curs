@@ -352,11 +352,11 @@ document.addEventListener('DOMContentLoaded', function() {
         const passwordField = document.getElementById('reg-password');
         if (passwordField) {
             if (metRequirements === totalRequirements) {
-                passwordField.style.borderColor = '#28a745'; // зеленый
+                passwordField.style.borderColor = '#28a745'; 
             } else if (metRequirements >= totalRequirements / 2) {
-                passwordField.style.borderColor = '#ffc107'; // желтый
+                passwordField.style.borderColor = '#ffc107'; 
             } else {
-                passwordField.style.borderColor = '#dc3545'; // красный
+                passwordField.style.borderColor = '#dc3545'; 
             }
         }
     }

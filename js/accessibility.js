@@ -125,6 +125,14 @@ document.addEventListener('DOMContentLoaded', function() {
         );
 
         if (imagesToggle) imagesToggle.checked = true;
+        
+        if (typeof themeManager !== 'undefined') {
+            themeManager.resetTheme();
+        }
+        
+        if (typeof i18n !== 'undefined') {
+            i18n.loadLanguage('ru');
+        }
 
         fontSizeBtns.forEach(btn => btn.classList.remove('active'));
         colorSchemeBtns.forEach(btn => btn.classList.remove('active'));
