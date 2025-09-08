@@ -145,10 +145,15 @@ header {
     border: none;
     cursor: pointer;
     display: flex;
+    flex-direction: column;
     align-items: center;
     gap: 5px;
     color: #333;
     font-weight: 500;
+}
+
+.user-menu-toggle img{
+    width: 50%;
 }
 
 .user-dropdown {

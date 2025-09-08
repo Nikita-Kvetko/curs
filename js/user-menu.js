@@ -55,7 +55,19 @@ function createUserMenu(user, container) {
     const toggleBtn = userMenu.querySelector('.user-menu-toggle');
     const dropdown = userMenu.querySelector('.user-dropdown');
     const logoutBtn = userMenu.querySelector('.logout-btn');
-    
+    const settingsBtn = userMenu.querySelector('.dropdown-item');
+
+    if (settingsBtn && settingsBtn.textContent === 'Настройки') {
+        settingsBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const modal = document.getElementById('accessibility-modal');
+            if (modal) {
+                modal.style.display = 'block';
+            }
+            if (dropdown) dropdown.classList.remove('show');
+        });
+    }
+
     if (toggleBtn && dropdown) {
         toggleBtn.addEventListener('click', function(e) {
             e.stopPropagation();

@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../styles/header.css">
     <link rel="stylesheet" href="../styles/global.css">
     <link rel="stylesheet" href="../styles/footer.css">
+    <link rel="stylesheet" href="../styles/accessibility.css">
 </head>
 <body>
     <header>
@@ -30,7 +31,7 @@
         </div>
         <div class="container">
             <div class="header-content">
-                    <img src="../img/logo.png" alt="logo">
+                <img src="../img/logo.png" alt="logo">
                 <div class="store-info">
                     <p>ул. Московская, 144 корп. - 1</p>
                     <a href="#" class="scheme-link">Схема проезда</a>
@@ -42,29 +43,86 @@
                 </div>
                 
                 <div class="user-actions">
-                    <a href="../pages/register.html" class="login-btn"><img src="../img/login.png" alt="login"> Войти</a>
+                    <a href="#" class="login-btn"><img src="../img/login.png" alt="login"> Войти</a>
                     <a href="#" class="favorites"><img src="../img/favorites.png" alt="favorites">Избранное</a>
                     <a href="#" class="cart"><img src="../img/cart.png" alt="cart">Корзина</a>
                 </div>
             </div>
         </div>
-            <nav class="main-nav">
+        <nav class="main-nav">
             <div class="container">
                 <ul class="nav-menu">
-                <div class="highlight"></div> 
-                <li><a href="#">КУХНИ</a></li>
-                <li><a href="#">ГОСТИННЫЕ</a></li>
-                <li><a href="#">СПАЛЬНИ</a></li>
-                <li><a href="#">ПРИХОЖИЕ</a></li>
-                <li><a href="#">ШКАФЫ-КУПЕ</a></li>
-                <li><a href="#">ДЕТСКИЕ</a></li>
-                <li><a href="#">ДИВАНЫ</a></li>
-                <li><a href="#">ГДЕ ПОСМОТРЕТЬ</a></li>
+                    <div class="highlight"></div> 
+                    <li><a href="#">КУХНИ</a></li>
+                    <li><a href="#">ГОСТИННЫЕ</a></li>
+                    <li><a href="#">СПАЛЬНИ</a></li>
+                    <li><a href="#">ПРИХОЖИЕ</a></li>
+                    <li><a href="#">ШКАФЫ-КУПЕ</a></li>
+                    <li><a href="#">ДЕТские</a></li>
+                    <li><a href="#">ДИВАНЫ</a></li>
+                    <li><a href="#">ГДЕ ПОСМОТРЕТЬ</a></li>
                 </ul>
             </div>
-            </nav>
-
+        </nav>
     </header>
+
+    <div id="accessibility-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Настройки доступности</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="setting-group">
+                    <h3>Размер шрифта</h3>
+                    <div class="font-size-options">
+                        <button class="font-size-btn" data-size="normal">Обычный</button>
+                        <button class="font-size-btn" data-size="large">Большой</button>
+                        <button class="font-size-btn" data-size="x-large">Очень большой</button>
+                    </div>
+                </div>
+                
+                <div class="setting-group">
+                    <h3>Цветовая схема</h3>
+                    <div class="color-scheme-options">
+                        <button class="color-scheme-btn" data-scheme="black-white">
+                            <span class="color-preview black-white"></span>
+                            Черный на белом
+                        </button>
+                        <button class="color-scheme-btn" data-scheme="black-green">
+                            <span class="color-preview black-green"></span>
+                            Черный на зеленом
+                        </button>
+                        <button class="color-scheme-btn" data-scheme="white-black">
+                            <span class="color-preview white-black"></span>
+                            Белый на черном
+                        </button>
+                        <button class="color-scheme-btn" data-scheme="beige-brown">
+                            <span class="color-preview beige-brown"></span>
+                            Бежевый с коричневым
+                        </button>
+                        <button class="color-scheme-btn" data-scheme="blue-darkblue">
+                            <span class="color-preview blue-darkblue"></span>
+                            Голубой с синим
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="setting-group">
+                    <h3>Изображения</h3>
+                    <label class="switch">
+                        <input type="checkbox" id="images-toggle">
+                        <span class="slider"></span>
+                        <span class="switch-label">Показывать изображения</span>
+                    </label>
+                </div>
+                
+                <div class="setting-group">
+                    <button id="reset-accessibility" class="reset-btn">Сбросить настройки</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
     <footer>
@@ -165,6 +223,7 @@
         </div>
     </footer>
     <script src="../js/user-menu.js"></script>
+    <script src="../js/accessibility.js"></script>
     <script>
         const menu = document.querySelector(".nav-menu");
         const highlight = document.querySelector(".highlight");
