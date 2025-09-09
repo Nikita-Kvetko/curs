@@ -7,9 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         try {
             const allProducts = await apiRequest('products');
-
             const randomProducts = getRandomProducts(allProducts, 6);
-
             displayProducts(randomProducts);
             
         } catch (error) {
@@ -27,12 +25,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function getRandomProducts(products, count) {
         const shuffled = [...products];
-
         for (let i = shuffled.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
             [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
         }
-
         return shuffled.slice(0, count);
     }
 
@@ -65,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     </div>
                     <div class="random-product-actions">
                         <button class="buy-btn" onclick="addToCart(${product.id})">В корзину</button>
-                        <button class="add-to-fav" onclick="toggleFavorite(${product.id})">❤️</button>
+                        <button class="add-to-fav" onclick="toggleFavorite(event, ${product.id})">❤️</button>
                     </div>
                 </div>
             </div>
@@ -109,71 +105,6 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         } catch (error) {
             console.error('Ошибка при обновлении кнопок избранного:', error);
-        }
-    }
-
-    window.addToCart = async function(productId) {
-        const currentUser = getCurrentUser();
-        if (!currentUser) {
-            alert('Пожалуйста, войдите в систему, чтобы добавить товар в корзину');
-            return;
-        }
-        
-        try {
-            const cart = await getCart(currentUser.id);
-
-            const existingItem = cart.items.find(item => item.productId == productId);
-            
-            if (existingItem) {
-                existingItem.quantity += 1;
-            } else {
-                cart.items.push({
-                    productId: productId,
-                    quantity: 1,
-                    addedAt: new Date().toISOString()
-                });
-            }
-
-            await updateCart(currentUser.id, cart.items);
-            
-            alert('Товар добавлен в корзину!');
-        } catch (error) {
-            console.error('Ошибка при добавлении в корзину:', error);
-            alert('Не удалось добавить товар в корзину');
-        }
-    }
-    
-    window.toggleFavorite = async function(productId) {
-        const currentUser = getCurrentUser();
-        if (!currentUser) {
-            alert('Пожалуйста, войдите в систему, чтобы добавить товар в избранное');
-            return;
-        }
-        
-        try {
-            const favorites = await getFavorites(currentUser.id);
-
-            const existingIndex = favorites.items.findIndex(id => id == productId);
-            const favBtn = event.currentTarget;
-            
-            if (existingIndex !== -1) {
-                favorites.items.splice(existingIndex, 1);
-                favBtn.classList.remove('active');
-            } else {
-                favorites.items.push(productId);
-                favBtn.classList.add('active');
-            }
-
-            await updateFavorites(currentUser.id, favorites.items);
-            
-            if (favBtn.classList.contains('active')) {
-                alert('Товар добавлен в избранное!');
-            } else {
-                alert('Товар удален из избранного!');
-            }
-        } catch (error) {
-            console.error('Ошибка при обновлении избранного:', error);
-            alert('Не удалось обновить избранное');
         }
     }
 

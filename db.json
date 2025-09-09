@@ -645,6 +645,37 @@
       "userId": "a31f",
       "items": [],
       "id": "c9d1"
+    },
+    {
+      "userId": "c2f5",
+      "items": [
+        {
+          "productId": 13,
+          "quantity": 1,
+          "addedAt": "2025-09-09T21:18:14.570Z"
+        },
+        {
+          "productId": 12,
+          "quantity": 1,
+          "addedAt": "2025-09-09T21:18:25.512Z"
+        },
+        {
+          "productId": 3,
+          "quantity": 1,
+          "addedAt": "2025-09-09T21:21:18.258Z"
+        },
+        {
+          "productId": 2,
+          "quantity": 1,
+          "addedAt": "2025-09-09T21:34:04.904Z"
+        },
+        {
+          "productId": 5,
+          "quantity": 1,
+          "addedAt": "2025-09-09T21:34:11.675Z"
+        }
+      ],
+      "id": "50a0"
     }
   ],
   "favorites": [
@@ -661,6 +692,15 @@
       "userId": "a31f",
       "items": [],
       "id": "b061"
+    },
+    {
+      "userId": "c2f5",
+      "items": [
+        40,
+        8,
+        5
+      ],
+      "id": "ed2d"
     }
   ]
 }

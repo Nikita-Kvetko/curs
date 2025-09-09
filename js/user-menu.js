@@ -128,9 +128,17 @@ document.addEventListener('DOMContentLoaded', function() {
     catalogBlocks.forEach(block => {
         block.addEventListener('click', function() {
             const category = this.querySelector('p').textContent;
-
             sessionStorage.setItem('selectedCategory', category);
+            window.location.href = 'products.html';
+        });
+    });
 
+    const navLinks = document.querySelectorAll('.nav-menu a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const category = this.textContent.trim();
+            sessionStorage.setItem('selectedCategory', category);
             window.location.href = 'products.html';
         });
     });

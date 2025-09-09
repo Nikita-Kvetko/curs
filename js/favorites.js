@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
         favoritesGrid.innerHTML = `
             <div class="login-prompt">
                 <h3>Для просмотра избранного необходимо войти в систему</h3>
-                <a href="../pages/login.html" class="btn-primary">Войти</a>
+                <a href="../pages/register.html" class="btn-primary">Войти</a>
             </div>
         `;
         emptyFavorites.style.display = 'none';
