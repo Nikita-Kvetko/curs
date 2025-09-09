@@ -1,4 +1,4 @@
-.advantages{
+.advantages, .catalog, .popular-category, .our-works, .inst{
     display: flex;
     justify-content: center;
     align-items: start;
@@ -8,7 +8,7 @@
     gap: 2rem;
 }
 
-.advantages h2{
+.advantages h2, .catalog h2, .popular-category h2, .our-works h2{
     font-size: 1.9em;
 }
 
@@ -35,3 +35,120 @@
     font-size: 1.1em;
     color: #000;
 }
+
+
+.catalog-blocks, .popular-category-buttons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.catalog-block, .our-works-block{
+    position: relative;
+}
+
+.catalog-block p, .our-works-block p{
+    background: #384685;
+    color: #fff;
+    font-size: 1.3em;
+    padding: 1rem;
+    left: 0;
+    bottom: 0.5rem;
+    position: absolute;
+}
+
+
+.popular-category-buttons button{
+    background: #fff;
+    border: 0.1rem solid #384685;
+    border-radius: 0.3rem;
+    color: #384685;
+    font-size: 1.1em;
+    padding: 1rem;
+    transition: background 0.3s;
+}
+
+.popular-category-buttons button:hover{
+    color: #fff;
+    background: #384685;
+    
+}
+
+
+.our-works-blocks{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+}
+
+.our-works-blocks-col{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+    width: 70%;
+}
+
+.our-works-blocks-col-row{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+
+.contacts{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    max-width: 1920px;
+}
+
+.contacts-text{
+    background: url('../img/contacts-img.png');
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 1.5rem;
+}
+
+.contacts-text h2{
+    font-size: 2em;
+}
+
+.contacts-text-p{
+    font-size: 1.5em;
+}
+
+.contacts-text button{
+    font-size: 1.5em;
+    background: #384685;
+    padding: 1rem;
+    color: #fff;
+}
+
+#map {
+    height: 18.75em;
+    width: 100%;
+    border: 0.0625em solid #ccc;
+    border-radius: 0.3125em;
+}
+
+.contact-map {
+    display: flex;
+    align-items: end;
+    flex-direction: column;
+    gap: 1.25em;
+    width: 50%;
+}
+

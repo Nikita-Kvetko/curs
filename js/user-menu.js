@@ -1,9 +1,19 @@
-document.addEventListener('DOMContentLoaded', function() {
+function getCurrentUser() {
+    return JSON.parse(localStorage.getItem('currentUser'));
+}
+
+function isUserLoggedIn() {
+    return !!localStorage.getItem('currentUser');
+}
+
+function logoutUser() {
+    localStorage.removeItem('currentUser');
     updateUserMenu();
-});
+    window.location.reload();
+}
 
 function updateUserMenu() {
-    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    const currentUser = getCurrentUser();
     const loginBtn = document.querySelector('.login-btn');
     const userActions = document.querySelector('.user-actions');
     
@@ -78,9 +88,7 @@ function createUserMenu(user, container) {
     if (logoutBtn) {
         logoutBtn.addEventListener('click', function(e) {
             e.preventDefault();
-            localStorage.removeItem('currentUser');
-            updateUserMenu();
-            window.location.reload();
+            logoutUser();
         });
     }
 
@@ -90,5 +98,44 @@ function createUserMenu(user, container) {
         }
     });
 }
+
+async function updateHeaderCounts() {
+    const currentUser = getCurrentUser();
+    if (!currentUser) return;
+    
+    try {
+        const favorites = await getFavorites(currentUser.id);
+        const favCountElements = document.querySelectorAll('#fav-count');
+        favCountElements.forEach(element => {
+            element.textContent = favorites.items.length;
+        });
+
+        const cart = await getCart(currentUser.id);
+        const totalCartItems = cart.items.reduce((total, item) => total + item.quantity, 0);
+        const cartCountElements = document.querySelectorAll('#cart-count');
+        cartCountElements.forEach(element => {
+            element.textContent = totalCartItems;
+        });
+    } catch (error) {
+        console.error('Ошибка при обновлении счетчиков:', error);
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    updateUserMenu();
+
+    const catalogBlocks = document.querySelectorAll('.catalog-block');
+    catalogBlocks.forEach(block => {
+        block.addEventListener('click', function() {
+            const category = this.querySelector('p').textContent;
+
+            sessionStorage.setItem('selectedCategory', category);
+
+            window.location.href = 'products.html';
+        });
+    });
+
+    updateHeaderCounts();
+});
 
 window.updateUserMenu = updateUserMenu;

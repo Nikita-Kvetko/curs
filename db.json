@@ -26,5 +26,659 @@
       "agreement": true,
       "role": "user"
     }
+  ],
+  "products": [
+    {
+      "id": "1",
+      "category": "КУХНИ",
+      "name": "Кухня Модерн K-200",
+      "price": 24500,
+      "discount": 15,
+      "width": 3200,
+      "height": 2200,
+      "depth": 600,
+      "images": [
+        "kitchen1.jpg",
+        "kitchen2.jpg"
+      ],
+      "description": "Современная кухня с фасадами из МДФ, столешницей из искусственного камня."
+    },
+    {
+      "id": "2",
+      "category": "КУХНИ",
+      "name": "Кухня Классик K-150",
+      "price": 18900,
+      "discount": 0,
+      "width": 2800,
+      "height": 2150,
+      "depth": 550,
+      "images": [
+        "kitchen3.jpg",
+        "kitchen4.jpg"
+      ],
+      "description": "Классическая кухня с деревянными фасадами и практичной фурнитурой."
+    },
+    {
+      "id": "3",
+      "category": "КУХНИ",
+      "name": "Кухня Мини K-80",
+      "price": 12500,
+      "discount": 10,
+      "width": 2000,
+      "height": 2100,
+      "depth": 500,
+      "images": [
+        "kitchen5.jpg",
+        "kitchen6.jpg"
+      ],
+      "description": "Компактная кухня для небольших помещений с максимальной функциональностью."
+    },
+    {
+      "id": "4",
+      "category": "КУХНИ",
+      "name": "Кухня Эко K-180",
+      "price": 21700,
+      "discount": 0,
+      "width": 3000,
+      "height": 2200,
+      "depth": 600,
+      "images": [
+        "kitchen7.jpg",
+        "kitchen8.jpg"
+      ],
+      "description": "Экологичная кухня из натуральных материалов с современным дизайном."
+    },
+    {
+      "id": "5",
+      "category": "КУХНИ",
+      "name": "Кухня Люкс K-300",
+      "price": 35900,
+      "discount": 20,
+      "width": 3500,
+      "height": 2300,
+      "depth": 650,
+      "images": [
+        "kitchen9.jpg",
+        "kitchen10.jpg"
+      ],
+      "description": "Премиальная кухня с фасадами из массива дерева и гранитной столешницей."
+    },
+    {
+      "id": "6",
+      "category": "ГОСТИННЫЕ",
+      "name": "Гостиная Гармония G-200",
+      "price": 32500,
+      "discount": 15,
+      "width": 4200,
+      "height": 2400,
+      "depth": 600,
+      "images": [
+        "living1.jpg",
+        "living2.jpg"
+      ],
+      "description": "Просторная гостиная с вместительными шкафами и эргономичным дизайном."
+    },
+    {
+      "id": "7",
+      "category": "ГОСТИННЫЕ",
+      "name": "Гостиная Комфорт G-150",
+      "price": 27500,
+      "discount": 0,
+      "width": 3800,
+      "height": 2300,
+      "depth": 550,
+      "images": [
+        "living3.jpg",
+        "living4.jpg"
+      ],
+      "description": "Уютная гостиная система с качественной фурнитурой и продуманной организацией пространства."
+    },
+    {
+      "id": "8",
+      "category": "ГОСТИННЫЕ",
+      "name": "Гостиная Мини G-100",
+      "price": 18900,
+      "discount": 5,
+      "width": 3000,
+      "height": 2200,
+      "depth": 500,
+      "images": [
+        "living5.jpg",
+        "living6.jpg"
+      ],
+      "description": "Компактная гостиная для небольших помещений с оптимальным использованием пространства."
+    },
+    {
+      "id": "9",
+      "category": "ГОСТИННЫЕ",
+      "name": "Гостиная Элегант G-250",
+      "price": 38900,
+      "discount": 0,
+      "width": 4500,
+      "height": 2450,
+      "depth": 650,
+      "images": [
+        "living7.jpg",
+        "living8.jpg"
+      ],
+      "description": "Элегантная гостиная система с стеклянными элементами и стильным дизайном."
+    },
+    {
+      "id": "10",
+      "category": "ГОСТИННЫЕ",
+      "name": "Гостиная Премиум G-350",
+      "price": 52500,
+      "discount": 25,
+      "width": 5000,
+      "height": 2500,
+      "depth": 700,
+      "images": [
+        "living9.jpg",
+        "living10.jpg"
+      ],
+      "description": "Роскошная гостиная система премиум-класса с эксклюзивной отделкой."
+    },
+    {
+      "id": "11",
+      "category": "СПАЛЬНИ",
+      "name": "Спальня Мечта S-200",
+      "price": 28900,
+      "discount": 15,
+      "width": 3800,
+      "height": 2200,
+      "depth": 600,
+      "images": [
+        "bedroom1.jpg",
+        "bedroom2.jpg"
+      ],
+      "description": "Уютная спальня с большой кроватью и вместительными шкафами."
+    },
+    {
+      "id": "12",
+      "category": "СПАЛЬНИ",
+      "name": "Спальня Уют S-150",
+      "price": 21900,
+      "discount": 0,
+      "width": 3200,
+      "height": 2150,
+      "depth": 550,
+      "images": [
+        "bedroom3.jpg",
+        "bedroom4.jpg"
+      ],
+      "description": "Комфортная спальня с практичной организацией пространства."
+    },
+    {
+      "id": "13",
+      "category": "СПАЛЬНИ",
+      "name": "Спальня Компакт S-100",
+      "price": 15900,
+      "discount": 10,
+      "width": 2500,
+      "height": 2100,
+      "depth": 500,
+      "images": [
+        "bedroom5.jpg",
+        "bedroom6.jpg"
+      ],
+      "description": "Компактная спальня для небольших помещений с оптимальной функциональностью."
+    },
+    {
+      "id": "14",
+      "category": "СПАЛЬНИ",
+      "name": "Спальня Рояль S-250",
+      "price": 37900,
+      "discount": 0,
+      "width": 4200,
+      "height": 2250,
+      "depth": 650,
+      "images": [
+        "bedroom7.jpg",
+        "bedroom8.jpg"
+      ],
+      "description": "Роскошная спальня с элементами из натурального дерева и изысканным дизайном."
+    },
+    {
+      "id": "15",
+      "category": "СПАЛЬНИ",
+      "name": "Спальня Люкс S-300",
+      "price": 45900,
+      "discount": 20,
+      "width": 4600,
+      "height": 2300,
+      "depth": 700,
+      "images": [
+        "bedroom9.jpg",
+        "bedroom10.jpg"
+      ],
+      "description": "Премиальная спальня с гарнитуром из массива дерева и эксклюзивной фурнитурой."
+    },
+    {
+      "id": "16",
+      "category": "ПРИХОЖИЕ",
+      "name": "Прихожая Стандарт P-100",
+      "price": 12900,
+      "discount": 5,
+      "width": 2200,
+      "height": 2100,
+      "depth": 400,
+      "images": [
+        "hallway1.jpg",
+        "hallway2.jpg"
+      ],
+      "description": "Функциональная прихожая с зеркалом, вешалкой и полками для обуви."
+    },
+    {
+      "id": "17",
+      "category": "ПРИХОЖИЕ",
+      "name": "Прихожая Комфорт P-150",
+      "price": 18900,
+      "discount": 0,
+      "width": 2800,
+      "height": 2150,
+      "depth": 450,
+      "images": [
+        "hallway3.jpg",
+        "hallway4.jpg"
+      ],
+      "description": "Вместительная прихожая с большим зеркалом и множеством отделений."
+    },
+    {
+      "id": "18",
+      "category": "ПРИХОЖИЕ",
+      "name": "Прихожая Мини P-80",
+      "price": 8900,
+      "discount": 10,
+      "width": 1800,
+      "height": 2000,
+      "depth": 350,
+      "images": [
+        "hallway5.jpg",
+        "hallway6.jpg"
+      ],
+      "description": "Компактная прихожая для небольших пространств с необходимой функциональностью."
+    },
+    {
+      "id": "19",
+      "category": "ПРИХОЖИЕ",
+      "name": "Прихожая Элегант P-200",
+      "price": 24900,
+      "discount": 0,
+      "width": 3200,
+      "height": 2200,
+      "depth": 500,
+      "images": [
+        "hallway7.jpg",
+        "hallway8.jpg"
+      ],
+      "description": "Стильная прихожая с элементами из стекла и хромированной фурнитурой."
+    },
+    {
+      "id": "20",
+      "category": "ПРИХОЖИЕ",
+      "name": "Прихожая Люкс P-250",
+      "price": 32900,
+      "discount": 15,
+      "width": 3500,
+      "height": 2250,
+      "depth": 550,
+      "images": [
+        "hallway9.jpg",
+        "hallway10.jpg"
+      ],
+      "description": "Премиальная прихожая с освещением, большим зеркалом и эксклюзивной отделкой."
+    },
+    {
+      "id": "21",
+      "category": "ШКАФЫ-КУПЕ",
+      "name": "Шкаф-купе Стандарт W-200",
+      "price": 17900,
+      "discount": 10,
+      "width": 2000,
+      "height": 2400,
+      "depth": 600,
+      "images": [
+        "wardrobe1.jpg",
+        "wardrobe2.jpg"
+      ],
+      "description": "Вместительный шкаф-купе с раздвижными дверями и продуманной внутренней организацией."
+    },
+    {
+      "id": "22",
+      "category": "ШКАФЫ-КУПЕ",
+      "name": "Шкаф-купе Угловой W-150",
+      "price": 21900,
+      "discount": 0,
+      "width": 1500,
+      "height": 2400,
+      "depth": 1500,
+      "images": [
+        "wardrobe3.jpg",
+        "wardrobe4.jpg"
+      ],
+      "description": "Угловой шкаф-купе для оптимального использования пространства комнаты."
+    },
+    {
+      "id": "23",
+      "category": "ШКАФЫ-КУПЕ",
+      "name": "Шкаф-купе Мини W-100",
+      "price": 12900,
+      "discount": 5,
+      "width": 1200,
+      "height": 2200,
+      "depth": 500,
+      "images": [
+        "wardrobe5.jpg",
+        "wardrobe6.jpg"
+      ],
+      "description": "Компактный шкаф-купе для небольших помещений с необходимой вместительностью."
+    },
+    {
+      "id": "24",
+      "category": "ШКАФЫ-КУПЕ",
+      "name": "Шкаф-купе Элегант W-250",
+      "price": 28900,
+      "discount": 0,
+      "width": 2500,
+      "height": 2500,
+      "depth": 650,
+      "images": [
+        "wardrobe7.jpg",
+        "wardrobe8.jpg"
+      ],
+      "description": "Стильный шкаф-купе с зеркальными дверями и подсветкой."
+    },
+    {
+      "id": "25",
+      "category": "ШКАФЫ-КУПЕ",
+      "name": "Шкаф-купе Люкс W-300",
+      "price": 38900,
+      "discount": 20,
+      "width": 3000,
+      "height": 2600,
+      "depth": 700,
+      "images": [
+        "wardrobe9.jpg",
+        "wardrobe10.jpg"
+      ],
+      "description": "Премиальный шкаф-купе с автоматическими дверями и эксклюзивной отделкой."
+    },
+    {
+      "id": "26",
+      "category": "ДЕТСКИЕ",
+      "name": "Детская Мечта D-150",
+      "price": 23900,
+      "discount": 15,
+      "width": 3200,
+      "height": 2200,
+      "depth": 600,
+      "images": [
+        "children1.jpg",
+        "children2.jpg"
+      ],
+      "description": "Яркая и функциональная детская комната с кроватью, столом и шкафом."
+    },
+    {
+      "id": "27",
+      "category": "ДЕТСКИЕ",
+      "name": "Детская Игра D-120",
+      "price": 19900,
+      "discount": 0,
+      "width": 2800,
+      "height": 2150,
+      "depth": 550,
+      "images": [
+        "children3.jpg",
+        "children4.jpg"
+      ],
+      "description": "Комната для ребенка с игровой зоной и практичной мебелью."
+    },
+    {
+      "id": "28",
+      "category": "ДЕТСКИЕ",
+      "name": "Детская Компакт D-100",
+      "price": 15900,
+      "discount": 10,
+      "width": 2500,
+      "height": 2100,
+      "depth": 500,
+      "images": [
+        "children5.jpg",
+        "children6.jpg"
+      ],
+      "description": "Компактная детская для небольших помещений с кроватью-чердаком."
+    },
+    {
+      "id": "29",
+      "category": "ДЕТСКИЕ",
+      "name": "Детская Радуга D-180",
+      "price": 28900,
+      "discount": 0,
+      "width": 3500,
+      "height": 2250,
+      "depth": 650,
+      "images": [
+        "children7.jpg",
+        "children8.jpg"
+      ],
+      "description": "Яркая детская комната с тематическим дизайном и функциональной мебелью."
+    },
+    {
+      "id": "30",
+      "category": "ДЕТСКИЕ",
+      "name": "Детская Люкс D-200",
+      "price": 37900,
+      "discount": 20,
+      "width": 3800,
+      "height": 2300,
+      "depth": 700,
+      "images": [
+        "children9.jpg",
+        "children10.jpg"
+      ],
+      "description": "Премиальная детская комната с экологичными материалами и продуманным дизайном."
+    },
+    {
+      "id": "31",
+      "category": "ДИВАНЫ",
+      "name": "Диван Еврокнижка DS-180",
+      "price": 15900,
+      "discount": 15,
+      "width": 1800,
+      "height": 850,
+      "depth": 950,
+      "images": [
+        "sofa1.jpg",
+        "sofa2.jpg"
+      ],
+      "description": "Удобный диван-еврокнижка с механизмом трансформации в спальное место."
+    },
+    {
+      "id": "32",
+      "category": "ДИВАНЫ",
+      "name": "Диван Угловой DS-250",
+      "price": 28900,
+      "discount": 0,
+      "width": 2500,
+      "height": 900,
+      "depth": 1600,
+      "images": [
+        "sofa3.jpg",
+        "sofa4.jpg"
+      ],
+      "description": "Вместительный угловой диван с большим спальным местом и ящиком для белья."
+    },
+    {
+      "id": "33",
+      "category": "ДИВАНЫ",
+      "name": "Диван Компакт DS-140",
+      "price": 12900,
+      "discount": 10,
+      "width": 1400,
+      "height": 800,
+      "depth": 850,
+      "images": [
+        "sofa5.jpg",
+        "sofa6.jpg"
+      ],
+      "description": "Компактный диван для небольших помещений с механизмом трансформации."
+    },
+    {
+      "id": "34",
+      "category": "ДИВАНЫ",
+      "name": "Диван Элегант DS-200",
+      "price": 23900,
+      "discount": 0,
+      "width": 2000,
+      "height": 880,
+      "depth": 1000,
+      "images": [
+        "sofa7.jpg",
+        "sofa8.jpg"
+      ],
+      "description": "Стильный диван с кожаной обивкой и современным дизайном."
+    },
+    {
+      "id": "35",
+      "category": "ДИВАНЫ",
+      "name": "Диван Люкс DS-300",
+      "price": 45900,
+      "discount": 25,
+      "width": 3000,
+      "height": 950,
+      "depth": 1100,
+      "images": [
+        "sofa9.jpg",
+        "sofa10.jpg"
+      ],
+      "description": "Роскошный диван премиум-класса с ортопедическим матрасом и эксклюзивной обивкой."
+    },
+    {
+      "id": "36",
+      "category": "СТОЛЫ И СТУЛЬЯ",
+      "name": "Стол обеденный T-120",
+      "price": 8900,
+      "discount": 10,
+      "width": 1200,
+      "height": 750,
+      "depth": 800,
+      "images": [
+        "table1.jpg",
+        "table2.jpg"
+      ],
+      "description": "Практичный обеденный стол из массива дерева на 4-6 человек."
+    },
+    {
+      "id": "37",
+      "category": "СТОЛЫ И СТУЛЬЯ",
+      "name": "Стол раздвижной T-160",
+      "price": 14900,
+      "discount": 0,
+      "width": 1600,
+      "height": 760,
+      "depth": 900,
+      "images": [
+        "table3.jpg",
+        "table4.jpg"
+      ],
+      "description": "Раздвижной обеденный стол с возможностью увеличения площади столешницы."
+    },
+    {
+      "id": "38",
+      "category": "СТОЛЫ И СТУЛЬЯ",
+      "name": "Стул деревянный C-01",
+      "price": 2900,
+      "discount": 5,
+      "width": 450,
+      "height": 850,
+      "depth": 500,
+      "images": [
+        "chair1.jpg",
+        "chair2.jpg"
+      ],
+      "description": "Классический деревянный стул с мягким сиденьем и удобной спинкой."
+    },
+    {
+      "id": "39",
+      "category": "СТОЛЫ И СТУЛЬЯ",
+      "name": "Стул современный C-02",
+      "price": 3900,
+      "discount": 0,
+      "width": 500,
+      "height": 820,
+      "depth": 550,
+      "images": [
+        "chair3.jpg",
+        "chair4.jpg"
+      ],
+      "description": "Современный стул с металлическим каркасом и эргономичным дизайном."
+    },
+    {
+      "id": "40",
+      "category": "СТОЛЫ И СТУЛЬЯ",
+      "name": "Компкт стол+4 стула T-SET",
+      "price": 19900,
+      "discount": 15,
+      "width": 1200,
+      "height": 750,
+      "depth": 800,
+      "images": [
+        "set1.jpg",
+        "set2.jpg"
+      ],
+      "description": "Набор обеденной группы: стол и 4 стула в современном стиле."
+    }
+  ],
+  "carts": [
+    {
+      "userId": "1",
+      "items": [
+        {
+          "productId": 1,
+          "quantity": 2,
+          "addedAt": "2023-05-15T10:30:00Z"
+        },
+        {
+          "productId": 5,
+          "quantity": 1,
+          "addedAt": "2023-05-16T14:45:00Z"
+        }
+      ],
+      "id": "7f4a"
+    },
+    {
+      "userId": "a31f",
+      "items": [
+        {
+          "productId": 6,
+          "quantity": 2,
+          "addedAt": "2025-09-09T13:31:56.617Z"
+        },
+        {
+          "productId": 7,
+          "quantity": 1,
+          "addedAt": "2025-09-09T13:32:15.261Z"
+        }
+      ],
+      "id": "c9d1"
+    }
+  ],
+  "favorites": [
+    {
+      "userId": "1",
+      "items": [
+        3,
+        7,
+        12
+      ],
+      "id": "b8bc"
+    },
+    {
+      "userId": "a31f",
+      "items": [
+        7
+      ],
+      "id": "b061"
+    }
   ]
 }

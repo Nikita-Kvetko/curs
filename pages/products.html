@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ДркоМебель - Мебельный магазин в Ростове</title>
-    <link rel="stylesheet" href="../styles/home.css">
+    <title>Товары - Мебельный магазин</title>
+    <link rel="stylesheet" href="../styles/preloader.css">
+    <link rel="stylesheet" href="../styles/products.css">
     <link rel="stylesheet" href="../styles/header.css">
     <link rel="stylesheet" href="../styles/global.css">
     <link rel="stylesheet" href="../styles/footer.css">
@@ -12,6 +13,7 @@
     <link rel="stylesheet" href="../styles/theme.css">
 </head>
 <body>
+
     <header>
         <div class="top-nav">
             <div class="container">
@@ -142,127 +144,47 @@
         </div>
     </div>
 
-    <main>
-        <section class="advantages">
-            <h2>НАШИ ПРЕИМУЩЕСТВА</h2>
-            <div class="advantages-blocks">
-                <div class="advantages-block">
-                    <img src="../img/advantages-img1.png" alt="advantages-img1">
-                    <b>Удобное расположение магазина</b>
+    <main class="products-page">
+        <div class="container">
+            <h1>Каталог товаров</h1>
+            
+            <div class="filters">
+                <div class="search-box">
+                    <input type="text" id="search-input" placeholder="Поиск товаров...">
+                    <button id="search-btn">Найти</button>
                 </div>
-                <div class="advantages-block">
-                    <img src="../img/advantages-img2.png" alt="advantages-img2">
-                    <b>Быстрая доставка</b>
-                </div>
-                <div class="advantages-block">
-                    <img src="../img/advantages-img3.png" alt="advantages-img3">
-                    <b>Низкие цены</b>
-                </div>
-                <div class="advantages-block">
-                    <img src="../img/advantages-img4.png" alt="advantages-img4">
-                    <b>Гарантия качества</b>
-                </div>
-            </div>
-        </section>
-
-        <section class="catalog">
-            <h2>КАТАЛОГ</h2>
-            <div class="catalog-blocks">
-                <div class="catalog-block">
-                    <img src="../img/kitchens-img.png" alt="kitchens-img">
-                    <p>КУХНИ</p>
-                </div>
-                <div class="catalog-block">
-                    <img src="../img/living-rooms-img.png" alt="living-rooms-img">
-                    <p>ГОСТИННЫЕ</p>
-                </div>
-                <div class="catalog-block">
-                    <img src="../img/bedrooms-img.png" alt="bedrooms-img">
-                    <p>СПАЛЬНИ</p>
-                </div>
-                <div class="catalog-block">
-                    <img src="../img/HALLWAYS-img.png" alt="HALLWAYS-img">
-                    <p>ПРИХОЖИЕ</p>
-                </div>
-                <div class="catalog-block">
-                    <img src="../img/WARDROBES-img.png" alt="WARDROBES-img">
-                    <p>ШКАФЫ-КУПЕ</p>
-                </div>
-                <div class="catalog-block">
-                    <img src="../img/CHILDRENS-img.png" alt="CHILDRENS-img">
-                    <p>ДЕТСКИЕ</p>
-                </div>
-                <div class="catalog-block">
-                    <img src="../img/SOFAS-img.png" alt="SOFAS-img">
-                    <p>ДИВАНЫ</p>
-                </div>
-                <div class="catalog-block">
-                    <img src="../img/TABLESANDCHAIRS-img.png" alt="TABLESANDCHAIRS-img">
-                    <p>СТОЛЫ И СТУЛЬЯ</p>
+                
+                <div class="filter-controls">
+                    <select id="category-filter">
+                        <option value="">Все категории</option>
+                        <option value="КУХНИ">Кухни</option>
+                        <option value="ГОСТИННЫЕ">Гостиные</option>
+                        <option value="СПАЛЬНИ">Спальни</option>
+                        <option value="ПРИХОЖИЕ">Прихожие</option>
+                        <option value="ШКАФЫ-КУПЕ">Шкафы-купе</option>
+                        <option value="ДЕТСКИЕ">Детские</option>
+                        <option value="ДИВАНЫ">Диваны</option>
+                        <option value="СТОЛЫ И СТУЛЬЯ">Столы и стулья</option>
+                    </select>
+                    
+                    <select id="sort-by">
+                        <option value="name">По названию</option>
+                        <option value="price-asc">По цене (возрастание)</option>
+                        <option value="price-desc">По цене (убывание)</option>
+                    </select>
                 </div>
             </div>
-        </section>
-
-        <section class="popular-category">
-            <h2>ПОПУЛЯРНЫЕ КАТЕГОРИИ</h2>
-            <div class="popular-category-buttons">
-                <button>КУХНИ</button>
-                <button>КРОВАТИ</button>
-                <button>ГОСТИННЫЕ</button>
-                <button>ШКАФ -КУПЕ</button>
-                <button>СПАЛЬНИ</button>
-                <button>ПРИХОЖИЕ</button>
-                <button>ДИВАНЫ</button>
-                <button>ДЕТСКИЕ</button>
-                <button>СТУЛЬЯ</button>
-                <button>СТОЛЫ</button>
+            
+            <div class="products-grid" id="products-container">
             </div>
-        </section>
-
-        <section class="our-works">
-            <h2>НАШИ РАБОТЫ</h2>
-            <div class="our-works-blocks">
-                <div class="our-works-blocks-col">
-                    <div class="our-works-blocks-col-row">
-                        <div class="our-works-block">
-                            <img src="../img/GLATCHERKITCHEN-img.png" alt="GLATCHERKITCHEN-img">
-                            <p>КУХНЯ ГЛЕТЧЕР</p>
-                        </div>
-                        <div class="our-works-block">
-                            <img src="../img/LIVINGROOMDENVER-img.png" alt="LIVINGROOMDENVER-img">
-                            <p>ГОСТИННАЯ ДЕНВЕР</p>
-                        </div>
-                    </div>
-                    <div class="our-works-block">
-                        <img src="../img/AMELIESKITCHEN-img.png" alt="AMELIESKITCHEN-img">
-                        <p>КУХНЯ АМЕЛИ</p>
-                    </div>
-                </div>
-                <div class="our-works-block">
-                    <img src="../img/KITCHENLONDON-img.png" alt="KITCHENLONDON-img">
-                    <p>КУХНЯ ЛОНДОН</p>
-                </div>
+            
+            <div class="pagination" id="pagination">
             </div>
-        </section>
-
-        <section class="contacts">
-            <div class="contacts-text">
-                <h2>НАШИ КОНТАКТЫ</h2>
-                <div class="contacts-text-p">
-                    <p>Краснодар, Московская 144 корпус -1</p>
-                    <p>+7 961-525-91-91</p>
-                </div>
-                <button>ЗАДАТЬ ВОПРОС</button>
+            
+            <div class="preloader" id="preloader">
+                <div class="spinner"></div>
             </div>
-            <div class="contact-map">
-                <div id="map"></div>
-            </div>
-        </section>
-
-        <section class="inst">
-            <h2>МЫ В INSTAGRAM</h2>
-            <img src="../img/inst-blocks.png" alt="inst-blocks">
-        </section>
+        </div>
     </main>
 
     <footer>
@@ -363,38 +285,8 @@
         </div>
     </footer>
 
-    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" ></script>
     <script src="../js/api.js"></script>
     <script src="../js/user-menu.js"></script>
-    <script src="../js/accessibility.js"></script>
-    <script src="../js/i18n.js"></script>
-    <script src="../js/theme.js"></script>
-    <script src="../js/map.js"></script>
-    <script>
-        const menu = document.querySelector(".nav-menu");
-        const highlight = document.querySelector(".highlight");
-        const links = menu.querySelectorAll("li a");
-
-        let active = links[0];
-        moveHighlight(active);
-
-        links.forEach(link => {
-        link.addEventListener("mouseenter", () => moveHighlight(link));
-        link.addEventListener("click", (e) => {
-            e.preventDefault();
-            active = link;
-            moveHighlight(active);
-        });
-        });
-
-        function moveHighlight(element) {
-        const rect = element.getBoundingClientRect();
-        const containerRect = menu.getBoundingClientRect();
-
-        highlight.style.width = rect.width + "px";
-        highlight.style.transform = `translateX(${rect.left - containerRect.left}px)`;
-        }
-    </script>
-
+    <script src="../js/products.js"></script>
 </body>
 </html>
