@@ -53,10 +53,6 @@ async function updateCart(userId, items) {
     }
 }
 
-function getCurrentUser() {
-    return JSON.parse(localStorage.getItem('currentUser'));
-}
-
 async function getFavorites(userId) {
     try {
         const favorites = await apiRequest('favorites');
@@ -86,5 +82,54 @@ async function updateFavorites(userId, items) {
     } catch (error) {
         console.error('Error updating favorites:', error);
         throw error;
+    }
+}
+
+async function getAllProducts() {
+    try {
+        return await apiRequest('products');
+    } catch (error) {
+        console.error('Error getting products:', error);
+        return [];
+    }
+}
+
+function getCurrentUser() {
+    return JSON.parse(localStorage.getItem('currentUser'));
+}
+
+function calculateProductPrice(product) {
+    if (product.discount > 0) {
+        return Math.round(product.price * (1 - product.discount/100));
+    }
+    return product.price;
+}
+
+function updateCartCountInHeader(count) {
+    const cartCountElements = document.querySelectorAll('#cart-count');
+    cartCountElements.forEach(element => {
+        element.textContent = count;
+    });
+}
+
+function updateFavCountInHeader(count) {
+    const favCountElements = document.querySelectorAll('#fav-count');
+    favCountElements.forEach(element => {
+        element.textContent = count;
+    });
+}
+
+async function updateHeaderCounts() {
+    const currentUser = getCurrentUser();
+    if (!currentUser) return;
+    
+    try {
+        const cart = await getCart(currentUser.id);
+        const favorites = await getFavorites(currentUser.id);
+        
+        updateCartCountInHeader(cart.items.reduce((total, item) => total + item.quantity, 0));
+        updateFavCountInHeader(favorites.items.length);
+    } catch (error) {
+        console.error('Error updating header counts:', error);
     }
 }

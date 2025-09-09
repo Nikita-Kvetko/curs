@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Корзина - Мебельный магазин</title>
+    <link rel="stylesheet" href="../styles/preloader.css">
+    <link rel="stylesheet" href="../styles/cart.css">
+    <link rel="stylesheet" href="../styles/header.css">
+    <link rel="stylesheet" href="../styles/global.css">
+    <link rel="stylesheet" href="../styles/footer.css">
+    <link rel="stylesheet" href="../styles/accessibility.css">
+    <link rel="stylesheet" href="../styles/theme.css">
+</head>
+<body>
+
+    <header>
+        <div class="top-nav">
+            <div class="container">
+                <div class="top-nav-container">
+                    <div class="location-info">
+                        <a><img src="../img/loc.gif" alt="loc"> Ростов ˅</a>
+                        <a href="#">Акции</a>
+                        <a href="#">Сборка</a>
+                        <a href="#">Оплата</a>
+                        <a href="#">Доставка</a>
+                    </div>
+                    <div class="contacts-info">
+                        <a href="#">Наши работы</a>
+                        <a href="#">Контакты</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="header-content">
+                <img src="../img/logo.png" alt="logo">
+                <div class="store-info">
+                    <p>ул. Московская, 144 корп. - 1</p>
+                    <a href="#" class="scheme-link">Схема проезда</a>
+                </div>
+                
+                <div class="contacts">
+                    <div class="phone"><img src="../img/phone.png" alt="phone"> 8 (961) 525 91 91</div>
+                    <a href="#" class="callback-btn">Заказать звонок</a>
+                </div>
+                
+                <div class="user-actions">
+                    <div class="header-controls">
+                        <button id="theme-toggle" class="theme-toggle" title="Сменить тему">
+                            <img src="../img/sun.png" alt="Светлая тема" class="theme-icon light-icon">
+                            <img src="../img/moon.png" alt="Темная тема" class="theme-icon dark-icon">
+                        </button>
+                        <div class="language-selector">
+                            <button id="language-toggle" class="language-toggle" title="Сменить язык">
+                                <span class="language-flag">🇷🇺</span>
+                                <span class="language-code">RU</span>
+                            </button>
+                            <div class="language-dropdown">
+                                <button class="language-option" data-lang="ru">🇷🇺 Русский</button>
+                                <button class="language-option" data-lang="en">🇺🇸 English</button>
+                                <button class="language-option" data-lang="de">🇩🇪 Deutsch</button>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" class="login-btn"><img src="../img/login.png" alt="login"> Войти</a>
+                    <a href="favorites.html" class="favorites"><img src="../img/favorites.png" alt="favorites">Избранное</a>
+                    <a href="cart.html" class="cart active"><img src="../img/cart.png" alt="cart">Корзина</a>
+                </div>
+            </div>
+        </div>
+        <nav class="main-nav">
+            <div class="container">
+                <ul class="nav-menu">
+                    <div class="highlight"></div> 
+                    <li><a href="../pages/products.html" data-i18n="nav.kitchens">КУХНИ</a></li>
+                    <li><a href="#" data-i18n="nav.living_rooms">ГОСТИННЫЕ</a></li>
+                    <li><a href="#" data-i18n="nav.bedrooms">СПАЛЬНИ</a></li>
+                    <li><a href="#" data-i18n="nav.hallways">ПРИХОЖИЕ</a></li>
+                    <li><a href="#" data-i18n="nav.wardrobes">ШКАФЫ-КУПЕ</a></li>
+                    <li><a href="#" data-i18n="nav.children">ДЕТСКИЕ</a></li>
+                    <li><a href="#" data-i18n="nav.sofas">ДИВАНЫ</a></li>
+                    <li><a href="#" data-i18n="nav.where_to_see">ГДЕ ПОСМОТРЕТЬ</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="cart-page">
+        <div class="container">
+            <h1>Корзина</h1>
+            
+            <div id="cart-container">
+                <div class="cart-items" id="cart-items">
+                </div>
+                
+                <div class="cart-summary" id="cart-summary">
+                    <div class="summary-card">
+                        <h3>Итого</h3>
+                        <div class="summary-row">
+                            <span>Товары (<span id="total-items">0</span>)</span>
+                            <span id="subtotal">0 руб.</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Скидка</span>
+                            <span id="total-discount">0 руб.</span>
+                        </div>
+                        <div class="summary-row total">
+                            <span>Общая сумма</span>
+                            <span id="total-price">0 руб.</span>
+                        </div>
+                        <button class="checkout-btn" id="checkout-btn">Оформить заказ</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="empty-cart" id="empty-cart" style="display: none;">
+                <div class="empty-state">
+                    <img src="../img/empty-cart.png" alt="Корзина пуста">
+                    <h2>Ваша корзина пуста</h2>
+                    <p>Добавьте товары из каталога, чтобы сделать заказ</p>
+                    <a href="products.html" class="btn-primary">Перейти в каталог</a>
+                </div>
+            </div>
+            
+            <div class="preloader" id="preloader">
+                <div class="spinner"></div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-top">
+            <div class="footer-left">
+                <img src="../img/logo-white.png" alt="logo-white">
+                <h3>8-961-525-91-91</h3>
+                <div class="footer-left-mid">
+                    <div class="footer-left-mid-block">
+                        <p>Время работы:</p>
+                        <b>с 10:00 до 19:00</b>
+                    </div>
+                    <div class="footer-left-mid-block">
+                        <p>Адрес:</p>
+                        <b>Краснодар, ул. Московская 144 корп. - 1</b>
+                    </div>
+                    <div class="footer-left-mid-block">
+                        <p>Почта:</p>
+                        <b>mebelarko@mail.ru</b>
+                    </div>
+                </div>
+                <div class="footer-left-bottom">
+                    <p>Мы в Инстаграме</p>
+                    <img src="../img/inst.png" alt="inst">
+                </div>
+            </div>
+            <div class="footer-right">
+                <div class="footer-right-block">
+                    <h3>Кухни</h3>
+                    <ul class="footer-right-block-list">
+                        <li><a href="#">Модульные кухни</a></li>
+                        <li><a href="#">Готовые комплекты</a></li>
+                        <li><a href="#">Маленькие кухни</a></li>
+                        <li><a href="#">Угловые кухни</a></li>
+                        <li><a href="#">Кухонные уголки</a></li>
+                        <li><a href="#">Столы кухонные</a></li>
+                        <li><a href="#">Стулья для кухни</a></li>
+                        <li><a href="#">Комплектующие</a></li>
+                    </ul>
+                </div>
+                <div class="footer-right-block">
+                    <h3>Гостинные</h3>
+                    <ul class="footer-right-block-list">
+                        <li><a href="#">Модульные</a></li>
+                        <li><a href="#">Журнальные столы</a></li>
+                        <li><a href="#">Полки</a></li>
+                        <li><a href="#">Тумбы под ТВ</a></li>
+                        <li><a href="#">Шкафы</a></li>
+                        <li><a href="#">Стеллажи</a></li>
+                    </ul>
+                </div>
+                <div class="footer-right-block">
+                    <h3>Спальни</h3>
+                    <ul class="footer-right-block-list">
+                        <li><a href="#">Кровати</a></li>
+                        <li><a href="#">Матрацы</a></li>
+                        <li><a href="#">Шкафы</a></li>
+                        <li><a href="#">Комоды</a></li>
+                        <li><a href="#">Столы туалетные</a></li>
+                        <li><a href="#">Тумбы прикроватные</a></li>
+                        <li><a href="#">Зеркала</a></li>
+                    </ul>
+                </div>
+                <div class="footer-right-block">
+                    <h3>Диваны</h3>
+                    <ul class="footer-right-block-list">
+                        <li><a href="#">Прямые</a></li>
+                        <li><a href="#">Угловые</a></li>
+                        <li><a href="#">На металлокаркасе</a></li>
+                        <li><a href="#">Кресла</a></li>
+                    </ul>
+                </div>
+                <div class="footer-right-block">
+                    <h3>Детские</h3>
+                    <ul class="footer-right-block-list">
+                        <li><a href="#">Кровати</a></li>
+                        <li><a href="#">Полки</a></li>
+                        <li><a href="#">Столы</a></li>
+                        <li><a href="#">Тумбы</a></li>
+                        <li><a href="#">Шкафы</a></li>
+                        <li><a href="#">Комоды</a></li>
+                    </ul>
+                </div>
+                <div class="footer-right-block">
+                    <h3>Прихожие</h3>
+                    <ul class="footer-right-block-list">
+                        <li><a href="#">Модульные</a></li>
+                        <li><a href="#">Обувницы</a></li>
+                    </ul>
+                </div>
+                <div class="footer-right-block">
+                    <h3>Шкафы-купе</h3>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© Все права защищены</p>
+        </div>
+    </footer>
+
+    <script src="../js/api.js"></script>
+    <script src="../js/cart.js"></script>
+    <script src="../js/user-menu.js"></script>
+    <script src="../js/accessibility.js"></script>
+    <script src="../js/i18n.js"></script>
+    <script src="../js/theme.js"></script>
+</body>
+</html>

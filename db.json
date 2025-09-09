@@ -653,11 +653,6 @@
           "productId": 6,
           "quantity": 2,
           "addedAt": "2025-09-09T13:31:56.617Z"
-        },
-        {
-          "productId": 7,
-          "quantity": 1,
-          "addedAt": "2025-09-09T13:32:15.261Z"
         }
       ],
       "id": "c9d1"
@@ -675,9 +670,7 @@
     },
     {
       "userId": "a31f",
-      "items": [
-        7
-      ],
+      "items": [],
       "id": "b061"
     }
   ]
