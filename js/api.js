@@ -53,6 +53,10 @@ async function updateCart(userId, items) {
     }
 }
 
+function getCurrentUser() {
+    return JSON.parse(localStorage.getItem('currentUser'));
+}
+
 async function getFavorites(userId) {
     try {
         const favorites = await apiRequest('favorites');
