@@ -2,6 +2,12 @@ const API_BASE = 'http://localhost:3000';
 
 async function apiRequest(endpoint, options = {}) {
     try {
+        if (endpoint.startsWith('users/') || endpoint.startsWith('products/')) {
+            if (!checkAdminAccess()) {
+                throw new Error('Доступ запрещен. Требуются права администратора.');
+            }
+        }
+        
         const response = await fetch(`${API_BASE}/${endpoint}`, {
             headers: {
                 'Content-Type': 'application/json',
@@ -132,4 +138,9 @@ async function updateHeaderCounts() {
     } catch (error) {
         console.error('Error updating header counts:', error);
     }
+}
+
+function checkAdminAccess() {
+    const currentUser = getCurrentUser();
+    return currentUser && currentUser.role === 'admin';
 }

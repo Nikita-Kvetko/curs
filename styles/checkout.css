@@ -373,7 +373,6 @@ input[type="radio"]:checked ~ .payment-option {
     display: block;
 }
 
-/* Стили для обязательных полей */
 .form-group label::after {
     content: ' *';
     color: #dc3545;
@@ -385,7 +384,6 @@ input[type="radio"]:checked ~ .payment-option {
     font-weight: normal;
 }
 
-/* Визуальные подсказки */
 .form-group input:valid:not(:placeholder-shown),
 .form-group textarea:valid:not(:placeholder-shown) {
     border-color: #28a745;
@@ -396,7 +394,6 @@ input[type="radio"]:checked ~ .payment-option {
     border-color: #dc3545;
 }
 
-/* Анимация для ошибок */
 @keyframes shake {
     0%, 100% { transform: translateX(0); }
     25% { transform: translateX(-5px); }
@@ -408,7 +405,6 @@ input[type="radio"]:checked ~ .payment-option {
     animation: shake 0.3s ease-in-out;
 }
 
-/* Стили для неактивной кнопки */
 .btn-submit:disabled {
     background: #6c757d;
     cursor: not-allowed;
@@ -419,7 +415,6 @@ input[type="radio"]:checked ~ .payment-option {
     background: #6c757d;
 }
 
-/* Подсказки при наведении */
 [title] {
     position: relative;
 }
@@ -439,7 +434,6 @@ input[type="radio"]:checked ~ .payment-option {
     z-index: 1000;
 }
 
-/* Улучшенная визуализация фокуса для доступности */
 .form-group input:focus,
 .form-group textarea:focus,
 .form-group select:focus {
@@ -447,7 +441,6 @@ input[type="radio"]:checked ~ .payment-option {
     outline-offset: 2px;
 }
 
-/* Стили для полей с автозаполнением */
 .form-group input:-webkit-autofill,
 .form-group input:-webkit-autofill:hover, 
 .form-group input:-webkit-autofill:focus {
@@ -456,7 +449,6 @@ input[type="radio"]:checked ~ .payment-option {
     border: 2px solid #384685;
 }
 
-/* Адаптивность для сообщений об ошибках */
 @media (max-width: 768px) {
     .error-message {
         font-size: 0.75rem;

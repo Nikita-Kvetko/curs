@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Админ панель - Мебельный магазин</title>
+    <link rel="stylesheet" href="../styles/preloader.css">
+    <link rel="stylesheet" href="../styles/admin.css">
+    <link rel="stylesheet" href="../styles/header.css">
+    <link rel="stylesheet" href="../styles/global.css">
+    <link rel="stylesheet" href="../styles/footer.css">
+    <link rel="stylesheet" href="../styles/accessibility.css">
+    <link rel="stylesheet" href="../styles/theme.css">
+</head>
+<body>
+
+    <header>
+        <div class="top-nav">
+            <div class="container">
+                <div class="top-nav-container">
+                    <div class="location-info">
+                        <a><img src="../img/loc.gif" alt="loc"> Ростов ˅</a>
+                        <a href="#">Акции</a>
+                        <a href="#">Сборка</a>
+                        <a href="#">Оплата</a>
+                        <a href="#">Доставка</a>
+                    </div>
+                    <div class="contacts-info">
+                        <a href="#">Наши работы</a>
+                        <a href="#">Контакты</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="header-content">
+                <img src="../img/logo.png" alt="logo">
+                <div class="store-info">
+                    <p>ул. Московская, 144 корп. - 1</p>
+                    <a href="#" class="scheme-link">Схема проезда</a>
+                </div>
+                
+                <div class="contacts">
+                    <div class="phone"><img src="../img/phone.png" alt="phone"> 8 (961) 525 91 91</div>
+                    <a href="#" class="callback-btn">Заказать звонок</a>
+                </div>
+                
+                <div class="user-actions">
+                    <div class="header-controls">
+                        <button id="theme-toggle" class="theme-toggle" title="Сменить тему">
+                            <img src="../img/sun.png" alt="Светлая тема" class="theme-icon light-icon">
+                            <img src="../img/moon.png" alt="Темная тема" class="theme-icon dark-icon">
+                        </button>
+                        <div class="language-selector">
+                            <button id="language-toggle" class="language-toggle" title="Сменить язык">
+                                <span class="language-flag">🇷🇺</span>
+                                <span class="language-code">RU</span>
+                            </button>
+                            <div class="language-dropdown">
+                                <button class="language-option" data-lang="ru">🇷🇺 Русский</button>
+                                <button class="language-option" data-lang="en">🇺🇸 English</button>
+                                <button class="language-option" data-lang="de">🇩🇪 Deutsch</button>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#" class="login-btn"><img src="../img/login.png" alt="login"> Войти</a>
+                    <a href="favorites.html" class="favorites"><img src="../img/favorites.png" alt="favorites">Избранное</a>
+                    <a href="cart.html" class="cart"><img src="../img/cart.png" alt="cart">Корзина</a>
+                </div>
+            </div>
+        </div>
+        <nav class="main-nav">
+            <div class="container">
+                <ul class="nav-menu">
+                    <div class="highlight"></div> 
+                    <li><a href="../pages/products.html" data-i18n="nav.kitchens">КУХНИ</a></li>
+                    <li><a href="#" data-i18n="nav.living_rooms">ГОСТИННЫЕ</a></li>
+                    <li><a href="#" data-i18n="nav.bedrooms">СПАЛЬНИ</a></li>
+                    <li><a href="#" data-i18n="nav.hallways">ПРИХОЖИЕ</a></li>
+                    <li><a href="#" data-i18n="nav.wardrobes">ШКАФЫ-КУПЕ</a></li>
+                    <li><a href="#" data-i18n="nav.children">ДЕТСКИЕ</a></li>
+                    <li><a href="#" data-i18n="nav.sofas">ДИВАНЫ</a></li>
+                    <li><a href="#" data-i18n="nav.where_to_see">ГДЕ ПОСМОТРЕТЬ</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="admin-page">
+        <div class="container">
+            <h1>Админ панель</h1>
+            
+            <div class="admin-tabs">
+                <button class="tab-btn active" data-tab="users">Пользователи</button>
+                <button class="tab-btn" data-tab="products">Товары</button>
+            </div>
+
+            <div class="tab-content active" id="users-tab">
+                <div class="admin-header">
+                    <h2>Управление пользователями</h2>
+                    <div class="admin-actions">
+                        <input type="text" id="user-search" placeholder="Поиск пользователей..." class="search-input">
+                    </div>
+                </div>
+                
+                <div class="table-container">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>ФИО</th>
+                                <th>Email</th>
+                                <th>Телефон</th>
+                                <th>Роль</th>
+                                <th>Дата регистрации</th>
+                                <th>Действия</th>
+                            </tr>
+                        </thead>
+                        <tbody id="users-table-body">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="tab-content" id="products-tab">
+                <div class="admin-header">
+                    <h2>Управление товарами</h2>
+                    <div class="admin-actions">
+                        <input type="text" id="product-search" placeholder="Поиск товаров..." class="search-input">
+                        <button class="btn-primary" onclick="openProductModal()">+ Добавить товар</button>
+                    </div>
+                </div>
+                
+                <div class="table-container">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Изображение</th>
+                                <th>Название</th>
+                                <th>Категория</th>
+                                <th>Цена</th>
+                                <th>Скидка</th>
+                                <th>Размеры</th>
+                                <th>Действия</th>
+                            </tr>
+                        </thead>
+                        <tbody id="products-table-body">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="preloader" id="preloader">
+                <div class="spinner"></div>
+            </div>
+        </div>
+    </main>
+
+    <div id="user-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="user-modal-title">Редактирование пользователя</h2>
+                <span class="close" onclick="closeModal('user-modal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="user-form">
+                    <input type="hidden" id="user-id">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="user-lastname">Фамилия</label>
+                            <input type="text" id="user-lastname" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="user-firstname">Имя</label>
+                            <input type="text" id="user-firstname" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="user-email">Email</label>
+                        <input type="email" id="user-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="user-phone">Телефон</label>
+                        <input type="tel" id="user-phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="user-role">Роль</label>
+                        <select id="user-role" required>
+                            <option value="user">Пользователь</option>
+                            <option value="admin">Администратор</option>
+                            <option value="moderator">Модератор</option>
+                        </select>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn-secondary" onclick="closeModal('user-modal')">Отмена</button>
+                        <button type="submit" class="btn-primary">Сохранить</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="product-modal" class="modal">
+        <div class="modal-content large">
+            <div class="modal-header">
+                <h2 id="product-modal-title">Добавление товара</h2>
+                <span class="close" onclick="closeModal('product-modal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="product-form">
+                    <input type="hidden" id="product-id">
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="product-name">Название товара *</label>
+                            <input type="text" id="product-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="product-category">Категория *</label>
+                            <select id="product-category" required>
+                                <option value="">Выберите категорию</option>
+                                <option value="КУХНИ">Кухни</option>
+                                <option value="ГОСТИННЫЕ">Гостиные</option>
+                                <option value="СПАЛЬНИ">Спальни</option>
+                                <option value="ПРИХОЖИЕ">Прихожие</option>
+                                <option value="ШКАФЫ-КУПЕ">Шкафы-купе</option>
+                                <option value="ДЕТСКИЕ">Детские</option>
+                                <option value="ДИВАНЫ">Диваны</option>
+                                <option value="СТОЛЫ И СТУЛЬЯ">Столы и стулья</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="product-price">Цена (руб) *</label>
+                            <input type="number" id="product-price" min="0" step="0.01" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="product-discount">Скидка (%)</label>
+                            <input type="number" id="product-discount" min="0" max="100" step="1" value="0">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="product-width">Ширина (мм) *</label>
+                            <input type="number" id="product-width" min="1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="product-height">Высота (мм) *</label>
+                            <input type="number" id="product-height" min="1" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="product-depth">Глубина (мм) *</label>
+                            <input type="number" id="product-depth" min="1" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="product-description">Описание *</label>
+                        <textarea id="product-description" rows="4" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="product-images">Изображения (URL через запятую)</label>
+                        <textarea id="product-images" rows="3" placeholder="image1.jpg, image2.jpg"></textarea>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn-secondary" onclick="closeModal('product-modal')">Отмена</button>
+                        <button type="submit" class="btn-primary">Сохранить товар</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="confirm-modal" class="modal">
+        <div class="modal-content small">
+            <div class="modal-header">
+                <h2>Подтверждение удаления</h2>
+                <span class="close" onclick="closeModal('confirm-modal')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <p id="confirm-message">Вы уверены, что хотите удалить этот элемент?</p>
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" onclick="closeModal('confirm-modal')">Отмена</button>
+                    <button type="button" class="btn-danger" id="confirm-delete">Удалить</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+    </footer>
+
+    <script src="../js/api.js"></script>
+    <script src="../js/admin.js"></script>
+</body>
+</html>

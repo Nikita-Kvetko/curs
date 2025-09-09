@@ -446,7 +446,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
                     localStorage.setItem('currentUser', JSON.stringify(user));
 
-                    window.location.href = '../index.html';
+                    window.location.href = 'home.html';
                 } else {
                     alert('Неверный телефон или пароль');
                 }
@@ -487,7 +487,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 .then(data => {
                     alert('Регистрация прошла успешно! Ваша роль: ' + data.role);
                     localStorage.setItem('currentUser', JSON.stringify(data));
-                    window.location.href = '../index.html';
+                    window.location.href = 'home.html';
                 })
                 .catch(error => {
                     console.error('Ошибка при регистрации:', error);

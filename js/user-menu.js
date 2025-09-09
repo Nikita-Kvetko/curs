@@ -53,7 +53,7 @@ function createUserMenu(user, container) {
                 <p>${user.phone}</p>
             </div>
             <a href="#" class="dropdown-item">Настройки</a>
-            ${user.role === 'admin' ? '<a href="../admin/dashboard.html" class="dropdown-item">Админ-панель</a>' : ''}
+            ${user.role === 'admin' ? '<a href="admin.html" class="dropdown-item">Админ-панель</a>' : ''}
             <button class="dropdown-item logout-btn">Выйти</button>
         </div>
     `;
