@@ -648,13 +648,7 @@
     },
     {
       "userId": "a31f",
-      "items": [
-        {
-          "productId": 6,
-          "quantity": 2,
-          "addedAt": "2025-09-09T13:31:56.617Z"
-        }
-      ],
+      "items": [],
       "id": "c9d1"
     }
   ],

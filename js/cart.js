@@ -188,7 +188,18 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     checkoutBtn.addEventListener('click', function() {
-        alert('Функция оформления заказа будет реализована позже');
+        const currentUser = getCurrentUser();
+        if (!currentUser) {
+            alert('Пожалуйста, войдите в систему для оформления заказа');
+            return;
+        }
+        
+        if (cartItems.length === 0) {
+            alert('Корзина пуста. Добавьте товары перед оформлением заказа.');
+            return;
+        }
+        
+        window.location.href = 'checkout.html';
     });
 
     loadCart();
