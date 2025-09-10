@@ -167,31 +167,6 @@ img[alt="favorites"]:hover, img[alt="cart"]:hover, img[alt="login"]:hover {
     transform: scale(1.2);
 }
 
-.nav-menu li a {
-    transition: color 0.3s ease, transform 0.3s ease;
-    position: relative;
-}
-
-.nav-menu li a::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background-color: #384685;
-    transition: width 0.3s ease;
-}
-
-.nav-menu li a:hover::after {
-    width: 100%;
-}
-
-.nav-menu li a:hover {
-    color: #384685;
-    transform: translateY(-2px);
-}
-
 .highlight {
     transition: transform 0.4s ease, width 0.4s ease;
 }

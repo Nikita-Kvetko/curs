@@ -158,7 +158,6 @@ document.querySelectorAll('.advantages-block').forEach(block => {
 
 document.querySelectorAll('.nav-menu li a').forEach(link => {
     link.addEventListener('mouseenter', function() {
-        this.style.color = '#384685';
         this.style.transform = 'translateY(-2px)';
     });
     

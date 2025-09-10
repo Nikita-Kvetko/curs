@@ -31,6 +31,8 @@
     max-width: 600px;
     border-radius: 8px;
     overflow: hidden;
+    max-height: 90vh;
+    overflow-y: auto;
 }
 
 .modal-header {
