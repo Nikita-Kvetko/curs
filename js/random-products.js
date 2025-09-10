@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         try {
             const allProducts = await apiRequest('products');
-            const randomProducts = getRandomProducts(allProducts, 6);
+            const randomProducts = getRandomProducts(allProducts, 8);
             displayProducts(randomProducts);
             
         } catch (error) {

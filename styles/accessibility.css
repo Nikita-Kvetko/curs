@@ -65,6 +65,10 @@
     padding: 20px;
 }
 
+.modal.show .modal-content {
+    transform: translateY(0);
+}
+
 .setting-group {
     margin-bottom: 25px;
 }

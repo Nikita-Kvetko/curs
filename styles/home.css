@@ -1,4 +1,4 @@
-.advantages, .catalog, .popular-category, .our-works, .inst{
+.advantages, .catalog, .popular-category, .our-works{
     display: flex;
     justify-content: center;
     align-items: start;
@@ -152,3 +152,19 @@
     width: 50%;
 }
 
+
+.inst{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    max-width: 1920px;
+    width: 80%;
+    gap: 2rem;
+}
+
+.inst h2{
+    font-size: 1.9em;
+    width: 100%;
+    text-align: start;
+}

@@ -111,7 +111,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 ${product.discount > 0 ? `<div class="promo-product-badge">-${product.discount}%</div>` : ''}
             </div>
             <div class="promo-product-info">
-                <div class="promo-product-code">Код: ${product.id}</div>
                 <h3 class="promo-product-title">${product.name}</h3>
                 <div class="promo-product-price">
                     <span class="current-price">${discountPrice.toLocaleString('ru-RU')} руб.</span>

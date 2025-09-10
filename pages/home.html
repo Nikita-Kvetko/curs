@@ -20,14 +20,14 @@
                 <div class="top-nav-container">
                     <div class="location-info">
                         <a><img src="../img/loc.gif" alt="loc"> Ростов ˅</a>
-                        <a href="#">Акции</a>
-                        <a href="#">Сборка</a>
-                        <a href="#">Оплата</a>
-                        <a href="#">Доставка</a>
+                        <a href="#promo-section">Акции</a>
+                        <a href="#advantages">Преимущества</a>
+                        <a href="#catalog">Каталог</a>
+                        <a href="#contacts">Контакты</a>
                     </div>
                     <div class="contacts-info">
-                        <a href="#">Наши работы</a>
-                        <a href="#">Контакты</a>
+                        <a href="#our-works">Наши работы</a>
+                        <a href="#contacts">Контакты</a>
                     </div>
                 </div>
             </div>
@@ -37,12 +37,12 @@
                 <a href="../pages/home.html"><img src="../img/logo.png" alt="logo"></a>
                 <div class="store-info">
                     <p>ул. Московская, 144 корп. - 1</p>
-                    <a href="#" class="scheme-link">Схема проезда</a>
+                    <a href="#contacts" class="scheme-link">Схема проезда</a>
                 </div>
                 
                 <div class="contacts-header">
                     <div class="phone"><img src="../img/phone.png" alt="phone"> 8 (961) 525 91 91</div>
-                    <a href="#" class="callback-btn">Заказать звонок</a>
+                    <a href="#contacts" class="callback-btn">Заказать звонок</a>
                 </div>
                 
                 <div class="user-actions">
@@ -145,7 +145,7 @@
     </div>
 
     <main>
-        <section class="advantages">
+        <section class="advantages fade-in" id="advantages">
             <h2>НАШИ ПРЕИМУЩЕСТВА</h2>
             <div class="advantages-blocks">
                 <div class="advantages-block">
@@ -167,7 +167,7 @@
             </div>
         </section>
 
-        <section class="catalog">
+        <section class="catalog fade-in" id="catalog">
             <h2>КАТАЛОГ</h2>
             <div class="catalog-blocks">
                 <div class="catalog-block">
@@ -205,7 +205,7 @@
             </div>
         </section>
 
-        <section class="random-products-section">
+        <section class="random-products-section fade-in" id="recommended">
             <div class="container">
                 <h2 class="section-title">РЕКОМЕНДУЕМ ДЛЯ ВАС</h2>
                 
@@ -218,7 +218,7 @@
             </div>
         </section>
 
-        <section class="popular-category">
+        <section class="popular-category fade-in" id="popular">
             <h2>ПОПУЛЯРНЫЕ КАТЕГОРИИ</h2>
             <div class="popular-category-buttons">
                 <button>КУХНИ</button>
@@ -234,7 +234,7 @@
             </div>
         </section>
 
-        <section class="promo-section">
+        <section class="promo-section fade-in" id="promo-section">
             <div class="container">
                 <h2 class="section-title">ТОВАРЫ ПО АКЦИИ</h2>
                 
@@ -255,7 +255,7 @@
             </div>
         </section>
 
-        <section class="our-works">
+        <section class="our-works fade-in" id="our-works">
             <h2>НАШИ РАБОТЫ</h2>
             <div class="our-works-blocks">
                 <div class="our-works-blocks-col">
@@ -281,7 +281,7 @@
             </div>
         </section>
 
-        <section class="contacts">
+        <section class="contacts fade-in" id="contacts">
             <div class="contacts-text">
                 <h2>НАШИ КОНТАКТЫ</h2>
                 <div class="contacts-text-p">
@@ -295,7 +295,7 @@
             </div>
         </section>
 
-        <section class="inst">
+        <section class="inst fade-in">
             <h2>МЫ В INSTAGRAM</h2>
             <img src="../img/inst-blocks.png" alt="inst-blocks">
         </section>
@@ -409,31 +409,7 @@
     <script src="../js/i18n.js"></script>
     <script src="../js/theme.js"></script>
     <script src="../js/map.js"></script>
-    <script>
-        const menu = document.querySelector(".nav-menu");
-        const highlight = document.querySelector(".highlight");
-        const links = menu.querySelectorAll("li a");
-
-        let active = links[0];
-        moveHighlight(active);
-
-        links.forEach(link => {
-        link.addEventListener("mouseenter", () => moveHighlight(link));
-        link.addEventListener("click", (e) => {
-            e.preventDefault();
-            active = link;
-            moveHighlight(active);
-        });
-        });
-
-        function moveHighlight(element) {
-        const rect = element.getBoundingClientRect();
-        const containerRect = menu.getBoundingClientRect();
-
-        highlight.style.width = rect.width + "px";
-        highlight.style.transform = `translateX(${rect.left - containerRect.left}px)`;
-        }
-    </script>
+    <script src="../js/amim.js"></script>
 
 </body>
 </html>
