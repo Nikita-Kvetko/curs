@@ -608,7 +608,13 @@
     },
     {
       "userId": "c2f5",
-      "items": [],
+      "items": [
+        {
+          "productId": 10,
+          "quantity": 1,
+          "addedAt": "2025-09-10T20:06:23.123Z"
+        }
+      ],
       "id": "50a0"
     }
   ],
@@ -629,11 +635,7 @@
     },
     {
       "userId": "c2f5",
-      "items": [
-        40,
-        8,
-        5
-      ],
+      "items": [],
       "id": "ed2d"
     }
   ]
