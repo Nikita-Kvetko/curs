@@ -33,8 +33,7 @@
       "depth": 600,
       "description": "Современная кухня с фасадами из МДФ, столешницей из искусственного камня.",
       "images": [
-        "kitchen1.jpg",
-        "kitchen2.jpg"
+        "kitchen1.jpg"
       ],
       "id": "1"
     },
@@ -48,8 +47,7 @@
       "height": 2150,
       "depth": 550,
       "images": [
-        "kitchen3.jpg",
-        "kitchen4.jpg"
+        "kitchen3.jpg"
       ],
       "description": "Классическая кухня с деревянными фасадами и практичной фурнитурой."
     },
@@ -63,8 +61,7 @@
       "height": 2100,
       "depth": 500,
       "images": [
-        "kitchen5.jpg",
-        "kitchen6.jpg"
+        "kitchen5.jpg"
       ],
       "description": "Компактная кухня для небольших помещений с максимальной функциональностью."
     },
@@ -78,8 +75,7 @@
       "height": 2200,
       "depth": 600,
       "images": [
-        "kitchen7.jpg",
-        "kitchen8.jpg"
+        "kitchen7.png"
       ],
       "description": "Экологичная кухня из натуральных материалов с современным дизайном."
     },
@@ -93,8 +89,7 @@
       "height": 2300,
       "depth": 650,
       "images": [
-        "kitchen9.jpg",
-        "kitchen10.jpg"
+        "kitchen9.jpg"
       ],
       "description": "Премиальная кухня с фасадами из массива дерева и гранитной столешницей."
     },
@@ -108,8 +103,7 @@
       "height": 2400,
       "depth": 600,
       "images": [
-        "living1.jpg",
-        "living2.jpg"
+        "living1.jpg"
       ],
       "description": "Просторная гостиная с вместительными шкафами и эргономичным дизайном."
     },
@@ -123,8 +117,7 @@
       "height": 2300,
       "depth": 550,
       "images": [
-        "living3.jpg",
-        "living4.jpg"
+        "living3.jpg"
       ],
       "description": "Уютная гостиная система с качественной фурнитурой и продуманной организацией пространства."
     },
@@ -138,8 +131,7 @@
       "height": 2200,
       "depth": 500,
       "images": [
-        "living5.jpg",
-        "living6.jpg"
+        "living5.jpg"
       ],
       "description": "Компактная гостиная для небольших помещений с оптимальным использованием пространства."
     },
@@ -153,8 +145,7 @@
       "height": 2450,
       "depth": 650,
       "images": [
-        "living7.jpg",
-        "living8.jpg"
+        "living7.jpg"
       ],
       "description": "Элегантная гостиная система с стеклянными элементами и стильным дизайном."
     },
@@ -168,8 +159,7 @@
       "height": 2500,
       "depth": 700,
       "images": [
-        "living9.jpg",
-        "living10.jpg"
+        "living9.jpg"
       ],
       "description": "Роскошная гостиная система премиум-класса с эксклюзивной отделкой."
     },
@@ -183,8 +173,7 @@
       "height": 2200,
       "depth": 600,
       "images": [
-        "bedroom1.jpg",
-        "bedroom2.jpg"
+        "bedroom1.jpg"
       ],
       "description": "Уютная спальня с большой кроватью и вместительными шкафами."
     },
@@ -198,8 +187,7 @@
       "height": 2150,
       "depth": 550,
       "images": [
-        "bedroom3.jpg",
-        "bedroom4.jpg"
+        "bedroom3.jpg"
       ],
       "description": "Комфортная спальня с практичной организацией пространства."
     },
@@ -213,8 +201,7 @@
       "height": 2100,
       "depth": 500,
       "images": [
-        "bedroom5.jpg",
-        "bedroom6.jpg"
+        "bedroom5.jpg"
       ],
       "description": "Компактная спальня для небольших помещений с оптимальной функциональностью."
     },
@@ -228,8 +215,7 @@
       "height": 2250,
       "depth": 650,
       "images": [
-        "bedroom7.jpg",
-        "bedroom8.jpg"
+        "bedroom7.jpg"
       ],
       "description": "Роскошная спальня с элементами из натурального дерева и изысканным дизайном."
     },
@@ -243,8 +229,7 @@
       "height": 2300,
       "depth": 700,
       "images": [
-        "bedroom9.jpg",
-        "bedroom10.jpg"
+        "bedroom9.jpg"
       ],
       "description": "Премиальная спальня с гарнитуром из массива дерева и эксклюзивной фурнитурой."
     },
@@ -258,8 +243,7 @@
       "height": 2100,
       "depth": 400,
       "images": [
-        "hallway1.jpg",
-        "hallway2.jpg"
+        "hallway1.jpg"
       ],
       "description": "Функциональная прихожая с зеркалом, вешалкой и полками для обуви."
     },
@@ -273,8 +257,7 @@
       "height": 2150,
       "depth": 450,
       "images": [
-        "hallway3.jpg",
-        "hallway4.jpg"
+        "hallway3.jpg"
       ],
       "description": "Вместительная прихожая с большим зеркалом и множеством отделений."
     },
@@ -288,8 +271,7 @@
       "height": 2000,
       "depth": 350,
       "images": [
-        "hallway5.jpg",
-        "hallway6.jpg"
+        "hallway5.jpg"
       ],
       "description": "Компактная прихожая для небольших пространств с необходимой функциональностью."
     },
@@ -303,8 +285,7 @@
       "height": 2200,
       "depth": 500,
       "images": [
-        "hallway7.jpg",
-        "hallway8.jpg"
+        "hallway7.jpg"
       ],
       "description": "Стильная прихожая с элементами из стекла и хромированной фурнитурой."
     },
@@ -318,8 +299,7 @@
       "height": 2250,
       "depth": 550,
       "images": [
-        "hallway9.jpg",
-        "hallway10.jpg"
+        "hallway9.jpg"
       ],
       "description": "Премиальная прихожая с освещением, большим зеркалом и эксклюзивной отделкой."
     },
@@ -333,8 +313,7 @@
       "height": 2400,
       "depth": 600,
       "images": [
-        "wardrobe1.jpg",
-        "wardrobe2.jpg"
+        "wardrobe1.jpg"
       ],
       "description": "Вместительный шкаф-купе с раздвижными дверями и продуманной внутренней организацией."
     },
@@ -348,8 +327,7 @@
       "height": 2400,
       "depth": 1500,
       "images": [
-        "wardrobe3.jpg",
-        "wardrobe4.jpg"
+        "wardrobe3.jpg"
       ],
       "description": "Угловой шкаф-купе для оптимального использования пространства комнаты."
     },
@@ -363,8 +341,7 @@
       "height": 2200,
       "depth": 500,
       "images": [
-        "wardrobe5.jpg",
-        "wardrobe6.jpg"
+        "wardrobe5.jpg"
       ],
       "description": "Компактный шкаф-купе для небольших помещений с необходимой вместительностью."
     },
@@ -378,8 +355,7 @@
       "height": 2500,
       "depth": 650,
       "images": [
-        "wardrobe7.jpg",
-        "wardrobe8.jpg"
+        "wardrobe7.jpg"
       ],
       "description": "Стильный шкаф-купе с зеркальными дверями и подсветкой."
     },
@@ -393,8 +369,7 @@
       "height": 2600,
       "depth": 700,
       "images": [
-        "wardrobe9.jpg",
-        "wardrobe10.jpg"
+        "wardrobe9.jpg"
       ],
       "description": "Премиальный шкаф-купе с автоматическими дверями и эксклюзивной отделкой."
     },
@@ -408,8 +383,7 @@
       "height": 2200,
       "depth": 600,
       "images": [
-        "children1.jpg",
-        "children2.jpg"
+        "children1.jpg"
       ],
       "description": "Яркая и функциональная детская комната с кроватью, столом и шкафом."
     },
@@ -423,8 +397,7 @@
       "height": 2150,
       "depth": 550,
       "images": [
-        "children3.jpg",
-        "children4.jpg"
+        "children3.jpg"
       ],
       "description": "Комната для ребенка с игровой зоной и практичной мебелью."
     },
@@ -438,8 +411,7 @@
       "height": 2100,
       "depth": 500,
       "images": [
-        "children5.jpg",
-        "children6.jpg"
+        "children5.jpg"
       ],
       "description": "Компактная детская для небольших помещений с кроватью-чердаком."
     },
@@ -453,8 +425,7 @@
       "height": 2250,
       "depth": 650,
       "images": [
-        "children7.jpg",
-        "children8.jpg"
+        "children7.jpg"
       ],
       "description": "Яркая детская комната с тематическим дизайном и функциональной мебелью."
     },
@@ -468,8 +439,7 @@
       "height": 2300,
       "depth": 700,
       "images": [
-        "children9.jpg",
-        "children10.jpg"
+        "children9.jpg"
       ],
       "description": "Премиальная детская комната с экологичными материалами и продуманным дизайном."
     },
@@ -483,8 +453,7 @@
       "height": 850,
       "depth": 950,
       "images": [
-        "sofa1.jpg",
-        "sofa2.jpg"
+        "sofa1.jpg"
       ],
       "description": "Удобный диван-еврокнижка с механизмом трансформации в спальное место."
     },
@@ -498,8 +467,7 @@
       "height": 900,
       "depth": 1600,
       "images": [
-        "sofa3.jpg",
-        "sofa4.jpg"
+        "sofa3.jpg"
       ],
       "description": "Вместительный угловой диван с большим спальным местом и ящиком для белья."
     },
@@ -513,8 +481,7 @@
       "height": 800,
       "depth": 850,
       "images": [
-        "sofa5.jpg",
-        "sofa6.jpg"
+        "sofa5.jpg"
       ],
       "description": "Компактный диван для небольших помещений с механизмом трансформации."
     },
@@ -528,8 +495,7 @@
       "height": 880,
       "depth": 1000,
       "images": [
-        "sofa7.jpg",
-        "sofa8.jpg"
+        "sofa7.jpg"
       ],
       "description": "Стильный диван с кожаной обивкой и современным дизайном."
     },
@@ -543,8 +509,7 @@
       "height": 950,
       "depth": 1100,
       "images": [
-        "sofa9.jpg",
-        "sofa10.jpg"
+        "sofa9.jpg"
       ],
       "description": "Роскошный диван премиум-класса с ортопедическим матрасом и эксклюзивной обивкой."
     },
@@ -558,8 +523,7 @@
       "height": 750,
       "depth": 800,
       "images": [
-        "table1.jpg",
-        "table2.jpg"
+        "table1.jpg"
       ],
       "description": "Практичный обеденный стол из массива дерева на 4-6 человек."
     },
@@ -573,8 +537,7 @@
       "height": 760,
       "depth": 900,
       "images": [
-        "table3.jpg",
-        "table4.jpg"
+        "table3.jpg"
       ],
       "description": "Раздвижной обеденный стол с возможностью увеличения площади столешницы."
     },
@@ -588,8 +551,7 @@
       "height": 850,
       "depth": 500,
       "images": [
-        "chair1.jpg",
-        "chair2.jpg"
+        "chair1.jpg"
       ],
       "description": "Классический деревянный стул с мягким сиденьем и удобной спинкой."
     },
@@ -603,8 +565,7 @@
       "height": 820,
       "depth": 550,
       "images": [
-        "chair3.jpg",
-        "chair4.jpg"
+        "chair3.jpg"
       ],
       "description": "Современный стул с металлическим каркасом и эргономичным дизайном."
     },
@@ -618,8 +579,7 @@
       "height": 750,
       "depth": 800,
       "images": [
-        "set1.jpg",
-        "set2.jpg"
+        "set1.jpg"
       ],
       "description": "Набор обеденной группы: стол и 4 стула в современном стиле."
     }
