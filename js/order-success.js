@@ -1,13 +1,16 @@
+// Обработчик загрузки DOM
 document.addEventListener('DOMContentLoaded', function() {
     const urlParams = new URLSearchParams(window.location.search);
     const orderDataEncoded = urlParams.get('order');
     
+    // Проверка наличия данных заказа
     if (!orderDataEncoded) {
         window.location.href = 'cart.html';
         return;
     }
     
     try {
+        // Декодирование и парсинг данных заказа
         const orderData = JSON.parse(decodeURIComponent(orderDataEncoded));
         displayOrderDetails(orderData);
     } catch (error) {
@@ -16,7 +19,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+// Отображение деталей заказа
 async function displayOrderDetails(orderData) {
+    // Заполнение основной информации о заказе
     document.getElementById('order-number').textContent = `#${generateOrderNumber()}`;
     document.getElementById('order-date').textContent = formatDate(orderData.createdAt);
     document.getElementById('order-status').textContent = getStatusText(orderData.status);
@@ -24,11 +29,13 @@ async function displayOrderDetails(orderData) {
     document.getElementById('payment-method').textContent = getPaymentMethodText(orderData.payment.method);
     document.getElementById('delivery-method').textContent = getDeliveryMethodText(orderData.delivery.method);
 
+    // Заполнение информации о клиенте
     document.getElementById('customer-name').textContent = 
         `${orderData.customer.lastname} ${orderData.customer.firstname} ${orderData.customer.middlename}`.trim();
     document.getElementById('customer-phone').textContent = orderData.customer.phone;
     document.getElementById('customer-email').textContent = orderData.customer.email;
     
+    // Форматирование адреса доставки
     const address = orderData.delivery.address;
     document.getElementById('delivery-address').textContent = 
         `${window.i18n ? window.i18n.translate('form.city') : 'г.'} ${address.city}, ` +
@@ -37,13 +44,16 @@ async function displayOrderDetails(orderData) {
         (address.apartment ? `, ${window.i18n ? window.i18n.translate('form.apartment') : 'кв.'} ${address.apartment}` : '') +
         (address.postalCode ? `, ${address.postalCode}` : '');
 
+    // Отображение товаров в заказе
     await displayOrderItems(orderData.items);
 }
 
+// Генерация номера заказа
 function generateOrderNumber() {
     return Math.floor(1000 + Math.random() * 9000).toString().padStart(4, '0');
 }
 
+// Форматирование даты
 function formatDate(dateString) {
     const date = new Date(dateString);
     return date.toLocaleDateString('ru-RU', {
@@ -53,6 +63,7 @@ function formatDate(dateString) {
     });
 }
 
+// Получение текста статуса заказа
 function getStatusText(status) {
     const statusMap = {
         'pending': window.i18n ? window.i18n.translate('order_status.pending') : 'Ожидает подтверждения',
@@ -64,6 +75,7 @@ function getStatusText(status) {
     return statusMap[status] || status;
 }
 
+// Получение текста способа оплаты
 function getPaymentMethodText(method) {
     const methodMap = {
         'card': window.i18n ? window.i18n.translate('payment.card.title') : 'Банковская карта',
@@ -73,6 +85,7 @@ function getPaymentMethodText(method) {
     return methodMap[method] || method;
 }
 
+// Получение текста способа доставки
 function getDeliveryMethodText(method) {
     const methodMap = {
         'courier': window.i18n ? window.i18n.translate('delivery.courier.title') : 'Курьерская доставка',
@@ -81,6 +94,7 @@ function getDeliveryMethodText(method) {
     return methodMap[method] || method;
 }
 
+// Отображение товаров в заказе
 async function displayOrderItems(items) {
     try {
         const allProducts = await getAllProducts();
@@ -117,10 +131,12 @@ async function displayOrderItems(items) {
     }
 }
 
+// Печать чека
 function printReceipt() {
     window.print();
 }
 
+// Настройка обработчиков кнопок
 document.addEventListener('DOMContentLoaded', function() {
     const printBtn = document.querySelector('.btn-secondary:nth-child(2)');
     const trackBtn = document.querySelector('.btn-secondary:nth-child(3)');

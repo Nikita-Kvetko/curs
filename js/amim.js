@@ -1,91 +1,102 @@
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+// Плавная прокрутка для якорных ссылок
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
+        
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+            if (this.classList.contains('nav-menuli')) {
                 e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    if (this.classList.contains('nav-menuli')) {
-                        e.preventDefault();
-                    }
-                    
-                    targetElement.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-
-                    history.pushState(null, null, targetId);
-                }
+            }
+            
+            // Плавная прокрутка к элементу
+            targetElement.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
             });
-        });
 
-        const menu = document.querySelector(".nav-menu");
-        const highlight = document.querySelector(".highlight");
-        const links = menu.querySelectorAll("li a");
+            // Обновление URL с якорем
+            history.pushState(null, null, targetId);
+        }
+    });
+});
 
-        let active = links[0];
+// Подсветка активного пункта навигации
+const menu = document.querySelector(".nav-menu");
+const highlight = document.querySelector(".highlight");
+const links = menu.querySelectorAll("li a");
+
+let active = links[0];
+moveHighlight(active);
+
+// Обработка наведения и клика по пунктам меню
+links.forEach(link => {
+    link.addEventListener("mouseenter", () => moveHighlight(link));
+    link.addEventListener("click", (e) => {
+        e.preventDefault();
+        active = link;
         moveHighlight(active);
 
-        links.forEach(link => {
-            link.addEventListener("mouseenter", () => moveHighlight(link));
-            link.addEventListener("click", (e) => {
-                e.preventDefault();
-                active = link;
-                moveHighlight(active);
-
-                const targetId = link.getAttribute('href');
-                if (targetId && targetId !== '#') {
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        targetElement.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                }
-            });
-        });
-
-        function moveHighlight(element) {
-            if (!element || !highlight) return;
-            
-            const rect = element.getBoundingClientRect();
-            const containerRect = menu.getBoundingClientRect();
-
-            highlight.style.width = rect.width + "px";
-            highlight.style.transform = `translateX(${rect.left - containerRect.left}px)`;
+        // Прокрутка к секции при клике
+        const targetId = link.getAttribute('href');
+        if (targetId && targetId !== '#') {
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
         }
+    });
+});
 
-        window.addEventListener('scroll', function() {
-            const sections = document.querySelectorAll('section[id]');
-            const navLinks = document.querySelectorAll('.nav-menu a');
-            
-            let currentSection = '';
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.offsetHeight;
-                
-                if (pageYOffset >= sectionTop - 100) {
-                    currentSection = section.getAttribute('id');
-                }
-            });
-            
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${currentSection}`) {
-                    link.classList.add('active');
+// Функция перемещения подсветки меню
+function moveHighlight(element) {
+    if (!element || !highlight) return;
+    
+    const rect = element.getBoundingClientRect();
+    const containerRect = menu.getBoundingClientRect();
 
-                    const activeLink = document.querySelector('.nav-menu a.active');
-                    if (activeLink) {
-                        moveHighlight(activeLink);
-                    }
-                }
-            });
-        });
+    highlight.style.width = rect.width + "px";
+    highlight.style.transform = `translateX(${rect.left - containerRect.left}px)`;
+}
 
+// Отслеживание прокрутки для активации пунктов меню
+window.addEventListener('scroll', function() {
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-menu a');
+    
+    let currentSection = '';
+    
+    // Определение текущей секции
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.offsetHeight;
+        
+        if (pageYOffset >= sectionTop - 100) {
+            currentSection = section.getAttribute('id');
+        }
+    });
+    
+    // Активация соответствующей ссылки меню
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${currentSection}`) {
+            link.classList.add('active');
+
+            const activeLink = document.querySelector('.nav-menu a.active');
+            if (activeLink) {
+                moveHighlight(activeLink);
+            }
+        }
+    });
+});
+
+// Проверка видимости элемента в viewport
 function isElementInViewport(el) {
     const rect = el.getBoundingClientRect();
     return (
@@ -94,24 +105,30 @@ function isElementInViewport(el) {
     );
 }
 
+// Обработка анимаций при прокрутке
 function handleScrollAnimations() {
+    // Анимация секций
     document.querySelectorAll('section').forEach(section => {
         if (isElementInViewport(section)) {
             section.classList.add('visible');
         }
     });
+    
+    // Анимация товаров
     document.querySelectorAll('.random-product').forEach(product => {
         if (isElementInViewport(product)) {
             product.classList.add('visible');
         }
     });
 
+    // Анимация блоков преимуществ
     document.querySelectorAll('.advantages-block').forEach(block => {
         if (isElementInViewport(block)) {
             block.classList.add('fade-in', 'visible');
         }
     });
 
+    // Анимация блоков каталога
     document.querySelectorAll('.catalog-block').forEach(block => {
         if (isElementInViewport(block)) {
             block.classList.add('fade-in', 'visible');
@@ -119,11 +136,12 @@ function handleScrollAnimations() {
     });
 }
 
+// Инициализация анимаций при загрузке
 document.addEventListener('DOMContentLoaded', function() {
     handleScrollAnimations();
-
     window.addEventListener('scroll', handleScrollAnimations);
 
+    // Задержка для первоначальной анимации
     setTimeout(() => {
         document.querySelectorAll('section').forEach(section => {
             if (isElementInViewport(section)) {
@@ -133,6 +151,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 100);
 });
 
+// Анимации кнопок при наведении
 document.addEventListener('mouseover', function(e) {
     if (e.target.classList.contains('buy-btn') || e.target.classList.contains('add-to-fav')) {
         e.target.classList.add('pulse');
@@ -144,6 +163,8 @@ document.addEventListener('mouseout', function(e) {
         e.target.classList.remove('pulse');
     }
 });
+
+// Эффекты при наведении на блоки преимуществ
 document.querySelectorAll('.advantages-block').forEach(block => {
     block.addEventListener('mouseenter', function() {
         this.style.transform = 'translateY(-8px)';
@@ -156,6 +177,7 @@ document.querySelectorAll('.advantages-block').forEach(block => {
     });
 });
 
+// Эффекты при наведении на пункты меню
 document.querySelectorAll('.nav-menu li a').forEach(link => {
     link.addEventListener('mouseenter', function() {
         this.style.transform = 'translateY(-2px)';
@@ -169,6 +191,7 @@ document.querySelectorAll('.nav-menu li a').forEach(link => {
     });
 });
 
+// Улучшенная функция подсветки с анимацией
 function moveHighlight(element) {
     if (!element || !highlight) return;
     
@@ -180,6 +203,7 @@ function moveHighlight(element) {
     highlight.style.transform = `translateX(${rect.left - containerRect.left}px)`;
 }
 
+// Управление модальными окнами
 document.querySelectorAll('[data-modal]').forEach(button => {
     button.addEventListener('click', function() {
         const modalId = this.getAttribute('data-modal');
@@ -195,6 +219,7 @@ document.querySelectorAll('[data-modal]').forEach(button => {
     });
 });
 
+// Закрытие модальных окон
 document.querySelectorAll('.close, .modal').forEach(element => {
     element.addEventListener('click', function(e) {
         if (e.target === this || e.target.classList.contains('close')) {

@@ -1,17 +1,21 @@
+// Получение текущего пользователя из localStorage
 function getCurrentUser() {
     return JSON.parse(localStorage.getItem('currentUser'));
 }
 
+// Проверка авторизации пользователя
 function isUserLoggedIn() {
     return !!localStorage.getItem('currentUser');
 }
 
+// Выход пользователя из системы
 function logoutUser() {
     localStorage.removeItem('currentUser');
     updateUserMenu();
     window.location.reload();
 }
 
+// Обновление меню пользователя
 function updateUserMenu() {
     const currentUser = getCurrentUser();
     const loginBtn = document.querySelector('.login-btn');
@@ -35,6 +39,7 @@ function updateUserMenu() {
     }
 }
 
+// Создание меню пользователя
 function createUserMenu(user, container) {
     const oldMenu = document.querySelector('.user-menu');
     if (oldMenu) {
@@ -62,11 +67,13 @@ function createUserMenu(user, container) {
         container.appendChild(userMenu);
     }
 
+    // Обработчики элементов меню
     const toggleBtn = userMenu.querySelector('.user-menu-toggle');
     const dropdown = userMenu.querySelector('.user-dropdown');
     const logoutBtn = userMenu.querySelector('.logout-btn');
     const settingsBtn = userMenu.querySelector('.dropdown-item');
 
+    // Обработчик настроек доступности
     if (settingsBtn && settingsBtn.getAttribute('data-i18n') === 'user_menu.settings') {
         settingsBtn.addEventListener('click', function(e) {
             e.preventDefault();
@@ -78,6 +85,7 @@ function createUserMenu(user, container) {
         });
     }
 
+    // Переключение выпадающего меню
     if (toggleBtn && dropdown) {
         toggleBtn.addEventListener('click', function(e) {
             e.stopPropagation();
@@ -85,6 +93,7 @@ function createUserMenu(user, container) {
         });
     }
     
+    // Обработчик выхода
     if (logoutBtn) {
         logoutBtn.addEventListener('click', function(e) {
             e.preventDefault();
@@ -92,6 +101,7 @@ function createUserMenu(user, container) {
         });
     }
 
+    // Закрытие меню при клике вне его
     document.addEventListener('click', function(e) {
         if (dropdown && !userMenu.contains(e.target)) {
             dropdown.classList.remove('show');
@@ -99,6 +109,7 @@ function createUserMenu(user, container) {
     });
 }
 
+// Обновление счетчиков в шапке
 async function updateHeaderCounts() {
     const currentUser = getCurrentUser();
     if (!currentUser) return;
@@ -121,9 +132,11 @@ async function updateHeaderCounts() {
     }
 }
 
+// Инициализация при загрузке DOM
 document.addEventListener('DOMContentLoaded', function() {
     updateUserMenu();
 
+    // Обработчики для блоков каталога
     const catalogBlocks = document.querySelectorAll('.catalog-block');
     catalogBlocks.forEach(block => {
         block.addEventListener('click', function() {
@@ -133,6 +146,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // Обработчики для навигационных ссылок
     const navLinks = document.querySelectorAll('.nav-menu a');
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
@@ -146,4 +160,5 @@ document.addEventListener('DOMContentLoaded', function() {
     updateHeaderCounts();
 });
 
+// Экспорт функции для глобального использования
 window.updateUserMenu = updateUserMenu;

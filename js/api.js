@@ -1,13 +1,17 @@
+// Базовый URL API
 const API_BASE = 'http://localhost:3000';
 
+// Основная функция для выполнения запросов к API
 async function apiRequest(endpoint, options = {}) {
     try {
+        // Проверка прав администратора для защищенных endpoints
         if (endpoint.startsWith('users/') || endpoint.startsWith('products/')) {
             if (!checkAdminAccess()) {
                 throw new Error('Доступ запрещен. Требуются права администратора.');
             }
         }
         
+        // Выполнение fetch-запроса
         const response = await fetch(`${API_BASE}/${endpoint}`, {
             headers: {
                 'Content-Type': 'application/json',
@@ -16,6 +20,7 @@ async function apiRequest(endpoint, options = {}) {
             ...options
         });
         
+        // Проверка статуса ответа
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -27,6 +32,7 @@ async function apiRequest(endpoint, options = {}) {
     }
 }
 
+// Получение корзины пользователя
 async function getCart(userId) {
     try {
         const carts = await apiRequest('carts');
@@ -37,6 +43,7 @@ async function getCart(userId) {
     }
 }
 
+// Обновление корзины пользователя
 async function updateCart(userId, items) {
     try {
         const carts = await apiRequest('carts');
@@ -59,6 +66,7 @@ async function updateCart(userId, items) {
     }
 }
 
+// Получение избранного пользователя
 async function getFavorites(userId) {
     try {
         const favorites = await apiRequest('favorites');
@@ -69,6 +77,7 @@ async function getFavorites(userId) {
     }
 }
 
+// Обновление избранного пользователя
 async function updateFavorites(userId, items) {
     try {
         const favorites = await apiRequest('favorites');
@@ -91,6 +100,7 @@ async function updateFavorites(userId, items) {
     }
 }
 
+// Получение всех товаров
 async function getAllProducts() {
     try {
         return await apiRequest('products');
@@ -100,10 +110,12 @@ async function getAllProducts() {
     }
 }
 
+// Получение текущего пользователя из localStorage
 function getCurrentUser() {
     return JSON.parse(localStorage.getItem('currentUser'));
 }
 
+// Расчет цены товара с учетом скидки
 function calculateProductPrice(product) {
     if (product.discount > 0) {
         return Math.round(product.price * (1 - product.discount/100));
@@ -111,6 +123,7 @@ function calculateProductPrice(product) {
     return product.price;
 }
 
+// Обновление счетчика корзины в шапке
 function updateCartCountInHeader(count) {
     const cartCountElements = document.querySelectorAll('#cart-count');
     cartCountElements.forEach(element => {
@@ -118,6 +131,7 @@ function updateCartCountInHeader(count) {
     });
 }
 
+// Обновление счетчика избранного в шапке
 function updateFavCountInHeader(count) {
     const favCountElements = document.querySelectorAll('#fav-count');
     favCountElements.forEach(element => {
@@ -125,6 +139,7 @@ function updateFavCountInHeader(count) {
     });
 }
 
+// Обновление счетчиков в шапке
 async function updateHeaderCounts() {
     const currentUser = getCurrentUser();
     if (!currentUser) return;
@@ -140,6 +155,7 @@ async function updateHeaderCounts() {
     }
 }
 
+// Проверка прав администратора
 function checkAdminAccess() {
     const currentUser = getCurrentUser();
     return currentUser && currentUser.role === 'admin';

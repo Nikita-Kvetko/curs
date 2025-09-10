@@ -1,3 +1,4 @@
+// Обработчик загрузки DOM
 document.addEventListener('DOMContentLoaded', function() {
     const favoritesGrid = document.getElementById('favorites-grid');
     const emptyFavorites = document.getElementById('empty-favorites');
@@ -6,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let favoriteItems = [];
     let allProducts = [];
 
+    // Загрузка избранных товаров
     async function loadFavorites() {
         showPreloader();
         
@@ -30,6 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    // Управление прелоадером
     function showPreloader() {
         preloader.style.display = 'flex';
     }
@@ -38,6 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
         preloader.style.display = 'none';
     }
 
+    // Показ запроса на авторизацию
     function showLoginPrompt() {
         favoritesGrid.innerHTML = `
             <div class="login-prompt">
@@ -48,6 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
         emptyFavorites.style.display = 'none';
     }
 
+    // Показ ошибки
     function showError(message) {
         favoritesGrid.innerHTML = `
             <div class="error-message">
@@ -57,12 +62,14 @@ document.addEventListener('DOMContentLoaded', function() {
         `;
     }
 
+    // Отрисовка избранных товаров
     function renderFavorites() {
         if (favoriteItems.length === 0) {
             showEmptyFavorites();
             return;
         }
         
+        // Фильтрация товаров по избранным ID
         const favoriteProducts = allProducts.filter(product => 
             favoriteItems.includes(parseInt(product.id))
         );
@@ -108,11 +115,13 @@ document.addEventListener('DOMContentLoaded', function() {
         emptyFavorites.style.display = 'none';
     }
 
+    // Показ пустого избранного
     function showEmptyFavorites() {
         favoritesGrid.innerHTML = '';
         emptyFavorites.style.display = 'block';
     }
 
+    // Удаление товара из избранного
     window.removeFromFavorites = async function(productId) {
         const currentUser = getCurrentUser();
         if (!currentUser) return;
@@ -126,6 +135,7 @@ document.addEventListener('DOMContentLoaded', function() {
         updateFavCountInHeader(favorites.items.length);
     }
 
+    // Добавление товара в корзину из избранного
     window.addToCartFromFavorites = async function(productId) {
         const currentUser = getCurrentUser();
         if (!currentUser) return;
@@ -154,9 +164,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    // Переход к деталям товара
     window.viewProductDetails = function(productId) {
         window.location.href = `product-details.html?id=${productId}`;
     }
 
+    // Инициализация загрузки избранного
     loadFavorites();
 });

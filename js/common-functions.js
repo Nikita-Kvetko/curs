@@ -1,3 +1,4 @@
+// Функция добавления товара в корзину
 window.addToCart = async function(productId) {
     const currentUser = getCurrentUser();
     if (!currentUser) {
@@ -27,6 +28,7 @@ window.addToCart = async function(productId) {
     }
 }
 
+// Функция переключения состояния избранного товара
 window.toggleFavorite = async function(event, productId) {
     const button = event?.currentTarget || null;
     

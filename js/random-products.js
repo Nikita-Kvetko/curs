@@ -1,7 +1,9 @@
+// Обработчик загрузки DOM
 document.addEventListener('DOMContentLoaded', function() {
     const productsContainer = document.getElementById('random-products-container');
     const preloader = document.getElementById('preloader');
 
+    // Загрузка случайных товаров
     async function loadRandomProducts() {
         showPreloader();
         
@@ -23,8 +25,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    // Получение случайных товаров
     function getRandomProducts(products, count) {
         const shuffled = [...products];
+        // Алгоритм Фишера-Йейтса для перемешивания
         for (let i = shuffled.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
             [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
@@ -32,6 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
         return shuffled.slice(0, count);
     }
 
+    // Отображение товаров
     function displayProducts(products) {
         if (products.length === 0) {
             productsContainer.innerHTML = '<p class="no-products" data-i18n="products.not_found">Товары не найдены</p>';
@@ -70,6 +75,7 @@ document.addEventListener('DOMContentLoaded', function() {
         updateFavoriteButtons();
     }
 
+    // Расчет цены со скидкой
     function calculatePrice(product) {
         if (product.discount > 0) {
             return Math.round(product.price * (1 - product.discount / 100)).toLocaleString('ru-RU');
@@ -77,6 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
         return product.price.toLocaleString('ru-RU');
     }
 
+    // Управление прелоадером
     function showPreloader() {
         preloader.style.display = 'flex';
         productsContainer.innerHTML = '';
@@ -86,6 +93,7 @@ document.addEventListener('DOMContentLoaded', function() {
         preloader.style.display = 'none';
     }
 
+    // Обновление состояния кнопок избранного
     async function updateFavoriteButtons() {
         const currentUser = getCurrentUser();
         if (!currentUser) return;
@@ -108,8 +116,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    // Инициализация загрузки
     loadRandomProducts();
 
+    // Обновление при изменении пользователя
     window.addEventListener('storage', function(e) {
         if (e.key === 'currentUser') {
             updateFavoriteButtons();

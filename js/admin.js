@@ -1,9 +1,11 @@
+// Ожидание полной загрузки DOM
 document.addEventListener('DOMContentLoaded', function() {
     const preloader = document.getElementById('preloader');
     let currentUser = null;
     let currentItemId = null;
     let currentItemType = null;
 
+    // Проверка прав администратора
     function checkAdminAccess() {
         currentUser = getCurrentUser();
         if (!currentUser || currentUser.role !== 'admin') {
@@ -14,6 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
         return true;
     }
 
+    // Основная функция загрузки данных админ-панели
     async function loadAdminData() {
         if (!checkAdminAccess()) return;
         
@@ -31,6 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    // Управление прелоадером
     function showPreloader() {
         preloader.style.display = 'flex';
     }
@@ -39,7 +43,9 @@ document.addEventListener('DOMContentLoaded', function() {
         preloader.style.display = 'none';
     }
 
+    // Настройка обработчиков событий
     function setupEventListeners() {
+        // Переключение вкладок
         document.querySelectorAll('.tab-btn').forEach(btn => {
             btn.addEventListener('click', function() {
                 const tabId = this.dataset.tab;
@@ -52,14 +58,16 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
 
+        // Обработчики форм
         document.getElementById('user-form').addEventListener('submit', handleUserSubmit);
-
         document.getElementById('product-form').addEventListener('submit', handleProductSubmit);
 
+        // Поиск и фильтрация
         document.getElementById('user-search').addEventListener('input', filterUsers);
         document.getElementById('product-search').addEventListener('input', filterProducts);
     }
 
+    // Загрузка и отображение пользователей
     async function loadUsers() {
         try {
             const users = await apiRequest('users');
@@ -90,6 +98,7 @@ document.addEventListener('DOMContentLoaded', function() {
         `).join('');
     }
 
+    // Локализация ролей пользователей
     function getRoleText(role) {
         const roles = {
             'user': window.i18n ? window.i18n.translate('form.roles.user') : 'Пользователь',
@@ -99,6 +108,7 @@ document.addEventListener('DOMContentLoaded', function() {
         return roles[role] || role;
     }
 
+    // Редактирование пользователя
     window.editUser = async function(userId) {
         try {
             const user = window.usersData.find(u => u.id === userId);
@@ -118,6 +128,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    // Обработка формы пользователя
     async function handleUserSubmit(e) {
         e.preventDefault();
         
@@ -148,6 +159,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    // Фильтрация пользователей
     function filterUsers() {
         const searchTerm = document.getElementById('user-search').value.toLowerCase();
         const filteredUsers = window.usersData.filter(user => 
@@ -159,6 +171,7 @@ document.addEventListener('DOMContentLoaded', function() {
         renderUsers(filteredUsers);
     }
 
+    // Загрузка и отображение товаров
     async function loadProducts() {
         try {
             const products = await apiRequest('products');
@@ -190,6 +203,7 @@ document.addEventListener('DOMContentLoaded', function() {
         `).join('');
     }
 
+    // Управление модальными окнами товаров
     window.openProductModal = function(productId = null) {
         const modal = document.getElementById('product-modal');
         const title = document.getElementById('product-modal-title');
@@ -229,6 +243,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    // Обработка формы товара
     async function handleProductSubmit(e) {
         e.preventDefault();
         
@@ -271,6 +286,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    // Фильтрация товаров
     function filterProducts() {
         const searchTerm = document.getElementById('product-search').value.toLowerCase();
         const filteredProducts = window.productsData.filter(product => 
@@ -281,6 +297,7 @@ document.addEventListener('DOMContentLoaded', function() {
         renderProducts(filteredProducts);
     }
 
+    // Управление модальными окнами
     window.openModal = function(modalId) {
         document.getElementById(modalId).style.display = 'block';
         document.body.style.overflow = 'hidden';
@@ -291,6 +308,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.style.overflow = 'auto';
     }
 
+    // Подтверждение и выполнение удаления
     window.confirmDelete = function(type, id, name) {
         currentItemId = id;
         currentItemType = type;
@@ -326,6 +344,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    // Закрытие модальных окон по клику вне области
     window.addEventListener('click', function(event) {
         const modals = document.querySelectorAll('.modal');
         modals.forEach(modal => {
@@ -335,5 +354,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // Инициализация админ-панели
     loadAdminData();
 });

@@ -1,3 +1,4 @@
+// Обработчик загрузки DOM
 document.addEventListener('DOMContentLoaded', function() {
     const sliderTrack = document.querySelector('.slider-track');
     const dotsContainer = document.querySelector('.slider-dots');
@@ -9,11 +10,14 @@ document.addEventListener('DOMContentLoaded', function() {
     let slidesCount = 0;
     let autoSlideInterval;
 
+    // Загрузка промо-товаров
     async function loadPromoProducts() {
         try {
             const allProducts = await apiRequest('products');
+            // Фильтрация товаров со скидкой
             promoProducts = allProducts.filter(product => product.discount > 0);
 
+            // Дополнение обычными товарами если нужно
             if (promoProducts.length < 4) {
                 const regularProducts = allProducts.filter(product => product.discount === 0);
                 promoProducts = [...promoProducts, ...regularProducts.slice(0, 4 - promoProducts.length)];
@@ -26,6 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    // Загрузка демо-товаров при ошибке
     function loadDemoProducts() {
         promoProducts = [
             {
@@ -65,6 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
         initSlider();
     }
 
+    // Инициализация слайдера
     function initSlider() {
         slidesCount = Math.ceil(promoProducts.length / 4);
         createSlides();
@@ -72,13 +78,16 @@ document.addEventListener('DOMContentLoaded', function() {
         updateSlider();
         startAutoSlide();
 
+        // Обработчики кнопок навигации
         prevBtn.addEventListener('click', prevSlide);
         nextBtn.addEventListener('click', nextSlide);
 
+        // Управление автопрокруткой при наведении
         sliderTrack.addEventListener('mouseenter', stopAutoSlide);
         sliderTrack.addEventListener('mouseleave', startAutoSlide);
     }
 
+    // Создание слайдов
     function createSlides() {
         sliderTrack.innerHTML = '';
         
@@ -86,6 +95,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const slide = document.createElement('div');
             slide.className = 'slide';
 
+            // Добавление 4 товаров на слайд
             for (let j = 0; j < 4; j++) {
                 const productIndex = i * 4 + j;
                 if (productIndex < promoProducts.length) {
@@ -98,6 +108,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    // Создание карточки товара
     function createProductCard(product) {
         const discountPrice = product.discount > 0 
             ? Math.round(product.price * (1 - product.discount / 100))
@@ -131,6 +142,7 @@ document.addEventListener('DOMContentLoaded', function() {
         return productCard;
     }
 
+    // Создание точек навигации
     function createDots() {
         dotsContainer.innerHTML = '';
         
@@ -144,22 +156,27 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    // Обновление состояния слайдера
     function updateSlider() {
         sliderTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
 
+        // Обновление активной точки
         document.querySelectorAll('.slider-dot').forEach((dot, index) => {
             dot.classList.toggle('active', index === currentSlide);
         });
 
+        // Блокировка кнопок на границах
         prevBtn.disabled = currentSlide === 0;
         nextBtn.disabled = currentSlide === slidesCount - 1;
     }
 
+    // Переход к конкретному слайду
     function goToSlide(slideIndex) {
         currentSlide = slideIndex;
         updateSlider();
     }
 
+    // Следующий слайд
     function nextSlide() {
         if (currentSlide < slidesCount - 1) {
             currentSlide++;
@@ -167,6 +184,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    // Предыдущий слайд
     function prevSlide() {
         if (currentSlide > 0) {
             currentSlide--;
@@ -174,6 +192,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    // Запуск автопрокрутки
     function startAutoSlide() {
         stopAutoSlide();
         autoSlideInterval = setInterval(() => {
@@ -185,9 +204,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 5000); 
     }
     
+    // Остановка автопрокрутки
     function stopAutoSlide() {
         clearInterval(autoSlideInterval);
     }
 
+    // Загрузка промо-товаров
     loadPromoProducts();
 });

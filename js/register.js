@@ -1,4 +1,6 @@
+// Обработчик загрузки DOM
 document.addEventListener('DOMContentLoaded', function() {
+    // Получение элементов формы
     const loginTab = document.getElementById('login-tab');
     const registerTab = document.getElementById('register-tab');
     const loginForm = document.getElementById('login-form');
@@ -10,11 +12,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const registerBtn = document.getElementById('register-btn');
     const regForm = document.getElementById('register-form');
 
+    // Проверка наличия элементов
     if (!loginTab || !registerTab || !loginForm || !registerForm || !regForm) {
         console.error('Не найдены основные элементы формы');
         return;
     }
 
+    // Переключение между вкладками
     loginTab.addEventListener('click', () => switchTab('login'));
     registerTab.addEventListener('click', () => switchTab('register'));
     
@@ -32,19 +36,18 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    // Обработка выбора типа пароля
     passwordTypeRadios.forEach(radio => {
         radio.addEventListener('change', function() {
             if (this.value === 'manual') {
                 manualPasswordFields.forEach(field => {
                     field.style.display = 'block';
-
                     const input = field.querySelector('input');
                     if (input) input.setAttribute('required', 'true');
                 });
             } else {
                 manualPasswordFields.forEach(field => {
                     field.style.display = 'none';
-
                     const input = field.querySelector('input');
                     if (input) {
                         input.removeAttribute('required');
@@ -57,6 +60,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // Генерация никнейма
     let nicknameAttempts = 0;
     const maxNicknameAttempts = 5;
     
@@ -85,6 +89,7 @@ document.addEventListener('DOMContentLoaded', function() {
         validateField(nicknameInput);
     }
 
+    // Валидация полей формы
     const requiredFields = regForm.querySelectorAll('[required]');
     requiredFields.forEach(field => {
         field.addEventListener('input', function() {
@@ -98,6 +103,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // Валидация пароля
     const regPassword = document.getElementById('reg-password');
     const regPasswordConfirm = document.getElementById('reg-password-confirm');
     
@@ -119,6 +125,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Валидация соглашения
     const regAgreement = document.getElementById('reg-agreement');
     if (regAgreement) {
         regAgreement.addEventListener('change', function() {
@@ -126,6 +133,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Валидация отдельного поля
     function validateField(field) {
         if (!field) return false;
         
@@ -175,11 +183,11 @@ document.addEventListener('DOMContentLoaded', function() {
         return isValid;
     }
 
+    // Валидация всей формы
     function validateForm() {
         let isValid = true;
 
         requiredFields.forEach(field => {
-
             const isManualPassword = document.querySelector('input[name="password-type"]:checked').value === 'manual';
             const isPasswordField = field.id === 'reg-password' || field.id === 'reg-password-confirm';
             
@@ -244,17 +252,15 @@ document.addEventListener('DOMContentLoaded', function() {
         return isValid;
     }
 
+    // Вспомогательные функции валидации
     function validateEmail(email) {
         const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return re.test(email);
     }
     
     function validatePhone(phone) {
-
         const cleanedPhone = phone.replace(/[^\d+]/g, '');
-
         const re = /^\+375(17|25|29|33|44|15|16|24)\d{7}$/;
-
         return re.test(cleanedPhone) && cleanedPhone.length === 13;
     }
     
@@ -272,7 +278,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     function validatePassword(password) {
-
         if (!password && document.querySelector('input[name="password-type"]:checked').value === 'manual') {
             return false;
         }
@@ -361,6 +366,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    // Утилиты для отображения ошибок
     function showError(field, message) {
         const errorElement = field.parentElement ? field.parentElement.querySelector('.error-message') : null;
         if (errorElement) {
@@ -377,6 +383,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    // Обработка отправки форм
     loginForm.addEventListener('submit', function(e) {
         e.preventDefault();
         
@@ -415,6 +422,7 @@ document.addEventListener('DOMContentLoaded', function() {
         registerUser(userData);
     });
 
+    // Генерация пароля
     function generatePassword() {
         const length = 12;
         const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+-=[]{}|;:,.<>?";
@@ -436,6 +444,7 @@ document.addEventListener('DOMContentLoaded', function() {
         return charSet.charAt(Math.floor(Math.random() * charSet.length));
     }
 
+    // Аутентификация пользователя
     function authenticateUser(phone, password) {
         fetch('http://localhost:3000/users')
             .then(response => response.json())
@@ -443,9 +452,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const user = users.find(u => u.phone === phone && u.password === password);
                 if (user) {
                     alert(window.i18n ? window.i18n.translate('auth.login_success') : 'Вход выполнен успешно!');
-
                     localStorage.setItem('currentUser', JSON.stringify(user));
-
                     window.location.href = 'home.html';
                 } else {
                     alert(window.i18n ? window.i18n.translate('auth.login_error') : 'Неверный телефон или пароль');
@@ -457,6 +464,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
     }
     
+    // Регистрация пользователя
     function registerUser(userData) {
         userData.role = "user";
 
@@ -501,6 +509,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
     }
 
+    // Форматирование телефона
     const phoneInputs = document.querySelectorAll('input[type="tel"]');
     phoneInputs.forEach(input => {
         input.addEventListener('input', function(e) {
@@ -531,6 +540,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // Автогенерация никнейма при загрузке
     if (generateNicknameBtn && nicknameInput) {
         generateNickname();
     }

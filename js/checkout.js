@@ -1,3 +1,4 @@
+// Обработчик загрузки DOM
 document.addEventListener('DOMContentLoaded', function() {
     const checkoutForm = document.getElementById('checkout-form');
     const orderItemsContainer = document.getElementById('order-items');
@@ -8,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let deliveryPrice = 500;
     let isFormValid = false;
 
+    // Правила валидации полей формы
     const validationRules = {
         lastname: {
             pattern: /^[а-яА-ЯёЁa-zA-Z\- ]{2,50}$/,
@@ -54,6 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
 
+    // Загрузка данных для оформления заказа
     async function loadCheckoutData() {
         showPreloader();
         
@@ -88,6 +91,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    // Управление прелоадером
     function showPreloader() {
         preloader.style.display = 'flex';
     }
@@ -96,6 +100,7 @@ document.addEventListener('DOMContentLoaded', function() {
         preloader.style.display = 'none';
     }
 
+    // Показ ошибки
     function showError(message) {
         orderItemsContainer.innerHTML = `
             <div class="error-message">
@@ -105,6 +110,7 @@ document.addEventListener('DOMContentLoaded', function() {
         `;
     }
 
+    // Отрисовка товаров в заказе
     function renderOrderSummary() {
         const orderItemsHTML = cartItems.map(item => {
             const product = allProducts.find(p => p.id === item.productId.toString());
@@ -132,6 +138,7 @@ document.addEventListener('DOMContentLoaded', function() {
         orderItemsContainer.innerHTML = orderItemsHTML;
     }
 
+    // Обновление итоговой информации
     function updateSummary() {
         let subtotal = 0;
         let totalDiscount = 0;
@@ -158,6 +165,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('summary-total').textContent = `${total} руб.`;
     }
 
+    // Заполнение данных пользователя
     function prefillUserData(user) {
         if (user.lastname) {
             document.getElementById('lastname').value = user.lastname;
@@ -181,7 +189,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    // Настройка обработчиков событий
     function setupEventListeners() {
+        // Обработчики способов доставки и оплаты
         document.querySelectorAll('input[name="delivery"]').forEach(radio => {
             radio.addEventListener('change', function() {
                 updateSummary();
@@ -193,6 +203,7 @@ document.addEventListener('DOMContentLoaded', function() {
             radio.addEventListener('change', validateForm);
         });
 
+        // Форматирование номера телефона
         const phoneInput = document.getElementById('phone');
         phoneInput.addEventListener('input', function(e) {
             let value = this.value.replace(/[^\d+]/g, '');
@@ -230,6 +241,7 @@ document.addEventListener('DOMContentLoaded', function() {
             validateForm();
         });
 
+        // Валидация полей при изменении
         document.querySelectorAll('input, textarea').forEach(input => {
             input.addEventListener('blur', function(e) {
                 validateField(e);
@@ -243,11 +255,13 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Настройка валидации формы
     function setupValidation() {
         checkoutForm.addEventListener('input', validateForm);
         checkoutForm.addEventListener('change', validateForm);
     }
 
+    // Валидация отдельного поля
     function validateField(e) {
         const field = e.target;
         const fieldName = field.name;
@@ -294,6 +308,7 @@ document.addEventListener('DOMContentLoaded', function() {
         return true;
     }
 
+    // Показ ошибки поля
     function showFieldError(field, message) {
         clearFieldError(field);
         
@@ -313,6 +328,7 @@ document.addEventListener('DOMContentLoaded', function() {
         errorDiv.id = field.id + '-error';
     }
 
+    // Очистка ошибки поля
     function clearFieldError(field) {
         field.classList.remove('error');
         field.removeAttribute('aria-invalid');
@@ -324,6 +340,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    // Валидация всей формы
     function validateForm() {
         let isValid = true;
 
@@ -370,6 +387,7 @@ document.addEventListener('DOMContentLoaded', function() {
         return isValid;
     }
 
+    // Обновление состояния кнопки отправки
     function updateSubmitButton() {
         const submitBtn = document.querySelector('.btn-submit');
         if (submitBtn) {
@@ -382,6 +400,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    // Обработка отправки формы
     checkoutForm.addEventListener('submit', async function(e) {
         e.preventDefault();
 
@@ -475,6 +494,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    // Расчет общей суммы заказа
     function calculateOrderTotal() {
         let subtotal = 0;
         cartItems.forEach(item => {
@@ -491,13 +511,16 @@ document.addEventListener('DOMContentLoaded', function() {
         return subtotal + deliveryCost;
     }
 
+    // Создание заказа (заглушка)
     async function createOrder(orderData) {
         return new Promise(resolve => setTimeout(resolve, 1000));
     }
 
+    // Возврат в корзину
     window.goBackToCart = function() {
         window.location.href = 'cart.html';
     }
 
+    // Инициализация загрузки данных
     loadCheckoutData();
 });

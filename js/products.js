@@ -1,3 +1,4 @@
+// Обработчик загрузки DOM
 document.addEventListener('DOMContentLoaded', function() {
     const productsContainer = document.getElementById('products-container');
     const paginationContainer = document.getElementById('pagination');
@@ -12,16 +13,20 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentPage = 1;
     const productsPerPage = 9;
 
+    // Получение параметров из URL
     const urlParams = new URLSearchParams(window.location.search);
     const categoryFromUrl = urlParams.get('category');
 
+    // Получение выбранной категории из sessionStorage
     const selectedCategory = sessionStorage.getItem('selectedCategory');
 
+    // Загрузка товаров
     async function loadProducts() {
         showPreloader();
         try {
             allProducts = await apiRequest('products');
 
+            // Установка категории из URL или sessionStorage
             if (categoryFromUrl) {
                 categoryFilter.value = categoryFromUrl;
             }
@@ -39,6 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    // Управление прелоадером
     function showPreloader() {
         preloader.style.display = 'flex';
         productsContainer.innerHTML = '';
@@ -48,11 +54,13 @@ document.addEventListener('DOMContentLoaded', function() {
         preloader.style.display = 'none';
     }
 
+    // Применение фильтров и сортировки
     function applyFilters() {
         const searchText = searchInput.value.toLowerCase();
         const category = categoryFilter.value;
         const sortOption = sortBy.value;
 
+        // Фильтрация товаров
         filteredProducts = allProducts.filter(product => {
             const matchesSearch = product.name.toLowerCase().includes(searchText) || 
                                  product.description.toLowerCase().includes(searchText);
@@ -60,6 +68,7 @@ document.addEventListener('DOMContentLoaded', function() {
             return matchesSearch && matchesCategory;
         });
 
+        // Сортировка товаров
         switch(sortOption) {
             case 'price-asc':
                 filteredProducts.sort((a, b) => {
@@ -84,6 +93,7 @@ document.addEventListener('DOMContentLoaded', function() {
         renderPagination();
     }
 
+    // Отрисовка товаров
     function renderProducts() {
         const startIndex = (currentPage - 1) * productsPerPage;
         const endIndex = startIndex + productsPerPage;
@@ -123,6 +133,7 @@ document.addEventListener('DOMContentLoaded', function() {
         updateFavoriteButtons();
     }
 
+    // Расчет цены со скидкой
     function calculatePrice(product) {
         if (product.discount > 0) {
             return Math.round(product.price * (1 - product.discount/100));
@@ -130,6 +141,7 @@ document.addEventListener('DOMContentLoaded', function() {
         return product.price;
     }
 
+    // Отрисовка пагинации
     function renderPagination() {
         const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
         
@@ -140,10 +152,12 @@ document.addEventListener('DOMContentLoaded', function() {
         
         let paginationHTML = '';
 
+        // Кнопка "Назад"
         if (currentPage > 1) {
             paginationHTML += `<button onclick="changePage(${currentPage - 1})" data-i18n="pagination.prev">←</button>`;
         }
 
+        // Нумерация страниц
         for (let i = 1; i <= totalPages; i++) {
             if (i === currentPage) {
                 paginationHTML += `<button class="active">${i}</button>`;
@@ -152,6 +166,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
 
+        // Кнопка "Вперед"
         if (currentPage < totalPages) {
             paginationHTML += `<button onclick="changePage(${currentPage + 1})" data-i18n="pagination.next">→</button>`;
         }
@@ -159,6 +174,7 @@ document.addEventListener('DOMContentLoaded', function() {
         paginationContainer.innerHTML = paginationHTML;
     }
 
+    // Смена страницы
     window.changePage = function(page) {
         currentPage = page;
         renderProducts();
@@ -166,6 +182,7 @@ document.addEventListener('DOMContentLoaded', function() {
         window.scrollTo(0, 0);
     }
     
+    // Добавление товара в корзину
     window.addToCart = async function(productId) {
         const currentUser = getCurrentUser();
         if (!currentUser) {
@@ -199,6 +216,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    // Переключение избранного
     window.toggleFavorite = async function(productId) {
         const currentUser = getCurrentUser();
         if (!currentUser) {
@@ -228,6 +246,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    // Обновление состояния кнопок избранного
     async function updateFavoriteButtons() {
         const currentUser = getCurrentUser();
         if (!currentUser) return;
@@ -250,6 +269,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    // Обновление счетчика избранного в шапке
     async function updateFavCountInHeader(count) {
         const favCountElements = document.querySelectorAll('#fav-count');
         favCountElements.forEach(element => {
@@ -257,6 +277,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Обновление счетчика корзины в шапке
     async function updateCartCountInHeader(count) {
         const cartCountElements = document.querySelectorAll('#cart-count');
         cartCountElements.forEach(element => {
@@ -264,6 +285,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Обработчики событий фильтров
     searchBtn.addEventListener('click', applyFilters);
     searchInput.addEventListener('keyup', function(e) {
         if (e.key === 'Enter') applyFilters();
@@ -271,7 +293,9 @@ document.addEventListener('DOMContentLoaded', function() {
     categoryFilter.addEventListener('change', applyFilters);
     sortBy.addEventListener('change', applyFilters);
 
+    // Инициализация загрузки товаров
     loadProducts();
 
+    // Обновление счетчиков в шапке
     updateHeaderCounts();
 });
