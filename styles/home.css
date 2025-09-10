@@ -168,3 +168,249 @@
     width: 100%;
     text-align: start;
 }
+
+
+@media (max-width: 1600px) {
+    .advantages, .catalog, .popular-category, .our-works, .contacts, .inst {
+        width: 90%;
+    }
+}
+
+@media (max-width: 1200px) {
+    .advantages, .catalog, .popular-category, .our-works, .contacts, .inst {
+        width: 95%;
+    }
+
+    .inst img{
+        width: 100%;
+    }
+    
+    .advantages-block {
+        padding: 1.5rem;
+    }
+    
+    .advantages-block b {
+        font-size: 1em;
+    }
+    .our-works-blocks {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 992px) {
+    .advantages-blocks {
+        flex-wrap: wrap;
+        gap: 1.5rem;
+    }
+    
+    .advantages-block {
+        width: 45%;
+        min-width: 250px;
+    }
+    
+    .catalog-blocks {
+        gap: 1.5rem;
+    }
+    
+    .catalog-block {
+        width: calc(50% - 1rem);
+    }
+    
+    .contacts {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    
+    .contacts-text, .contact-map {
+        width: 100%;
+    }
+
+    
+    .our-works-blocks-col {
+        width: 100%;
+    }
+    
+    .our-works-block{
+        width: 100%;
+    }
+
+    .our-works-block img{
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .advantages h2, .catalog h2, .popular-category h2, .our-works h2, .inst h2 {
+        font-size: 1.6em;
+        text-align: center;
+        width: 100%;
+    }
+    
+    .advantages-block {
+        width: 100%;
+        flex-direction: column;
+        text-align: center;
+        padding: 1rem;
+    }
+    
+    .advantages-block img {
+        margin-bottom: 0.5rem;
+    }
+    
+    .catalog-block {
+        width: 100%;
+    }
+    
+    .catalog-block p {
+        font-size: 1.1em;
+        padding: 0.8rem;
+    }
+    
+    .popular-category-buttons {
+        gap: 1rem;
+    }
+    
+    .popular-category-buttons button {
+        font-size: 1em;
+        padding: 0.8rem;
+    }
+    
+    .our-works-blocks-col-row {
+        flex-direction: column;
+    }
+    
+    .contacts-text {
+        padding: 1rem;
+        text-align: center;
+    }
+    
+    .contacts-text h2 {
+        font-size: 1.6em;
+    }
+    
+    .contacts-text-p {
+        font-size: 1.2em;
+    }
+    
+    .contacts-text button {
+        font-size: 1.2em;
+        padding: 0.8rem;
+    }
+    
+    .inst img {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+@media (max-width: 576px) {
+    .advantages, .catalog, .popular-category, .our-works, .contacts, .inst {
+        width: 100%;
+        padding: 0 1rem;
+    }
+    
+    .advantages h2, .catalog h2, .popular-category h2, .our-works h2, .inst h2 {
+        font-size: 1.4em;
+    }
+    
+    .advantages-blocks {
+        gap: 1rem;
+    }
+    
+    .catalog-blocks {
+        gap: 1rem;
+    }
+    
+    .popular-category-buttons {
+        justify-content: center;
+    }
+    
+    .popular-category-buttons button {
+        font-size: 0.9em;
+        padding: 0.6rem 0.8rem;
+    }
+    
+    .contacts-text-p {
+        font-size: 1em;
+    }
+    
+    .contacts-text button {
+        font-size: 1em;
+    }
+    
+    #map {
+        height: 250px;
+    }
+}
+
+@media (max-width: 480px) {
+    .advantages-block {
+        padding: 0.8rem;
+    }
+    
+    .advantages-block img {
+        max-width: 50px;
+    }
+    
+    .advantages-block b {
+        font-size: 0.9em;
+    }
+    
+    .catalog-block p {
+        font-size: 1em;
+        padding: 0.6rem;
+    }
+    
+    .popular-category-buttons {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.8rem;
+    }
+    
+    .popular-category-buttons button {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .our-works-block p {
+        font-size: 1em;
+        padding: 0.6rem;
+    }
+}
+
+@media (max-height: 500px) and (orientation: landscape) {
+    .advantages, .catalog, .popular-category, .our-works {
+        gap: 1rem;
+    }
+    
+    .advantages-blocks {
+        gap: 0.8rem;
+    }
+    
+    .advantages-block {
+        padding: 0.8rem;
+    }
+}
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .advantages-block img,
+    .catalog-block img,
+    .our-works-block img {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+}
+
+@media (max-width: 320px) {
+    .advantages h2, .catalog h2, .popular-category h2, .our-works h2, .inst h2 {
+        font-size: 1.2em;
+    }
+    
+    .popular-category-buttons {
+        grid-template-columns: 1fr;
+    }
+
+    .catalog-block img{
+        width: 100%;
+    }
+}

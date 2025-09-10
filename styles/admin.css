@@ -3,6 +3,12 @@
     min-height: 80vh;
 }
 
+.container-main {
+    width: 70%;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
 .admin-page h1 {
     margin-bottom: 2rem;
     color: #384685;
@@ -304,10 +310,48 @@
     background: #c82333;
 }
 
+@media (max-width: 1508px) {
+    .container-main{
+        width: 100%;
+    }
+}
+
+@media (max-width: 1200px) {
+    .table-container {
+        overflow-x: auto;
+    }
+    
+    .admin-table {
+        min-width: 1000px;
+    }
+    
+    .admin-table th:nth-child(4),
+    .admin-table td:nth-child(4) {
+        display: none;
+    }
+}
+
+@media (max-width: 992px) {
+    .admin-table {
+        min-width: 900px;
+    }
+    
+    .admin-table th:nth-child(6),
+    .admin-table td:nth-child(6) {
+        display: none;
+    }
+}
+
 @media (max-width: 768px) {
     .admin-header {
         flex-direction: column;
         align-items: flex-start;
+    }
+
+    .table-container {
+        border-radius: 8px;
+        overflow: visible;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     }
     
     .admin-actions {
@@ -325,7 +369,13 @@
     }
     
     .admin-table {
-        font-size: 0.9rem;
+        min-width: unset;
+        display: block;
+        width: 100%;
+    }
+
+    .admin-table thead {
+        display: none;
     }
     
     .admin-table th,
@@ -337,3 +387,4 @@
         flex-direction: column;
     }
 }
+

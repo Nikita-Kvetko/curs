@@ -20,29 +20,29 @@
                 <div class="top-nav-container">
                     <div class="location-info">
                         <a><img src="../img/loc.gif" alt="loc"> Ростов ˅</a>
-                        <a href="#">Акции</a>
-                        <a href="#">Сборка</a>
-                        <a href="#">Оплата</a>
-                        <a href="#">Доставка</a>
+                        <a href="#promo-section">Акции</a>
+                        <a href="#advantages">Преимущества</a>
+                        <a href="#catalog">Каталог</a>
+                        <a href="#contacts">Контакты</a>
                     </div>
                     <div class="contacts-info">
-                        <a href="#">Наши работы</a>
-                        <a href="#">Контакты</a>
+                        <a href="#our-works">Наши работы</a>
+                        <a href="#contacts">Контакты</a>
                     </div>
                 </div>
             </div>
         </div>
         <div class="container">
             <div class="header-content">
-                <img src="../img/logo.png" alt="logo">
+                <a href="../pages/home.html"><img src="../img/logo.png" alt="logo"></a>
                 <div class="store-info">
                     <p>ул. Московская, 144 корп. - 1</p>
-                    <a href="#" class="scheme-link">Схема проезда</a>
+                    <a href="#contacts" class="scheme-link">Схема проезда</a>
                 </div>
                 
-                <div class="contacts">
+                <div class="contacts-header">
                     <div class="phone"><img src="../img/phone.png" alt="phone"> 8 (961) 525 91 91</div>
-                    <a href="#" class="callback-btn">Заказать звонок</a>
+                    <a href="#contacts" class="callback-btn">Заказать звонок</a>
                 </div>
                 
                 <div class="user-actions">
@@ -63,9 +63,9 @@
                             </div>
                         </div>
                     </div>
-                    <a href="#" class="login-btn"><img src="../img/login.png" alt="login"> Войти</a>
-                    <a href="favorites.html" class="favorites"><img src="../img/favorites.png" alt="favorites">Избранное</a>
-                    <a href="cart.html" class="cart active"><img src="../img/cart.png" alt="cart">Корзина</a>
+                    <a href="../pages/register.html" class="login-btn"><img src="../img/login.png" alt="login"> Войти</a>
+                    <a href="../pages/favorites.html" class="favorites"><img src="../img/favorites.png" alt="favorites">Избранное</a>
+                    <a href="../pages/cart.html" class="cart"><img src="../img/cart.png" alt="cart">Корзина</a>
                 </div>
             </div>
         </div>
@@ -73,18 +73,124 @@
             <div class="container">
                 <ul class="nav-menu">
                     <div class="highlight"></div> 
-                    <li><a href="../pages/products.html" data-i18n="nav.kitchens">КУХНИ</a></li>
-                    <li><a href="#" data-i18n="nav.living_rooms">ГОСТИННЫЕ</a></li>
-                    <li><a href="#" data-i18n="nav.bedrooms">СПАЛЬНИ</a></li>
-                    <li><a href="#" data-i18n="nav.hallways">ПРИХОЖИЕ</a></li>
-                    <li><a href="#" data-i18n="nav.wardrobes">ШКАФЫ-КУПЕ</a></li>
-                    <li><a href="#" data-i18n="nav.children">ДЕТСКИЕ</a></li>
-                    <li><a href="#" data-i18n="nav.sofas">ДИВАНЫ</a></li>
-                    <li><a href="#" data-i18n="nav.where_to_see">ГДЕ ПОСМОТРЕТЬ</a></li>
+                    <li><a href="#" data-i18n="nav.kitchens" class="nav-menuli">КУХНИ</a></li>
+                    <li><a href="#" data-i18n="nav.living_rooms" class="nav-menuli">ГОСТИННЫЕ</a></li>
+                    <li><a href="#" data-i18n="nav.bedrooms" class="nav-menuli">СПАЛЬНИ</a></li>
+                    <li><a href="#" data-i18n="nav.hallways" class="nav-menuli">ПРИХОЖИЕ</a></li>
+                    <li><a href="#" data-i18n="nav.wardrobes" class="nav-menuli">ШКАФЫ-КУПЕ</a></li>
+                    <li><a href="#" data-i18n="nav.children" class="nav-menuli">ДЕТСКИЕ</a></li>
+                    <li><a href="#" data-i18n="nav.sofas" class="nav-menuli">ДИВАНЫ</a></li>
+                    <li><a href="#" data-i18n="nav.where_to_see" class="nav-menuli">ГДЕ ПОСМОТРЕТЬ</a></li>
                 </ul>
             </div>
         </nav>
+
+        <div class="mobile-nav-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <div class="mobile-nav">
+            <div class="mobile-nav-content">
+                <div class="mobile-nav-header">
+                    <img src="../img/logo.png" alt="logo">
+                    <button class="mobile-nav-close">×</button>
+                </div>
+                
+                <div class="mobile-location">
+                    <a><img src="../img/loc.gif" alt="loc"> Ростов ˅</a>
+                </div>
+                
+                <nav class="mobile-main-nav">
+                    <ul>
+                        <li><a href="#" data-i18n="nav.kitchens">КУХНИ</a></li>
+                        <li><a href="#" data-i18n="nav.living_rooms">ГОСТИННЫЕ</a></li>
+                        <li><a href="#" data-i18n="nav.bedrooms">СПАЛЬНИ</a></li>
+                        <li><a href="#" data-i18n="nav.hallways">ПРИХОЖИЕ</a></li>
+                        <li><a href="#" data-i18n="nav.wardrobes">ШКАФЫ-КУПЕ</a></li>
+                        <li><a href="#" data-i18n="nav.children">ДЕТСКИЕ</a></li>
+                        <li><a href="#" data-i18n="nav.sofas">ДИВАНЫ</a></li>
+                        <li><a href="#" data-i18n="nav.where_to_see">ГДЕ ПОСМОТРЕТЬ</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="mobile-contacts">
+                    <div class="mobile-phone">
+                        <img src="../img/phone.png" alt="phone"> 8 (961) 525 91 91
+                    </div>
+                    <a href="#contacts" class="mobile-callback">Заказать звонок</a>
+                </div>
+                
+                <div class="mobile-user-actions">
+                    <a href="../pages/favorites.html" class="mobile-favorites">
+                        <img src="../img/favorites.png" alt="favorites"> Избранное
+                    </a>
+                    <a href="../pages/cart.html" class="mobile-cart">
+                        <img src="../img/cart.png" alt="cart"> Корзина
+                    </a>
+                </div>
+            </div>
+        </div>
     </header>
+
+    <div id="accessibility-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Настройки доступности</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="setting-group">
+                    <h3>Размер шрифта</h3>
+                    <div class="font-size-options">
+                        <button class="font-size-btn" data-size="normal">Обычный</button>
+                        <button class="font-size-btn" data-size="large">Большой</button>
+                        <button class="font-size-btn" data-size="x-large">Очень большой</button>
+                    </div>
+                </div>
+                
+                <div class="setting-group">
+                    <h3>Цветовая схема</h3>
+                    <div class="color-scheme-options">
+                        <button class="color-scheme-btn" data-scheme="black-white">
+                            <span class="color-preview black-white"></span>
+                            Черный на белом
+                        </button>
+                        <button class="color-scheme-btn" data-scheme="black-green">
+                            <span class="color-preview black-green"></span>
+                            Черный на зеленом
+                        </button>
+                        <button class="color-scheme-btn" data-scheme="white-black">
+                            <span class="color-preview white-black"></span>
+                            Белый на черном
+                        </button>
+                        <button class="color-scheme-btn" data-scheme="beige-brown">
+                            <span class="color-preview beige-brown"></span>
+                            Бежевый с коричневым
+                        </button>
+                        <button class="color-scheme-btn" data-scheme="blue-darkblue">
+                            <span class="color-preview blue-darkblue"></span>
+                            Голубой с синим
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="setting-group">
+                    <h3>Изображения</h3>
+                    <label class="switch">
+                        <input type="checkbox" id="images-toggle">
+                        <span class="slider"></span>
+                        <span class="switch-label">Показывать изображения</span>
+                    </label>
+                </div>
+                
+                <div class="setting-group">
+                    <button id="reset-accessibility" class="reset-btn">Сбросить настройки</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <main class="cart-page">
         <div class="container">
@@ -228,10 +334,11 @@
     </footer>
 
     <script src="../js/api.js"></script>
-    <script src="../js/cart.js"></script>
     <script src="../js/user-menu.js"></script>
     <script src="../js/accessibility.js"></script>
     <script src="../js/i18n.js"></script>
     <script src="../js/theme.js"></script>
+    <script src="../js/mobile-menu.js"></script>
+    <script src="../js/cart.js"></script>
 </body>
 </html>

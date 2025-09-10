@@ -3,6 +3,12 @@
     min-height: 80vh;
 }
 
+.container-main {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
 .success-container {
     max-width: 800px;
     margin: 0 auto;

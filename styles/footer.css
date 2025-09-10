@@ -73,3 +73,140 @@ footer p, footer b, footer h3, footer a{
 .footer-right-block-list li{
     margin-top: 1rem;
 }
+
+@media (max-width: 1200px) {
+    footer {
+        padding: 2rem 4rem;
+    }
+    
+    .footer-right {
+        gap: 2rem;
+    }
+    
+    .footer-right-block {
+        min-width: 170px;
+    }
+}
+
+@media (max-width: 992px) {
+    footer {
+        padding: 2rem 3rem;
+    }
+    
+    .footer-top {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .footer-left {
+        align-items: center;
+    }
+    
+    .footer-left-mid-block {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+    }
+    
+    .footer-right {
+        justify-content: center;
+        gap: 2rem;
+    }
+    
+    .footer-right-block {
+        text-align: center;
+        min-width: 160px;
+    }
+}
+
+@media (max-width: 768px) {
+    footer {
+        padding: 1.5rem 2rem;
+    }
+    
+    .footer-right {
+        gap: 1.5rem;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+    
+    .footer-right-block {
+        min-width: 140px;
+        flex: 1;
+    }
+    
+    .footer-bottom p {
+        text-align: center;
+    }
+}
+
+@media (max-width: 576px) {
+    footer {
+        padding: 1rem 1.5rem;
+        gap: 1.5rem;
+    }
+    
+    .footer-left img {
+        max-width: 120px;
+    }
+    
+    .footer-right {
+        flex-direction: column;
+        gap: 2rem;
+        text-align: center;
+    }
+    
+    .footer-right-block {
+        width: 100%;
+        min-width: auto;
+    }
+    
+    .footer-right-block-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem 2rem;
+        text-align: left;
+    }
+    
+    .footer-right-block-list li {
+        margin-top: 0.5rem;
+    }
+    
+    .footer-left-bottom {
+        align-items: center;
+    }
+}
+
+@media (max-width: 480px) {
+    footer {
+        padding: 1rem;
+    }
+    
+    .footer-right-block-list {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 0.5rem;
+    }
+    
+    .footer-left-mid-block {
+        align-items: center;
+    }
+    
+    .footer-left-mid-block p,
+    .footer-left-mid-block b {
+        text-align: center;
+    }
+}
+
+footer,
+.footer-top,
+.footer-left,
+.footer-right,
+.footer-right-block {
+    transition: all 0.3s ease;
+}
+
+footer {
+    overflow-x: hidden;
+}

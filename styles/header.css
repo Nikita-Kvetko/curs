@@ -203,3 +203,269 @@ header {
     cursor: pointer;
     font-size: 14px;
 }
+
+
+
+
+
+
+.mobile-nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.mobile-nav-toggle span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    margin: 2px 0;
+    transition: all 0.3s ease;
+}
+
+
+.mobile-nav {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100vh;
+    background-color: white;
+    z-index: 1000;
+    transition: left 0.3s ease;
+    overflow-y: auto;
+}
+
+.mobile-nav.active {
+    left: 0;
+}
+
+.mobile-nav-content {
+    padding: 20px;
+}
+
+.mobile-nav-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.mobile-nav-header img {
+    max-height: 40px;
+}
+
+.mobile-nav-close {
+    background: none;
+    border: none;
+    font-size: 30px;
+    cursor: pointer;
+    color: #333;
+}
+
+.mobile-location {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.mobile-location a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #333;
+    text-decoration: none;
+}
+
+.mobile-location img {
+    width: 20px;
+}
+
+.mobile-main-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.mobile-main-nav li {
+    margin-bottom: 10px;
+}
+
+.mobile-main-nav a {
+    display: block;
+    padding: 12px 0;
+    color: #333;
+    text-decoration: none;
+    font-weight: 500;
+    border-bottom: 1px solid #eee;
+}
+
+.mobile-contacts {
+    margin: 20px 0;
+    padding: 15px 0;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+.mobile-phone {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.mobile-phone img {
+    width: 20px;
+}
+
+.mobile-callback {
+    display: block;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #E13B3F;
+    color: #E13B3F;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.mobile-user-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.mobile-login,
+.mobile-favorites,
+.mobile-cart {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px;
+    color: #333;
+    text-decoration: none;
+    border: 1px solid #eee;
+    border-radius: 5px;
+}
+
+.mobile-login img,
+.mobile-favorites img,
+.mobile-cart img {
+    width: 20px;
+}
+
+@media (max-width: 1200px) {
+    .header-content {
+        gap: 20px;
+    }
+    
+    .store-info,
+    .contacts-header {
+        flex: 1;
+        min-width: 200px;
+    }
+}
+
+@media (max-width: 992px) {
+    .top-nav {
+        display: none;
+    }
+    
+    .main-nav {
+        display: none;
+    }
+    
+    .mobile-nav-toggle {
+        display: flex;
+    }
+    
+    .header-content {
+        padding: 10px 0;
+    }
+    
+    .header-content > *:not(:first-child):not(:last-child) {
+        display: none;
+    }
+    
+    .user-actions {
+        order: 2;
+    }
+    
+    .header-content > a:first-child {
+        order: 1;
+    }
+    
+    .mobile-nav-toggle {
+        order: 3;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-content {
+        justify-content: space-between;
+    }
+    
+    .user-actions {
+        gap: 10px;
+    }
+    
+    .login-btn,
+    .favorites,
+    .cart {
+        display: none;
+    }
+    
+    .login-btn img,
+    .favorites img,
+    .cart img {
+        margin: 0;
+    }
+}
+
+@media (max-width: 576px) {
+    .header-content {
+        padding: 5px 0;
+        justify-content: center;
+    }
+    
+    .header-content img {
+        max-height: 40px;
+    }
+    
+    .user-actions {
+        gap: 5px;
+    }
+    
+    .login-btn,
+    .favorites,
+    .cart {
+        padding: 5px;
+    }
+    
+    .header-controls {
+        display: none;
+    }
+}
+
+.mobile-nav-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    display: none;
+}
+
+.mobile-nav-overlay.active {
+    display: block;
+}

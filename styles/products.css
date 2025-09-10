@@ -2,6 +2,12 @@
     padding: 2rem 0;
 }
 
+.container-main {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
 .products-page h1 {
     margin-bottom: 2rem;
     color: #384685;
@@ -181,4 +187,14 @@
 
 .pagination button:hover:not(.active) {
     background: #f0f0f0;
+}
+
+@media (max-width: 768px) {
+    .search-box, .filter-controls{
+        flex-direction: column;
+    }
+
+    .filters{
+        justify-content: center;
+    }
 }
