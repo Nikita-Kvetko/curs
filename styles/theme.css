@@ -31,9 +31,60 @@ body.dark header {
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-body.dark footer {
+body.dark footer,
+body.dark .random-product,
+body.dark .promo-product,
+body.dark .product-card,
+body.dark .favorite-item,
+body.dark .cart-item,
+body.dark .summary-card,
+body.dark .checkout-form-container,
+body.dark .success-container,
+body.dark .info-row,
+body.dark .info-group,
+body.dark .order-item,
+body.dark .support-info,
+body.dark .info-row span,
+body.dark .user-dropdown,
+body.dark .admin-table th,
+body.dark .admin-table tbody,
+body.dark .modal-content,
+body.dark .modal-header {
     background-color: var(--footer-bg);
     color: var(--footer-text);
+}
+
+body.dark .random-product h3,
+body.dark .random-product div,
+body.dark .random-product p,
+body.dark .promo-product h3,
+body.dark .product-card h3,
+body.dark .favorite-item h3,
+body.dark .favorite-item div,
+body.dark .cart-item h3,
+body.dark .cart-item div,
+body.dark .checkout-form-container label,
+body.dark .checkout-form-container span,
+body.dark .summary-card span,
+body.dark .success-container p,
+body.dark .success-container h1,
+body.dark .success-container h2,
+body.dark .success-container span,
+body.dark .success-container label,
+body.dark .success-container div,
+body.dark .success-container strong,
+body.dark .user-dropdown a,
+body.dark .user-dropdown button,
+body.dark .modal-body label {
+    color: var(--footer-text);
+}
+
+body.dark .user-menu-toggle{
+    color: #fff;
+}
+
+body.dark .header-content img{
+    filter: invert(1);
 }
 
 .auth-container {
@@ -69,6 +120,8 @@ body.dark footer {
     transition: background-color 0.3s;
     margin-right: 10px;
 }
+
+
 
 .theme-toggle:hover {
     background-color: var(--bg-secondary);
