@@ -1,7 +1,7 @@
 window.addToCart = async function(productId) {
     const currentUser = getCurrentUser();
     if (!currentUser) {
-        alert('Пожалуйста, войдите в систему, чтобы добавить товар в корзину');
+        alert(window.i18n ? window.i18n.translate('cart.login_required') : 'Пожалуйста, войдите в систему, чтобы добавить товар в корзину');
         return;
     }
     
@@ -20,10 +20,10 @@ window.addToCart = async function(productId) {
         }
 
         await updateCart(currentUser.id, cart.items);
-        alert('Товар добавлен в корзину!');
+        alert(window.i18n ? window.i18n.translate('cart.add_success') : 'Товар добавлен в корзину!');
     } catch (error) {
         console.error('Ошибка при добавлении в корзину:', error);
-        alert('Не удалось добавить товар в корзину');
+        alert(window.i18n ? window.i18n.translate('cart.add_error') : 'Не удалось добавить товар в корзину');
     }
 }
 
@@ -37,7 +37,7 @@ window.toggleFavorite = async function(event, productId) {
     
     const currentUser = getCurrentUser();
     if (!currentUser) {
-        alert('Пожалуйста, войдите в систему, чтобы добавить товар в избранное');
+        alert(window.i18n ? window.i18n.translate('favorites.login_required') : 'Пожалуйста, войдите в систему, чтобы добавить товар в избранное');
         return;
     }
     
@@ -56,12 +56,12 @@ window.toggleFavorite = async function(event, productId) {
         await updateFavorites(currentUser.id, favorites.items);
         
         if (button.classList.contains('active')) {
-            alert('Товар добавлен в избранное!');
+            alert(window.i18n ? window.i18n.translate('favorites.add_success') : 'Товар добавлен в избранное!');
         } else {
-            alert('Товар удален из избранного!');
+            alert(window.i18n ? window.i18n.translate('favorites.remove_success') : 'Товар удален из избранного!');
         }
     } catch (error) {
         console.error('Ошибка при обновлении избранного:', error);
-        alert('Не удалось обновить избранное');
+        alert(window.i18n ? window.i18n.translate('favorites.update_error') : 'Не удалось обновить избранное');
     }
 }

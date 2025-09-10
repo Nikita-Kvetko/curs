@@ -14,8 +14,8 @@ document.addEventListener('DOMContentLoaded', function() {
             console.error('Ошибка загрузки товаров:', error);
             productsContainer.innerHTML = `
                 <div class="error-message">
-                    <p>Не удалось загрузить товары. Пожалуйста, попробуйте позже.</p>
-                    <button onclick="loadRandomProducts()" class="retry-btn">Попробовать снова</button>
+                    <p data-i18n="products.load_error">Не удалось загрузить товары. Пожалуйста, попробуйте позже.</p>
+                    <button onclick="loadRandomProducts()" class="retry-btn" data-i18n="button.retry">Попробовать снова</button>
                 </div>
             `;
         } finally {
@@ -34,33 +34,33 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function displayProducts(products) {
         if (products.length === 0) {
-            productsContainer.innerHTML = '<p class="no-products">Товары не найдены</p>';
+            productsContainer.innerHTML = '<p class="no-products" data-i18n="products.not_found">Товары не найдены</p>';
             return;
         }
         
         productsContainer.innerHTML = products.map(product => `
             <div class="random-product" data-id="${product.id}">
                 <div class="random-product-image">
-                    <img src="../img/${product.images[0]}" alt="${product.name}">
-                    ${product.discount > 0 ? `<div class="random-product-badge">-${product.discount}%</div>` : ''}
+                    <img src="../img/${product.images[0]}" alt="${product.name}" data-i18n="alt.product_image">
+                    ${product.discount > 0 ? `<div class="random-product-badge" data-i18n="products.discount_badge">-${product.discount}%</div>` : ''}
                 </div>
                 <div class="random-product-info">
                     <div class="random-product-category">${product.category}</div>
                     <h3 class="random-product-title">${product.name}</h3>
                     <div class="random-product-dimensions">
-                        ${product.width} × ${product.height} × ${product.depth} мм
+                        ${product.width} × ${product.height} × ${product.depth} <span data-i18n="products.mm">мм</span>
                     </div>
                     <div class="random-product-price">
                         <span class="current-price">${calculatePrice(product)} руб.</span>
                         ${product.discount > 0 ? `
                             <div>
                                 <span class="old-price">${product.price.toLocaleString('ru-RU')} руб.</span>
-                                <span class="discount">-${product.discount}%</span>
+                                <span class="discount" data-i18n="products.discount">-${product.discount}%</span>
                             </div>
                         ` : ''}
                     </div>
                     <div class="random-product-actions">
-                        <button class="buy-btn" onclick="addToCart(${product.id})">В корзину</button>
+                        <button class="buy-btn" onclick="addToCart(${product.id})" data-i18n="button.add_to_cart">В корзину</button>
                         <button class="add-to-fav" onclick="toggleFavorite(event, ${product.id})">❤️</button>
                     </div>
                 </div>

@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
             renderFavorites();
         } catch (error) {
             console.error('Error loading favorites:', error);
-            showError('Не удалось загрузить избранное');
+            showError(window.i18n ? window.i18n.translate('favorites.load_error') : 'Не удалось загрузить избранное');
         } finally {
             hidePreloader();
         }
@@ -41,8 +41,8 @@ document.addEventListener('DOMContentLoaded', function() {
     function showLoginPrompt() {
         favoritesGrid.innerHTML = `
             <div class="login-prompt">
-                <h3>Для просмотра избранного необходимо войти в систему</h3>
-                <a href="../pages/register.html" class="btn-primary">Войти</a>
+                <h3 data-i18n="favorites.login_required">Для просмотра избранного необходимо войти в систему</h3>
+                <a href="../pages/register.html" class="btn-primary" data-i18n="button.login">Войти</a>
             </div>
         `;
         emptyFavorites.style.display = 'none';
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
         favoritesGrid.innerHTML = `
             <div class="error-message">
                 <p>${message}</p>
-                <button onclick="loadFavorites()" class="btn-primary">Попробовать снова</button>
+                <button onclick="loadFavorites()" class="btn-primary" data-i18n="button.retry">Попробовать снова</button>
             </div>
         `;
     }
@@ -73,8 +73,8 @@ document.addEventListener('DOMContentLoaded', function() {
             return `
                 <div class="favorite-item" data-product-id="${product.id}">
                     <div class="favorite-item-image">
-                        <img src="../img/${product.images[0]}" alt="${product.name}">
-                        <button class="remove-favorite" onclick="removeFromFavorites(${product.id})">
+                        <img src="../img/${product.images[0]}" alt="${product.name}" data-i18n="alt.product_image">
+                        <button class="remove-favorite" onclick="removeFromFavorites(${product.id})" data-i18n="title.remove_favorite">
                             ❌
                         </button>
                     </div>
@@ -89,13 +89,13 @@ document.addEventListener('DOMContentLoaded', function() {
                             ` : ''}
                         </div>
                         <div class="favorite-item-dimensions">
-                            ${product.width} × ${product.height} × ${product.depth} мм
+                            ${product.width} × ${product.height} × ${product.depth} <span data-i18n="products.mm">мм</span>
                         </div>
                         <div class="favorite-item-actions">
-                            <button class="add-to-cart-btn" onclick="addToCartFromFavorites(${product.id})">
+                            <button class="add-to-cart-btn" onclick="addToCartFromFavorites(${product.id})" data-i18n="button.add_to_cart">
                                 В корзину
                             </button>
-                            <button class="view-details-btn" onclick="viewProductDetails(${product.id})">
+                            <button class="view-details-btn" onclick="viewProductDetails(${product.id})" data-i18n="button.view_details">
                                 Подробнее
                             </button>
                         </div>
@@ -147,10 +147,10 @@ document.addEventListener('DOMContentLoaded', function() {
             await updateCart(currentUser.id, cart.items);
             updateCartCountInHeader(cart.items.reduce((total, item) => total + item.quantity, 0));
             
-            alert('Товар добавлен в корзину!');
+            alert(window.i18n ? window.i18n.translate('cart.add_success') : 'Товар добавлен в корзину!');
         } catch (error) {
             console.error('Ошибка при добавлении в корзину:', error);
-            alert('Не удалось добавить товар в корзину');
+            alert(window.i18n ? window.i18n.translate('cart.add_error') : 'Не удалось добавить товар в корзину');
         }
     }
 

@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function checkAdminAccess() {
         currentUser = getCurrentUser();
         if (!currentUser || currentUser.role !== 'admin') {
-            alert('Доступ запрещен. Требуются права администратора.');
+            alert(window.i18n ? window.i18n.translate('admin.access_denied') : 'Доступ запрещен. Требуются права администратора.');
             window.location.href = 'products.html';
             return false;
         }
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
             setupEventListeners();
         } catch (error) {
             console.error('Error loading admin data:', error);
-            alert('Не удалось загрузить данные админ-панели');
+            alert(window.i18n ? window.i18n.translate('admin.load_error') : 'Не удалось загрузить данные админ-панели');
         } finally {
             hidePreloader();
         }
@@ -82,8 +82,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 <td>${user.createdAt ? new Date(user.createdAt).toLocaleDateString() : '-'}</td>
                 <td>
                     <div class="action-buttons">
-                        <button class="btn-icon btn-edit" onclick="editUser('${user.id}')" title="Редактировать">✏️</button>
-                        <button class="btn-icon btn-delete" onclick="confirmDelete('user', '${user.id}', '${user.firstname} ${user.lastname}')" title="Удалить">🗑️</button>
+                        <button class="btn-icon btn-edit" onclick="editUser('${user.id}')" title="${window.i18n ? window.i18n.translate('admin.edit') : 'Редактировать'}" data-i18n="title.edit">✏️</button>
+                        <button class="btn-icon btn-delete" onclick="confirmDelete('user', '${user.id}', '${user.firstname} ${user.lastname}')" title="${window.i18n ? window.i18n.translate('admin.delete') : 'Удалить'}" data-i18n="title.delete">🗑️</button>
                     </div>
                 </td>
             </tr>
@@ -92,9 +92,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function getRoleText(role) {
         const roles = {
-            'user': 'Пользователь',
-            'admin': 'Администратор',
-            'moderator': 'Модератор'
+            'user': window.i18n ? window.i18n.translate('form.roles.user') : 'Пользователь',
+            'admin': window.i18n ? window.i18n.translate('form.roles.admin') : 'Администратор',
+            'moderator': window.i18n ? window.i18n.translate('form.roles.moderator') : 'Модератор'
         };
         return roles[role] || role;
     }
@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const user = window.usersData.find(u => u.id === userId);
             if (!user) return;
 
-            document.getElementById('user-modal-title').textContent = 'Редактирование пользователя';
+            document.getElementById('user-modal-title').textContent = window.i18n ? window.i18n.translate('admin.users.edit_title') : 'Редактирование пользователя';
             document.getElementById('user-id').value = user.id;
             document.getElementById('user-lastname').value = user.lastname;
             document.getElementById('user-firstname').value = user.firstname;
@@ -141,10 +141,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
             closeModal('user-modal');
             await loadUsers();
-            alert('Пользователь успешно обновлен!');
+            alert(window.i18n ? window.i18n.translate('admin.users.save_success') : 'Пользователь успешно обновлен!');
         } catch (error) {
             console.error('Error saving user:', error);
-            alert('Ошибка при сохранении пользователя');
+            alert(window.i18n ? window.i18n.translate('admin.users.save_error') : 'Ошибка при сохранении пользователя');
         }
     }
 
@@ -174,16 +174,16 @@ document.addEventListener('DOMContentLoaded', function() {
         tbody.innerHTML = products.map(product => `
             <tr>
                 <td>${product.id}</td>
-                <td><img src="../img/${product.images[0] || 'default-product.jpg'}" alt="${product.name}"></td>
+                <td><img src="../img/${product.images[0] || 'default-product.jpg'}" alt="${product.name}" data-i18n="alt.product_image"></td>
                 <td>${product.name}</td>
                 <td>${product.category}</td>
                 <td>${product.price} руб.</td>
                 <td>${product.discount || 0}%</td>
-                <td>${product.width}×${product.height}×${product.depth} мм</td>
+                <td>${product.width}×${product.height}×${product.depth} <span data-i18n="products.mm">мм</span></td>
                 <td>
                     <div class="action-buttons">
-                        <button class="btn-icon btn-edit" onclick="editProduct('${product.id}')" title="Редактировать">✏️</button>
-                        <button class="btn-icon btn-delete" onclick="confirmDelete('product', '${product.id}', '${product.name}')" title="Удалить">🗑️</button>
+                        <button class="btn-icon btn-edit" onclick="editProduct('${product.id}')" title="${window.i18n ? window.i18n.translate('admin.edit') : 'Редактировать'}" data-i18n="title.edit">✏️</button>
+                        <button class="btn-icon btn-delete" onclick="confirmDelete('product', '${product.id}', '${product.name}')" title="${window.i18n ? window.i18n.translate('admin.delete') : 'Удалить'}" data-i18n="title.delete">🗑️</button>
                     </div>
                 </td>
             </tr>
@@ -196,9 +196,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const form = document.getElementById('product-form');
         
         if (productId) {
-            title.textContent = 'Редактирование товара';
+            title.textContent = window.i18n ? window.i18n.translate('admin.products.edit_title') : 'Редактирование товара';
         } else {
-            title.textContent = 'Добавление товара';
+            title.textContent = window.i18n ? window.i18n.translate('admin.products.add_title') : 'Добавление товара';
             form.reset();
             document.getElementById('product-id').value = '';
         }
@@ -211,7 +211,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const product = window.productsData.find(p => p.id === productId);
             if (!product) return;
 
-            document.getElementById('product-modal-title').textContent = 'Редактирование товара';
+            document.getElementById('product-modal-title').textContent = window.i18n ? window.i18n.translate('admin.products.edit_title') : 'Редактирование товара';
             document.getElementById('product-id').value = product.id;
             document.getElementById('product-name').value = product.name;
             document.getElementById('product-category').value = product.category;
@@ -264,10 +264,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
             closeModal('product-modal');
             await loadProducts();
-            alert('Товар успешно сохранен!');
+            alert(window.i18n ? window.i18n.translate('admin.products.save_success') : 'Товар успешно сохранен!');
         } catch (error) {
             console.error('Error saving product:', error);
-            alert('Ошибка при сохранении товара');
+            alert(window.i18n ? window.i18n.translate('admin.products.save_error') : 'Ошибка при сохранении товара');
         }
     }
 
@@ -295,7 +295,10 @@ document.addEventListener('DOMContentLoaded', function() {
         currentItemId = id;
         currentItemType = type;
         
-        const message = `Вы уверены, что хотите удалить ${type === 'user' ? 'пользователя' : 'товар'} "${name}"?`;
+        const message = window.i18n ? 
+            window.i18n.translate('admin.confirm_delete', {type: type === 'user' ? window.i18n.translate('admin.user') : window.i18n.translate('admin.product'), name: name}) :
+            `Вы уверены, что хотите удалить ${type === 'user' ? 'пользователя' : 'товар'} "${name}"?`;
+        
         document.getElementById('confirm-message').textContent = message;
         
         document.getElementById('confirm-delete').onclick = performDelete;
@@ -316,10 +319,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 await loadProducts();
             }
             
-            alert('Элемент успешно удален!');
+            alert(window.i18n ? window.i18n.translate('admin.delete_success') : 'Элемент успешно удален!');
         } catch (error) {
             console.error('Error deleting item:', error);
-            alert('Ошибка при удалении элемента');
+            alert(window.i18n ? window.i18n.translate('admin.delete_error') : 'Ошибка при удалении элемента');
         }
     }
 

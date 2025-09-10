@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
             renderCart();
         } catch (error) {
             console.error('Error loading cart:', error);
-            showError('Не удалось загрузить корзину');
+            showError(window.i18n ? window.i18n.translate('cart.load_error') : 'Не удалось загрузить корзину');
         } finally {
             hidePreloader();
         }
@@ -43,8 +43,8 @@ document.addEventListener('DOMContentLoaded', function() {
     function showLoginPrompt() {
         cartItemsContainer.innerHTML = `
             <div class="login-prompt">
-                <h3>Для просмотра корзины необходимо войти в систему</h3>
-                <a href="../pages/register.html" class="btn-primary">Войти</a>
+                <h3 data-i18n="cart.login_required">Для просмотра корзины необходимо войти в систему</h3>
+                <a href="../pages/register.html" class="btn-primary" data-i18n="button.login">Войти</a>
             </div>
         `;
         cartSummary.style.display = 'none';
@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
         cartItemsContainer.innerHTML = `
             <div class="error-message">
                 <p>${message}</p>
-                <button onclick="loadCart()" class="btn-primary">Попробовать снова</button>
+                <button onclick="loadCart()" class="btn-primary" data-i18n="button.retry">Попробовать снова</button>
             </div>
         `;
     }
@@ -78,32 +78,32 @@ document.addEventListener('DOMContentLoaded', function() {
             return `
                 <div class="cart-item" data-product-id="${product.id}">
                     <div class="cart-item-image">
-                        <img src="../img/${product.images[0]}" alt="${product.name}">
+                        <img src="../img/${product.images[0]}" alt="${product.name}" data-i18n="alt.product_image">
                     </div>
                     <div class="cart-item-info">
                         <h3 class="cart-item-title">${product.name}</h3>
                         <div class="cart-item-category">${product.category}</div>
                         <div class="cart-item-dimensions">
-                            ${product.width} × ${product.height} × ${product.depth} мм
+                            ${product.width} × ${product.height} × ${product.depth} <span data-i18n="products.mm">мм</span>
                         </div>
                     </div>
                     <div class="cart-item-controls">
                         <div class="cart-item-price">
-                            <span class="current-price">${finalPrice} руб.</span>
+                            <span class="current-price">${finalPrice}руб.</span>
                             ${product.discount > 0 ? `
-                                <span class="old-price">${product.price} руб.</span>
-                                <span class="discount">-${product.discount}%</span>
+                                <span class="old-price">${product.price}руб.</span>
+                                <span class="discount" data-i18n="products.discount">-${product.discount}%</span>
                             ` : ''}
                         </div>
                         <div class="quantity-controls">
-                            <button class="quantity-btn" onclick="changeQuantity(${product.id}, ${item.quantity - 1})">-</button>
+                            <button class="quantity-btn" onclick="changeQuantity(${product.id}, ${item.quantity - 1})" data-i18n="title.decrease_quantity">-</button>
                             <input type="number" class="quantity-input" value="${item.quantity}" 
                                    min="1" max="99" 
                                    onchange="updateQuantity(${product.id}, this.value)">
-                            <button class="quantity-btn" onclick="changeQuantity(${product.id}, ${item.quantity + 1})">+</button>
+                            <button class="quantity-btn" onclick="changeQuantity(${product.id}, ${item.quantity + 1})" data-i18n="title.increase_quantity">+</button>
                         </div>
-                        <button class="remove-btn" onclick="removeFromCart(${product.id})">
-                            Удалить
+                        <button class="remove-btn" onclick="removeFromCart(${product.id})" data-i18n="button.remove">
+                            ${window.i18n ? window.i18n.translate('button.remove') : 'Удалить'}
                         </button>
                     </div>
                 </div>
@@ -141,9 +141,9 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         
         document.getElementById('total-items').textContent = totalItems;
-        document.getElementById('subtotal').textContent = `${subtotal} руб.`;
-        document.getElementById('total-discount').textContent = `-${totalDiscount} руб.`;
-        document.getElementById('total-price').textContent = `${subtotal} руб.`;
+        document.getElementById('subtotal').textContent = `${subtotal}руб.`;
+        document.getElementById('total-discount').textContent = `-${totalDiscount}руб.`;
+        document.getElementById('total-price').textContent = `${subtotal}руб.`;
     }
 
     window.changeQuantity = async function(productId, newQuantity) {
@@ -190,12 +190,12 @@ document.addEventListener('DOMContentLoaded', function() {
     checkoutBtn.addEventListener('click', function() {
         const currentUser = getCurrentUser();
         if (!currentUser) {
-            alert('Пожалуйста, войдите в систему для оформления заказа');
+            alert(window.i18n ? window.i18n.translate('checkout.login_required') : 'Пожалуйста, войдите в систему для оформления заказа');
             return;
         }
         
         if (cartItems.length === 0) {
-            alert('Корзина пуста. Добавьте товары перед оформлением заказа.');
+            alert(window.i18n ? window.i18n.translate('cart.empty_checkout') : 'Корзина пуста. Добавьте товары перед оформлением заказа.');
             return;
         }
         

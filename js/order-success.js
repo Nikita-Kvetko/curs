@@ -31,8 +31,10 @@ async function displayOrderDetails(orderData) {
     
     const address = orderData.delivery.address;
     document.getElementById('delivery-address').textContent = 
-        `г. ${address.city}, ул. ${address.street}, д. ${address.house}` +
-        (address.apartment ? `, кв. ${address.apartment}` : '') +
+        `${window.i18n ? window.i18n.translate('form.city') : 'г.'} ${address.city}, ` +
+        `${window.i18n ? window.i18n.translate('form.street') : 'ул.'} ${address.street}, ` +
+        `${window.i18n ? window.i18n.translate('form.house') : 'д.'} ${address.house}` +
+        (address.apartment ? `, ${window.i18n ? window.i18n.translate('form.apartment') : 'кв.'} ${address.apartment}` : '') +
         (address.postalCode ? `, ${address.postalCode}` : '');
 
     await displayOrderItems(orderData.items);
@@ -53,28 +55,28 @@ function formatDate(dateString) {
 
 function getStatusText(status) {
     const statusMap = {
-        'pending': 'Ожидает подтверждения',
-        'confirmed': 'Подтвержден',
-        'shipped': 'Отправлен',
-        'delivered': 'Доставлен',
-        'cancelled': 'Отменен'
+        'pending': window.i18n ? window.i18n.translate('order_status.pending') : 'Ожидает подтверждения',
+        'confirmed': window.i18n ? window.i18n.translate('order_status.confirmed') : 'Подтвержден',
+        'shipped': window.i18n ? window.i18n.translate('order_status.shipped') : 'Отправлен',
+        'delivered': window.i18n ? window.i18n.translate('order_status.delivered') : 'Доставлен',
+        'cancelled': window.i18n ? window.i18n.translate('order_status.cancelled') : 'Отменен'
     };
     return statusMap[status] || status;
 }
 
 function getPaymentMethodText(method) {
     const methodMap = {
-        'card': 'Банковская карта',
-        'cash': 'Наличные при получении',
-        'online': 'Онлайн-банкинг'
+        'card': window.i18n ? window.i18n.translate('payment.card.title') : 'Банковская карта',
+        'cash': window.i18n ? window.i18n.translate('payment.cash.title') : 'Наличные при получении',
+        'online': window.i18n ? window.i18n.translate('payment.online.title') : 'Онлайн-банкинг'
     };
     return methodMap[method] || method;
 }
 
 function getDeliveryMethodText(method) {
     const methodMap = {
-        'courier': 'Курьерская доставка',
-        'pickup': 'Самовывоз'
+        'courier': window.i18n ? window.i18n.translate('delivery.courier.title') : 'Курьерская доставка',
+        'pickup': window.i18n ? window.i18n.translate('delivery.pickup.title') : 'Самовывоз'
     };
     return methodMap[method] || method;
 }
@@ -94,12 +96,12 @@ async function displayOrderItems(items) {
             return `
                 <div class="order-item">
                     <div class="order-item-image">
-                        <img src="../img/${product.images[0]}" alt="${product.name}">
+                        <img src="../img/${product.images[0]}" alt="${product.name}" data-i18n="alt.product_image">
                     </div>
                     <div class="order-item-info">
                         <div class="order-item-name">${product.name}</div>
                         <div class="order-item-details">
-                            <span>${item.quantity} шт. × ${finalPrice} руб.</span>
+                            <span>${item.quantity} <span data-i18n="order.quantity_unit">шт.</span> × ${finalPrice} руб.</span>
                             <span class="order-item-price">${totalPrice} руб.</span>
                         </div>
                     </div>
@@ -111,7 +113,7 @@ async function displayOrderItems(items) {
     } catch (error) {
         console.error('Error loading order items:', error);
         document.getElementById('order-items').innerHTML = 
-            '<p>Не удалось загрузить информацию о товарах</p>';
+            '<p data-i18n="order.items_load_error">Не удалось загрузить информацию о товарах</p>';
     }
 }
 
@@ -133,7 +135,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (trackBtn) {
         trackBtn.addEventListener('click', function(e) {
             e.preventDefault();
-            alert('Функция отслеживания заказа будет доступна после подтверждения заказа менеджером.');
+            alert(window.i18n ? window.i18n.translate('order.tracking_message') : 'Функция отслеживания заказа будет доступна после подтверждения заказа менеджером.');
         });
     }
 });

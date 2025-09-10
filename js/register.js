@@ -139,33 +139,33 @@ document.addEventListener('DOMContentLoaded', function() {
         
         if (field.hasAttribute('required') && !field.value.trim()) {
             isValid = false;
-            errorMessage = 'Это поле обязательно для заполнения';
+            errorMessage = window.i18n ? window.i18n.translate('error.required') : 'Это поле обязательно для заполнения';
         }
         
         if (isValid && field.type === 'email') {
             isValid = validateEmail(field.value);
-            if (!isValid) errorMessage = 'Введите корректный email';
+            if (!isValid) errorMessage = window.i18n ? window.i18n.translate('error.email') : 'Введите корректный email';
         }
         
         if (isValid && field.id === 'reg-phone') {
             isValid = validatePhone(field.value);
-            if (!isValid) errorMessage = 'Введите корректный номер телефона РБ';
+            if (!isValid) errorMessage = window.i18n ? window.i18n.translate('error.phone') : 'Введите корректный номер телефона РБ';
         }
         
         if (isValid && field.id === 'reg-birthdate') {
             isValid = validateBirthdate(field.value);
-            if (!isValid) errorMessage = 'Вам должно быть не менее 16 лет';
+            if (!isValid) errorMessage = window.i18n ? window.i18n.translate('error.age') : 'Вам должно быть не менее 16 лет';
         }
         
         if (isValid && field.id === 'reg-password') {
             isValid = validatePassword(field.value);
-            if (!isValid) errorMessage = 'Пароль должен содержать минимум 8 символов, но не более 20; должен включать в себя хотя бы: одну заглавную букву, одну строчную букву, одну цифру и один специальный символ';
+            if (!isValid) errorMessage = window.i18n ? window.i18n.translate('error.password') : 'Пароль должен содержать минимум 8 символов, но не более 20; должен включать в себя хотя бы: одну заглавную букву, одну строчную букву, одну цифру и один специальный символ';
         }
         
         if (isValid && field.id === 'reg-password-confirm') {
             const password = document.getElementById('reg-password');
             isValid = field.value === (password ? password.value : '');
-            if (!isValid) errorMessage = 'Пароли не совпадают';
+            if (!isValid) errorMessage = window.i18n ? window.i18n.translate('error.password_match') : 'Пароли не совпадают';
         }
         
         if (!isValid && errorElement) {
@@ -206,7 +206,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             if (password && passwordConfirm && password.value !== passwordConfirm.value) {
                 isValid = false;
-                showError(passwordConfirm, 'Пароли не совпадают');
+                showError(passwordConfirm, window.i18n ? window.i18n.translate('error.password_match') : 'Пароли не совпадают');
             }
         }
 
@@ -216,7 +216,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 isValid = false;
                 const errorElement = agreement.parentElement.querySelector('.error-message');
                 if (errorElement) {
-                    errorElement.textContent = 'Необходимо принять соглашение';
+                    errorElement.textContent = window.i18n ? window.i18n.translate('error.agreement') : 'Необходимо принять соглашение';
                 }
             } else {
                 const errorElement = agreement.parentElement.querySelector('.error-message');
@@ -232,7 +232,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 isValid = false;
                 const errorElement = nickname.parentElement.querySelector('.error-message');
                 if (errorElement && !errorElement.textContent) {
-                    showError(nickname, 'Никнейм обязателен для заполнения');
+                    showError(nickname, window.i18n ? window.i18n.translate('error.required') : 'Никнейм обязателен для заполнения');
                 }
             }
         }
@@ -338,11 +338,11 @@ document.addEventListener('DOMContentLoaded', function() {
             
             let text = '';
             switch(key) {
-                case 'length': text = '8-20 символов'; break;
-                case 'uppercase': text = 'Заглавная буква'; break;
-                case 'lowercase': text = 'Строчная буква'; break;
-                case 'number': text = 'Цифра'; break;
-                case 'special': text = 'Спецсимвол'; break;
+                case 'length': text = window.i18n ? window.i18n.translate('password_requirement.length') : '8-20 символов'; break;
+                case 'uppercase': text = window.i18n ? window.i18n.translate('password_requirement.uppercase') : 'Заглавная буква'; break;
+                case 'lowercase': text = window.i18n ? window.i18n.translate('password_requirement.lowercase') : 'Строчная буква'; break;
+                case 'number': text = window.i18n ? window.i18n.translate('password_requirement.number') : 'Цифра'; break;
+                case 'special': text = window.i18n ? window.i18n.translate('password_requirement.special') : 'Спецсимвол'; break;
             }
             
             requirementElement.textContent = text;
@@ -442,18 +442,18 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(users => {
                 const user = users.find(u => u.phone === phone && u.password === password);
                 if (user) {
-                    alert('Вход выполнен успешно!');
+                    alert(window.i18n ? window.i18n.translate('auth.login_success') : 'Вход выполнен успешно!');
 
                     localStorage.setItem('currentUser', JSON.stringify(user));
 
                     window.location.href = 'home.html';
                 } else {
-                    alert('Неверный телефон или пароль');
+                    alert(window.i18n ? window.i18n.translate('auth.login_error') : 'Неверный телефон или пароль');
                 }
             })
             .catch(error => {
                 console.error('Ошибка при авторизации:', error);
-                alert('Произошла ошибка при авторизации');
+                alert(window.i18n ? window.i18n.translate('auth.login_server_error') : 'Произошла ошибка при авторизации');
             });
     }
     
@@ -467,12 +467,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 const emailExists = users.some(u => u.email === userData.email);
                 
                 if (phoneExists) {
-                    alert('Пользователь с таким телефоном уже существует');
+                    alert(window.i18n ? window.i18n.translate('auth.phone_exists') : 'Пользователь с таким телефоном уже существует');
                     return;
                 }
                 
                 if (emailExists) {
-                    alert('Пользователь с таким email уже существует');
+                    alert(window.i18n ? window.i18n.translate('auth.email_exists') : 'Пользователь с таким email уже существует');
                     return;
                 }
 
@@ -485,18 +485,19 @@ document.addEventListener('DOMContentLoaded', function() {
                 })
                 .then(response => response.json())
                 .then(data => {
-                    alert('Регистрация прошла успешно! Ваша роль: ' + data.role);
+                    alert((window.i18n ? window.i18n.translate('auth.register_success') : 'Регистрация прошла успешно!') + 
+                          (window.i18n ? window.i18n.translate('auth.role') : ' Ваша роль: ') + data.role);
                     localStorage.setItem('currentUser', JSON.stringify(data));
                     window.location.href = 'home.html';
                 })
                 .catch(error => {
                     console.error('Ошибка при регистрации:', error);
-                    alert('Произошла ошибка при регистрации');
+                    alert(window.i18n ? window.i18n.translate('auth.register_server_error') : 'Произошла ошибка при регистрации');
                 });
             })
             .catch(error => {
                 console.error('Ошибка при проверке пользователя:', error);
-                alert('Произошла ошибка при регистрации');
+                alert(window.i18n ? window.i18n.translate('auth.register_server_error') : 'Произошла ошибка при регистрации');
             });
     }
 

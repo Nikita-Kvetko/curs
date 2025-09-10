@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
             applyFilters();
         } catch (error) {
             console.error('Ошибка:', error);
-            productsContainer.innerHTML = '<p class="error">Не удалось загрузить товары. Попробуйте позже.</p>';
+            productsContainer.innerHTML = '<p class="error" data-i18n="products.load_error">Не удалось загрузить товары. Попробуйте позже.</p>';
         } finally {
             hidePreloader();
         }
@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const productsToShow = filteredProducts.slice(startIndex, endIndex);
         
         if (productsToShow.length === 0) {
-            productsContainer.innerHTML = '<p class="no-products">Товары не найдены</p>';
+            productsContainer.innerHTML = '<p class="no-products" data-i18n="products.not_found">Товары не найдены</p>';
             paginationContainer.innerHTML = '';
             return;
         }
@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', function() {
         productsContainer.innerHTML = productsToShow.map(product => `
             <div class="product-card" data-id="${product.id}">
                 <div class="product-image">
-                    <img src="../img/${product.images[0]}" alt="${product.name}">
+                    <img src="../img/${product.images[0]}" alt="${product.name}" data-i18n="alt.product_image">
                 </div>
                 <div class="product-info">
                     <h3 class="product-title">${product.name}</h3>
@@ -106,14 +106,14 @@ document.addEventListener('DOMContentLoaded', function() {
                         <span class="current-price">${calculatePrice(product)} руб.</span>
                         ${product.discount > 0 ? `
                             <span class="old-price">${product.price} руб.</span>
-                            <span class="discount">-${product.discount}%</span>
+                            <span class="discount" data-i18n="products.discount">-${product.discount}%</span>
                         ` : ''}
                     </div>
                     <div class="product-dimensions">
-                        ${product.width} × ${product.height} × ${product.depth} мм
+                        ${product.width} × ${product.height} × ${product.depth} <span data-i18n="products.mm">мм</span>
                     </div>
                     <div class="product-actions">
-                        <button class="add-to-cart" onclick="addToCart(${product.id})">В корзину</button>
+                        <button class="add-to-cart" onclick="addToCart(${product.id})" data-i18n="button.add_to_cart">В корзину</button>
                         <button class="add-to-fav" onclick="toggleFavorite(${product.id})">❤️</button>
                     </div>
                 </div>
@@ -141,7 +141,7 @@ document.addEventListener('DOMContentLoaded', function() {
         let paginationHTML = '';
 
         if (currentPage > 1) {
-            paginationHTML += `<button onclick="changePage(${currentPage - 1})">←</button>`;
+            paginationHTML += `<button onclick="changePage(${currentPage - 1})" data-i18n="pagination.prev">←</button>`;
         }
 
         for (let i = 1; i <= totalPages; i++) {
@@ -153,7 +153,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         if (currentPage < totalPages) {
-            paginationHTML += `<button onclick="changePage(${currentPage + 1})">→</button>`;
+            paginationHTML += `<button onclick="changePage(${currentPage + 1})" data-i18n="pagination.next">→</button>`;
         }
         
         paginationContainer.innerHTML = paginationHTML;
@@ -167,10 +167,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     window.addToCart = async function(productId) {
-
         const currentUser = getCurrentUser();
         if (!currentUser) {
-            alert('Пожалуйста, войдите в систему, чтобы добавить товар в корзину');
+            alert(window.i18n ? window.i18n.translate('cart.login_required') : 'Пожалуйста, войдите в систему, чтобы добавить товар в корзину');
             return;
         }
         
@@ -193,17 +192,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
             updateCartCountInHeader(cart.items.reduce((total, item) => total + item.quantity, 0));
             
-            alert('Товар добавлен в корзину!');
+            alert(window.i18n ? window.i18n.translate('cart.add_success') : 'Товар добавлен в корзину!');
         } catch (error) {
             console.error('Ошибка при добавлении в корзину:', error);
-            alert('Не удалось добавить товар в корзину');
+            alert(window.i18n ? window.i18n.translate('cart.add_error') : 'Не удалось добавить товар в корзину');
         }
     }
 
     window.toggleFavorite = async function(productId) {
         const currentUser = getCurrentUser();
         if (!currentUser) {
-            alert('Пожалуйста, войдите в систему, чтобы добавить товар в избранное');
+            alert(window.i18n ? window.i18n.translate('favorites.login_required') : 'Пожалуйста, войдите в систему, чтобы добавить товар в избранное');
             return;
         }
         
@@ -225,7 +224,7 @@ document.addEventListener('DOMContentLoaded', function() {
             updateFavCountInHeader(favorites.items.length);
         } catch (error) {
             console.error('Ошибка при обновлении избранного:', error);
-            alert('Не удалось обновить избранное');
+            alert(window.i18n ? window.i18n.translate('favorites.update_error') : 'Не удалось обновить избранное');
         }
     }
 

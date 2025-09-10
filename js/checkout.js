@@ -11,45 +11,45 @@ document.addEventListener('DOMContentLoaded', function() {
     const validationRules = {
         lastname: {
             pattern: /^[а-яА-ЯёЁa-zA-Z\- ]{2,50}$/,
-            message: 'Фамилия должна содержать 2-50 букв, дефисы или пробелы'
+            message: window.i18n ? window.i18n.translate('validation.lastname') : 'Фамилия должна содержать 2-50 букв, дефисы или пробелы'
         },
         firstname: {
             pattern: /^[а-яА-ЯёЁa-zA-Z\- ]{2,50}$/,
-            message: 'Имя должно содержать 2-50 букв, дефисы или пробелы'
+            message: window.i18n ? window.i18n.translate('validation.firstname') : 'Имя должно содержать 2-50 букв, дефисы или пробелы'
         },
         middlename: {
             pattern: /^[а-яА-ЯёЁa-zA-Z\- ]{0,50}$/,
-            message: 'Отчество должно содержать до 50 букв, дефисы или пробелы',
+            message: window.i18n ? window.i18n.translate('validation.middlename') : 'Отчество должно содержать до 50 букв, дефисы или пробелы',
             optional: true
         },
         phone: {
             pattern: /^(\+375|80)(25|29|33|44|17)\d{7}$/,
-            message: 'Введите корректный белорусский номер (+375 XX XXXXXXX или 80 XX XXXXXXX)'
+            message: window.i18n ? window.i18n.translate('validation.phone') : 'Введите корректный белорусский номер (+375 XX XXXXXXX или 80 XX XXXXXXX)'
         },
         email: {
             pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-            message: 'Введите корректный email адрес'
+            message: window.i18n ? window.i18n.translate('validation.email') : 'Введите корректный email адрес'
         },
         city: {
             pattern: /^[а-яА-ЯёЁa-zA-Z\- ]{2,50}$/,
-            message: 'Город должен содержать 2-50 букв, дефисы или пробелы'
+            message: window.i18n ? window.i18n.translate('validation.city') : 'Город должен содержать 2-50 букв, дефисы или пробелы'
         },
         street: {
             pattern: /^[а-яА-ЯёЁa-zA-Z0-9\-\. ]{2,100}$/,
-            message: 'Улица должна содержать 2-100 символов (буквы, цифры, точки, дефисы)'
+            message: window.i18n ? window.i18n.translate('validation.street') : 'Улица должна содержать 2-100 символов (буквы, цифры, точки, дефисы)'
         },
         house: {
             pattern: /^[а-яА-ЯёЁa-zA-Z0-9\-\\/ ]{1,10}$/,
-            message: 'Дом должен содержать 1-10 символов (буквы, цифры, дефисы, слэши)'
+            message: window.i18n ? window.i18n.translate('validation.house') : 'Дом должен содержать 1-10 символов (буквы, цифры, дефисы, слэши)'
         },
         apartment: {
             pattern: /^[а-яА-ЯёЁa-zA-Z0-9\- ]{0,10}$/,
-            message: 'Квартира должна содержать до 10 символов',
+            message: window.i18n ? window.i18n.translate('validation.apartment') : 'Квартира должна содержать до 10 символов',
             optional: true
         },
         postalCode: {
             pattern: /^\d{6}$/,
-            message: 'Почтовый индекс должен содержать 6 цифр',
+            message: window.i18n ? window.i18n.translate('validation.postal_code') : 'Почтовый индекс должен содержать 6 цифр',
             optional: true
         }
     };
@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function() {
             setTimeout(validateForm, 100);
         } catch (error) {
             console.error('Error loading checkout data:', error);
-            showError('Не удалось загрузить данные для оформления заказа');
+            showError(window.i18n ? window.i18n.translate('checkout.load_error') : 'Не удалось загрузить данные для оформления заказа');
         } finally {
             hidePreloader();
         }
@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', function() {
         orderItemsContainer.innerHTML = `
             <div class="error-message">
                 <p>${message}</p>
-                <button onclick="loadCheckoutData()" class="btn-primary">Попробовать снова</button>
+                <button onclick="loadCheckoutData()" class="btn-primary" data-i18n="button.retry">Попробовать снова</button>
             </div>
         `;
     }
@@ -116,12 +116,12 @@ document.addEventListener('DOMContentLoaded', function() {
             return `
                 <div class="order-item">
                     <div class="order-item-image">
-                        <img src="../img/${product.images[0]}" alt="${product.name}">
+                        <img src="../img/${product.images[0]}" alt="${product.name}" data-i18n="alt.product_image">
                     </div>
                     <div class="order-item-info">
                         <div class="order-item-name">${product.name}</div>
                         <div class="order-item-details">
-                            <span>${item.quantity} × ${finalPrice} руб.</span>
+                            <span>${item.quantity} <span data-i18n="order.quantity_unit">шт.</span> × ${finalPrice} руб.</span>
                             <span class="order-item-price">${totalPrice} руб.</span>
                         </div>
                     </div>
@@ -271,7 +271,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         if (!rules.optional && !value) {
-            showFieldError(field, 'Это поле обязательно для заполнения');
+            showFieldError(field, window.i18n ? window.i18n.translate('error.required') : 'Это поле обязательно для заполнения');
             return false;
         }
 
@@ -281,7 +281,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         if (fieldName === 'email' && value.length > 100) {
-            showFieldError(field, 'Email не должен превышать 100 символов');
+            showFieldError(field, window.i18n ? window.i18n.translate('validation.email_length') : 'Email не должен превышать 100 символов');
             return false;
         }
         
@@ -375,7 +375,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (submitBtn) {
             submitBtn.disabled = !isFormValid;
             if (!isFormValid) {
-                submitBtn.title = 'Заполните все обязательные поля корректно';
+                submitBtn.title = window.i18n ? window.i18n.translate('checkout.fill_required') : 'Заполните все обязательные поля корректно';
             } else {
                 submitBtn.removeAttribute('title');
             }
@@ -411,13 +411,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 firstError.focus();
             }
             
-            alert('Пожалуйста, исправьте ошибки в форме перед отправкой.');
+            alert(window.i18n ? window.i18n.translate('checkout.correct_errors') : 'Пожалуйста, исправьте ошибки в форме перед отправкой.');
             return;
         }
         
         const currentUser = getCurrentUser();
         if (!currentUser) {
-            alert('Пожалуйста, войдите в систему для оформления заказа');
+            alert(window.i18n ? window.i18n.translate('checkout.login_required') : 'Пожалуйста, войдите в систему для оформления заказа');
             return;
         }
         
@@ -469,7 +469,7 @@ document.addEventListener('DOMContentLoaded', function() {
             window.location.href = '../pages/order-success.html?order=' + encodeURIComponent(JSON.stringify(orderData));
         } catch (error) {
             console.error('Error creating order:', error);
-            alert('Произошла ошибка при оформлении заказа. Пожалуйста, попробуйте еще раз.');
+            alert(window.i18n ? window.i18n.translate('checkout.order_error') : 'Произошла ошибка при оформлении заказа. Пожалуйста, попробуйте еще раз.');
         } finally {
             hidePreloader();
         }

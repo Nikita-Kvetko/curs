@@ -45,16 +45,16 @@ function createUserMenu(user, container) {
     userMenu.className = 'user-menu';
     userMenu.innerHTML = `
         <button class="user-menu-toggle">
-            <img src="../img/user.png" alt="user"> ${user.firstname}
+            <img src="../img/user.png" alt="user" data-i18n="alt.user"> ${user.firstname}
         </button>
         <div class="user-dropdown">
             <div class="user-info">
                 <p>${user.firstname} ${user.lastname}</p>
                 <p>${user.phone}</p>
             </div>
-            <a href="#" class="dropdown-item">Настройки</a>
-            ${user.role === 'admin' ? '<a href="admin.html" class="dropdown-item">Админ-панель</a>' : ''}
-            <button class="dropdown-item logout-btn">Выйти</button>
+            <a href="#" class="dropdown-item" data-i18n="user_menu.settings">Настройки</a>
+            ${user.role === 'admin' ? '<a href="admin.html" class="dropdown-item" data-i18n="user_menu.admin_panel">Админ-панель</a>' : ''}
+            <button class="dropdown-item logout-btn" data-i18n="user_menu.logout">Выйти</button>
         </div>
     `;
 
@@ -67,7 +67,7 @@ function createUserMenu(user, container) {
     const logoutBtn = userMenu.querySelector('.logout-btn');
     const settingsBtn = userMenu.querySelector('.dropdown-item');
 
-    if (settingsBtn && settingsBtn.textContent === 'Настройки') {
+    if (settingsBtn && settingsBtn.getAttribute('data-i18n') === 'user_menu.settings') {
         settingsBtn.addEventListener('click', function(e) {
             e.preventDefault();
             const modal = document.getElementById('accessibility-modal');

@@ -107,8 +107,8 @@ document.addEventListener('DOMContentLoaded', function() {
         productCard.className = 'promo-product';
         productCard.innerHTML = `
             <div class="promo-product-image">
-                <img src="../img/${product.images[0]}" alt="${product.name}">
-                ${product.discount > 0 ? `<div class="promo-product-badge">-${product.discount}%</div>` : ''}
+                <img src="../img/${product.images[0]}" alt="${product.name}" data-i18n="alt.product_image">
+                ${product.discount > 0 ? `<div class="promo-product-badge" data-i18n="products.discount_badge">-${product.discount}%</div>` : ''}
             </div>
             <div class="promo-product-info">
                 <h3 class="promo-product-title">${product.name}</h3>
@@ -117,12 +117,12 @@ document.addEventListener('DOMContentLoaded', function() {
                     <div>
                         ${product.discount > 0 ? `
                             <span class="old-price">${product.price.toLocaleString('ru-RU')} руб.</span>
-                            <span class="discount">-${product.discount}%</span>
+                            <span class="discount" data-i18n="products.discount">-${product.discount}%</span>
                         ` : ''}
                     </div>
                 </div>
                 <div class="promo-product-actions">
-                    <button class="buy-btn" onclick="addToCart(${product.id})">КУПИТЬ</button>
+                    <button class="buy-btn" onclick="addToCart(${product.id})" data-i18n="button.buy">КУПИТЬ</button>
                     <button class="add-to-fav" onclick="toggleFavorite(event, ${product.id})">❤️</button>
                 </div>
             </div>
